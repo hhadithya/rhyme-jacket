@@ -1,4 +1,4 @@
-# rhyme-jacket
+# Rhyme Jacket
 ![alt text](https://github.com/hhadithya/rhyme-jacket/blob/main/Progress/idea/design_idea.png)
 
 ## Problem in Brief
