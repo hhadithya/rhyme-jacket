@@ -1,6 +1,6 @@
 # Fatigue level detection by using DS18B20
 
-![alt text](https://techshop.lk/cdn/shop/products/DS18B20.jpg?v=1676439313)
+![ds18b20 picture](https://techshop.lk/cdn/shop/products/DS18B20.jpg?v=1676439313)
 
 ## Features
 
@@ -12,3 +12,7 @@
 ## Challenges
 
 - Environment temperature can be differed according to the place. And those differed temperature can affect the body temperature , resulting in false assumptions of getting tired.
+
+## Testing
+
+![setting up using arduino nano board]
