@@ -15,4 +15,4 @@
 
 ## Testing
 
-![setting up using arduino nano board](https://raw.githubusercontent.com/hhadithya/rhyme-jacket/main/Progress/Hardware/DS18B20_test.jpg)
+![setting up using arduino nano board](https://github.com/hhadithya/rhyme-jacket/blob/main/Progress/Hardware/DS18B20_test.jpg?raw=true)
