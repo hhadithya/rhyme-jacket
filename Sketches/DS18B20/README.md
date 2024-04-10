@@ -9,6 +9,10 @@
 - Measures temperatures from -55°C to +125°C. Fahrenheit equivalent is -67°F to +257°F
 - ±0.5°C accuracy from -10°C to +85°C
 
+## Wires
+
+![GND, VDD, DQ](https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2019/07/DS18B20-tempeature-sensor-pinout.jpg?w=750&quality=100&strip=all&ssl=1)
+
 ## Challenges
 
 - Environment temperature can be differed according to the place. And those differed temperature can affect the body temperature , resulting in false assumptions of getting tired.
