@@ -15,7 +15,7 @@
 
 ## Challenges
 
-- Environment temperature can be differed according to the place. And those differed temperature can affect the body temperature , resulting in false assumptions of getting tired.
+Environment temperature can be differed according to the place. And those differed temperature can affect the body temperature , resulting in false assumptions of getting tired.
 
 ## Coding
 
