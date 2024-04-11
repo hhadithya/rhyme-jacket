@@ -17,6 +17,11 @@
 
 - Environment temperature can be differed according to the place. And those differed temperature can affect the body temperature , resulting in false assumptions of getting tired.
 
+## Coding
+
+- There are **three fatigue levels** like Level 0, Level 1, Level 2. Level 2 means too tired and level 0 means not tired. A blinking Red LED is used to indicate level 2 fatigueness. A blinking blue LED is used to indicate level 1 fatigueness. There is no indicator for the level 0 fatigueness.
+- The code is supported for cold and hot temperatures as well.
+
 ## Testing
 
 ![setting up using arduino nano board](https://github.com/hhadithya/rhyme-jacket/blob/main/Progress/Hardware/DS18B20_test.jpg?raw=true)
