@@ -5,7 +5,30 @@
 #include <DallasTemperature.h>
 
 #define ONE_WIRE_BUS 4
-#define LED_BUILTIN 13
+// #define LED_BUILTIN 13
+
+float bodyTemp;
+float environmentTemp;
+
+void ledOn(int pin){
+  digitalWrite(pin, HIGH);  // turn the LED on 
+  delay(500);
+  digitalWrite(pin, LOW);   // turn the LED off
+  delay(200);
+  digitalWrite(pin, HIGH);
+  delay(500);
+  digitalWrite(pin, LOW);
+}
+
+void ledOff(){
+  digitalWrite(8, HIGH);  // turn the LED on
+  delay(500);
+  digitalWrite(8, LOW);   // turn the LED off
+  delay(200);
+  digitalWrite(8, HIGH);
+  delay(500);
+  digitalWrite(8, LOW);
+}
 
 OneWire oneWire(ONE_WIRE_BUS);
 
@@ -34,66 +57,6 @@ void setup(void) {
     }
   }
   Serial.println("MPU6050 Found!");
-
-  mpu.setAccelerometerRange(MPU6050_RANGE_8_G);
-  Serial.print("Accelerometer range set to: ");
-  switch (mpu.getAccelerometerRange()) {
-  case MPU6050_RANGE_2_G:
-    Serial.println("+-2G");
-    break;
-  case MPU6050_RANGE_4_G:
-    Serial.println("+-4G");
-    break;
-  case MPU6050_RANGE_8_G:
-    Serial.println("+-8G");
-    break;
-  case MPU6050_RANGE_16_G:
-    Serial.println("+-16G");
-    break;
-  }
-  mpu.setGyroRange(MPU6050_RANGE_500_DEG);
-  Serial.print("Gyro range set to: ");
-  switch (mpu.getGyroRange()) {
-  case MPU6050_RANGE_250_DEG:
-    Serial.println("+- 250 deg/s");
-    break;
-  case MPU6050_RANGE_500_DEG:
-    Serial.println("+- 500 deg/s");
-    break;
-  case MPU6050_RANGE_1000_DEG:
-    Serial.println("+- 1000 deg/s");
-    break;
-  case MPU6050_RANGE_2000_DEG:
-    Serial.println("+- 2000 deg/s");
-    break;
-  }
-
-  mpu.setFilterBandwidth(MPU6050_BAND_5_HZ);
-  Serial.print("Filter bandwidth set to: ");
-  switch (mpu.getFilterBandwidth()) {
-  case MPU6050_BAND_260_HZ:
-    Serial.println("260 Hz");
-    break;
-  case MPU6050_BAND_184_HZ:
-    Serial.println("184 Hz");
-    break;
-  case MPU6050_BAND_94_HZ:
-    Serial.println("94 Hz");
-    break;
-  case MPU6050_BAND_44_HZ:
-    Serial.println("44 Hz");
-    break;
-  case MPU6050_BAND_21_HZ:
-    Serial.println("21 Hz");
-    break;
-  case MPU6050_BAND_10_HZ:
-    Serial.println("10 Hz");
-    break;
-  case MPU6050_BAND_5_HZ:
-    Serial.println("5 Hz");
-    break;
-  }
-
   Serial.println("");
   delay(100);
 }
@@ -119,17 +82,46 @@ void loop() {
 
   Serial.println("");
 
-  if(Celsius >= 34.50){
-    digitalWrite(LED_BUILTIN, HIGH);  // turn the LED on (HIGH is the voltage level)
-    delay(500);                      // wait for 500ms
-    digitalWrite(LED_BUILTIN, LOW);   // turn the LED off by making the voltage LOW
-    delay(200);
-    digitalWrite(LED_BUILTIN, HIGH);  
+  bodyTemp = Celsius;
+  environmentTemp = temp.temperature;
+
+  // Simple fatigue estimation logic with consideration for cold environments
+  int fatigueLevel = 0;
+  if (bodyTemp < 36.0 && environmentTemp < 31) {
+    fatigueLevel = 2; // Low body temp + cold environment = more tired
+  } else if (bodyTemp < 36.0) {
+    fatigueLevel = 1; // Low body temp = somewhat tired
+  } else if (bodyTemp > 37.0 && environmentTemp > 33) {
+    fatigueLevel = 2; // High body temp + hot environment = more tired
+  } else if (bodyTemp > 37.0) {
+    fatigueLevel = 1; // High body temp = somewhat tired
+  } else {
+    fatigueLevel = 0; // Normal body temp = less likely tired
   }
 
-  if(Celsius < 34.50){
-    digitalWrite(LED_BUILTIN, LOW);
+  //switching on LEDs according to the fatigue level
+  switch(fatigueLevel){
+    case 2:
+      ledOn(12); //when fatigue level is 2 red LED is blinking 
+      break;
+    case 1:
+      ledOn(13); //when fatigue level is 1 blue LED is blinking
+      break;
+    case 0:
+      ledOff(); //when fatigue level is 0 green LED is blinking
   }
+
+  // if(Celsius >= 34.50){
+  //   digitalWrite(LED_BUILTIN, HIGH);  // turn the LED on (HIGH is the voltage level)
+  //   delay(500);                      // wait for a second
+  //   digitalWrite(LED_BUILTIN, LOW);   // turn the LED off by making the voltage LOW
+  //   delay(200);
+  //   digitalWrite(LED_BUILTIN, HIGH);  // turn the LED on (HIGH is the voltage level)
+  // }
+
+  // if(Celsius < 34.50){
+  //   digitalWrite(LED_BUILTIN, LOW);
+  // }
 
   delay(500);
 }
