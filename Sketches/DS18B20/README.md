@@ -19,9 +19,13 @@ Environment temperature can be differed according to the place. And those differ
 
 ## Coding
 
-- There are **three fatigue levels** like Level 0, Level 1, Level 2. Level 2 means too tired and level 0 means not tired. A blinking Red LED is used to indicate level 2 fatigueness. A blinking blue LED is used to indicate level 1 fatigueness. There is no indicator for the level 0 fatigueness.
+- There are **three fatigue levels** like Level 0, Level 1, Level 2. Level 2 means too tired and level 0 means not tired. A blinking <font color="Red">Red</font> LED is used to indicate level 2 fatigueness. A blinking <font color='Blue'>blue</font> LED is used to indicate level 1 fatigueness. The <font color='Green'>Green</font> light is the indicator for level 0 fatigueness. The child can resume the game when that blub blinks.
 - The code is supported for cold and hot temperatures as well.
 
 ## Testing
 
-![setting up using arduino nano board](https://github.com/hhadithya/rhyme-jacket/blob/main/Progress/Hardware/DS18B20_test.jpg?raw=true)
+![setting up using arduino nano board](https://github.com/hhadithya/rhyme-jacket/blob/main/Progress/Hardware/DS18B20_V1.0.jpg)
+
+- after few upgrades
+
+![warning system with 3 levels](https://github.com/hhadithya/rhyme-jacket/blob/main/Progress/Hardware/DS18B20_V2.0.jpg)
