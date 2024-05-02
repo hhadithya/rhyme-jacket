@@ -9,4 +9,5 @@ The Interactive Music and Exercise Jacket is designed for children who don't exe
 
 ### MPU6050 Test & Results 
 ![alt text](https://github.com/hhadithya/rhyme-jacket/blob/main/Progress/Hardware/gyroTest_1.jpeg)
+![alt text](https://github.com/hhadithya/rhyme-jacket/blob/main/Progress/Hardware/initialIntegrationWithBand.jpeg)
 
