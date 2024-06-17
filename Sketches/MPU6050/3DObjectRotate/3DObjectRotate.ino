@@ -6,8 +6,8 @@
 #include <Adafruit_Sensor.h>
 #include <Wire.h>
 
-const char* ssid = "Dialog 4G 149";
-const char* password = "Me1_P@5s";
+const char* ssid = "SSID";
+const char* password = "PASSWORD";
 
 AsyncWebServer server(80);
 WebSocketsServer webSocket = WebSocketsServer(81);

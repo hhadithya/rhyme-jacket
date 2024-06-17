@@ -9,8 +9,8 @@ const int echoPin = 2;
 #define SOUND_SPEED 0.034
 long duration;
 float distanceCm;
-const char* ssid = "Prasad";
-const char* password = "Pras#4257"; 
+const char* ssid = "SSID";
+const char* password = "PASSWORD"; 
 AsyncWebServer server(80);
 String readDistance(){
   digitalWrite(trigPin, HIGH);
