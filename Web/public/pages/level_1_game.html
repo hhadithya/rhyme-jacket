@@ -1,0 +1,91 @@
+<!-- increase the interval time -->
+<!-- show whether you are doing the exercise correctly or wrongly -->
+<!-- directing to rest page when the rate and the temperature value is high  -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 1 Game</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/styles/level_1_game.css">
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js",
+                "jsm/": "https://cdn.jsdelivr.net/npm/three@0.161.0/examples/jsm/"
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="level1_start">
+        <button id="back-button">
+            <a id="back-link" href="/pages/level_1_calibration.html"><i class="fa fa-reply"
+                    style="font-size:24px"></i></a>
+        </button>
+        <button id="home-button">
+            <a id="home-link" href="/index.html"><i class="fa fa-home" style="font-size:24px"></i></a>
+        </button>
+
+        <div id="Level">
+            <h1>Level 1</h1>
+        </div>
+
+        <div id="content-container">
+            <div id="model-container">
+                <canvas id="level1_model_canvas" width="1000" height="500"></canvas>
+            </div>
+            <div id="action-container">
+                <!-- <div>
+                    <p id="correctMove" style="color: blue;">Your Movements Are Correct</p>
+                    <p id="wrongMove" style="color: red;">Your Movements Are Wrong</p>
+                </div> -->
+                <div id="next_level" style="display: none;">
+                    <button id="Go-button">
+                        <a href="/pages/level_1_quiz.html" id="button-text">GO</a>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="data-container">
+            <button id="temp-button">Temperature
+                <span id="temperature_value">XYZ</span> ℃
+            </button>
+
+            <button id="heart-button">Heart Rate
+                <span id="heart_rate_value">XYZ</span> BPM
+            </button>
+        </div>
+
+
+    </div>
+
+    <script src="/scripts/level_1_game_model.js" type="module"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Show the next level link after 60 seconds
+            setTimeout(() => {
+                document.getElementById("next_level").style.display = "block";
+            }, 10000); // 60 seconds
+        });
+
+        // // function to go to rest page
+        // function directToRestPage(condition) {
+        //     if (condition) {
+        //         window.location.href = '/pages/rest_page.html';  // Replace with the URL you want to redirect to
+        //     }
+        // }
+
+        // // checks the condition to go to rest page
+        // setInterval(directToRestPage, 1000);
+
+    </script>
+</body>
+
+</html>

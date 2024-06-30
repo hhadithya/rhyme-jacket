@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 1 Play</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../styles/level_1.css">
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js",
+            "jsm/": "https://cdn.jsdelivr.net/npm/three@0.161.0/examples/jsm/"
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="level1_start">
+        <button id="back-button">
+            <a id="back-link" href="/index.html"><i class="fa fa-reply" style="font-size:24px"></i></a>
+        </button>
+        <button id="home-button">
+            <a id="home-link" href="/index.html"><i class="fa fa-home" style="font-size:24px"></i></a>
+        </button>
+        <div id="Level">
+            <h1>Level 1</h1>
+        </div>
+
+        <div id="content-container">
+            <div id="model-container">
+                <canvas id="level1_model_canvas" width="1000" height="500"></canvas>
+            </div>
+            <div id="start-container">
+                <button id="start-button"><a id="button-text" href="/pages/level_1_calibration.html">START</a></button>
+            </div>
+        </div>
+
+    </div>
+    <script src="../scripts/level_1_model.js" type="module"></script>
+</body>
+
+</html>

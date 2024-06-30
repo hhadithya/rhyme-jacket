@@ -1,0 +1,21 @@
+body { 
+    font-family: Arial, sans-serif; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
+    background: linear-gradient(to bottom, rgb(247, 239, 132), #c5e6d9); 
+    margin: 0; 
+}
+#content { text-align: center; }
+#image {  
+    height: 800px;
+    width:800px;
+    background: url('/images/calibration.png') no-repeat center center; 
+    background-size: contain; 
+}
+#countdown { 
+    font-size: 60px; 
+    margin-top: 20px; 
+}
+.hidden { display: none; }

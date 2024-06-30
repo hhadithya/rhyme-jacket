@@ -1,0 +1,69 @@
+body {
+  font-family: Arial, sans-serif;
+  background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+div {
+  text-align: center;
+}
+
+h2 {
+  font-size: 5em;
+  color: rgb(255, 0, 0);
+  text-shadow: 1px 1px 1px black;
+}
+
+#home-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background-color: rgba(255, 255, 255, 0.534);
+  padding: 11px 16px;
+  color: black;
+  border-radius: 10px;
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2),
+    inset -2px -2px 5px rgba(255, 255, 255, 0.5);
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+#home-button:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2),
+    inset -2px -2px 5px rgba(255, 255, 255, 0.8);
+}
+
+#retry {
+  text-decoration: none;
+}
+
+#retry button {
+  padding: 15px 25px;
+  font-size: 48px;
+  font-weight: 700;
+  color: #000000;
+  font-size: 3em;
+  background-color: rgba(255, 255, 255, 0.87);
+  border: none;
+  border-radius: 50px;
+  padding: 20px 30px;
+  cursor: pointer;
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2), inset -2px -2px 5px rgba(255, 255, 255, 0.5);
+  transition: background-color 0.3s, box-shadow 0.3s;
+  width: 400px;
+  text-shadow: grey 1px 1px 1px;
+}
+
+#retry button:hover {
+  color: #174700;
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2),
+    inset -2px -2px 5px rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
