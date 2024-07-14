@@ -1,5 +1,7 @@
+<!-- send a signal back to the LED stripes -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,17 +12,18 @@
 
 <body>
     <div class="container">
-        
+
         <button id="back-button">
-            <a id ="back-link" href="/pages/level_1_quiz.html"><i class="fa fa-reply" style="font-size:24px"></i></a>
+            <a id="back-link" href="/pages/level_1_quiz.html"><i class="fa fa-reply" style="font-size:24px"></i></a>
         </button>
         <button id="home-button">
-            <a id ="home-link" href="/index.html"><i class="fa fa-home" style="font-size:24px"></i></a>
+            <a id="home-link" href="/index.html"><i class="fa fa-home" style="font-size:24px"></i></a>
         </button>
 
         <div id="win">
             <h1>Level Completed!</h1>
-            <button id="nextLevelButton" ><a href="/pages/level_2.html" style="text-decoration: none;color: black;"><b>Next Level</b></a></button>
+            <button id="nextLevelButton"><a href="/pages/level_2.html"
+                    style="text-decoration: none;color: black;"><b>Next Level</b></a></button>
         </div>
     </div>
     <canvas id="fireworksCanvas"></canvas>
@@ -28,4 +31,5 @@
 
     <script src="/scripts/fireworks.js"></script>
 </body>
+
 </html>

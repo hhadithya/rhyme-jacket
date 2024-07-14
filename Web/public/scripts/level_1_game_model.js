@@ -12,6 +12,19 @@ let previousIsRaised = isRaised;
 let targetAngle = 0;
 const music1_url = "../music/level_1_music.mp3"; // Adjust the path as necessary
 
+// sensor data
+let left_gyro_x = 0;
+let left_gyro_y = 0;
+let left_gyro_z = 0;
+let right_gyro_x = 0;
+let right_gyro_y = 0;
+let right_gyro_z = 0;
+let middle_gyro_x = 0;
+let middle_gyro_y = 0;
+let middle_gyro_z = 0;
+let right_flex = 0;
+let left_flex = 0;
+
 async function loadAudio() {
   if (!music1_url) return;
 
@@ -100,6 +113,38 @@ function init() {
           leftArm.rotation.x = rightArm.rotation.x; // Mirror right arm movement to left arm
         }
 
+        // define the correct conditions for the following if statements
+
+        // if (gyro_value){
+        //   if(isRaised && rightArm.rotation.x < 0.9){
+        //     targetAngle += (gyro_value-targetAngle);
+        //   }
+
+        //   if(!isRaised && rightArm.rotation.x >-0.9){
+        //     targetAngle -= (gyro_value-targetAngle);
+        //   }
+        // }
+
+        // if (gyro_value < -0.9) {
+        //   isRaised = true; // Toggle the state
+        //   checkAndPlayNextPart(isRaised);
+        //   targetAngle = -0.85; // Set the target angle based on the state
+        // }
+
+        // if (gyro_value > 0.9) {
+        //   isRaised = false; // Toggle the state
+        //   checkAndPlayNextPart(isRaised);
+        //   targetAngle = 0.85; // Set the target angle based on the state
+        // }
+
+        // if () {
+        //   document.getElementById("correctMove").style.display = "block";
+        //   document.getElementById("wrongMove").style.display = "none";
+        // } else {
+        //   document.getElementById("correctMove").style.display = "none";
+        //   document.getElementById("wrongMove").style.display = "block";
+        // }
+
         requestAnimationFrame(animate);
         renderer.render(scene, camera);
       }
@@ -167,22 +212,53 @@ function init() {
   floor.position.y = -11;
   scene.add(floor);
 
+  document.addEventListener("DOMContentLoaded", () => {
+    const socket = new WebSocket("ws://" + window.location.host);
+
+    socket.addEventListener("message", (event) => {
+      event.data.text().then((text) => {
+        const data = JSON.parse(text);
+        // console.log(data);
+        // // assign data to the global variables
+        // l_gyro_x = data.rollAngle;
+        // l_gyro_y =
+        // l_gyro_z =
+        // r_gyro_x =
+        // r_gyro_y =
+        // r_gyro_z =
+        // m_gyro_x =
+        // m_gyro_y =
+        // m_gyro_z =
+        // r_flex =
+        // l_flex =
+      });
+    });
+
+    socket.onopen = () => {
+      console.log("WebSocket connection opened");
+    };
+
+    socket.onclose = () => {
+      console.log("WebSocket connection closed");
+    };
+  });
+
   // -----------don't delete------------------------
 
-  // function checkAndPlayNextPart(newIsRaised) {
-  //   if (newIsRaised !== previousIsRaised) {
-  //     playNextPart();
-  //     previousIsRaised = newIsRaised; // Update previousIsRaised to the new value
-  //   }
-  // }
+  function checkAndPlayNextPart(newIsRaised) {
+    if (newIsRaised !== previousIsRaised) {
+      playNextPart();
+      previousIsRaised = newIsRaised; // Update previousIsRaised to the new value
+    }
+  }
 
-  // if(){
+  // if (gyro_x > 50) {
   //   isRaised = true; // Toggle the state
   //   checkAndPlayNextPart(isRaised);
-  //   targetAngle =0.95; // Set the target angle based on the state
+  //   targetAngle = 0.95; // Set the target angle based on the state
   // }
 
-  // if(){
+  // if(gyro_x >){
   // isRaised = false; // Toggle the state
   // checkAndPlayNextPart(isRaised);
   // targetAngle = -0.95; // Set the target angle based on the state

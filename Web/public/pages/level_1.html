@@ -40,6 +40,42 @@
 
     </div>
     <script src="../scripts/level_1_model.js" type="module"></script>
+    <script>
+        const socket = new WebSocket("ws://" + window.location.host);
+
+        socket.addEventListener("message", (event) => {
+            event.data.text().then((text) => {
+                const data = JSON.parse(text);
+                console.log(data);
+                // assign the gyro data to the global variables
+                // gyro_x = data.rollAngle;
+                // gyro_y = data.flex2Angle;
+                // print in the console
+                // console.log("gyro_x: ", gyro_x);
+                // gyro_z = data.gyro_z;
+            });
+        });
+
+        socket.onopen = () => {
+            console.log("WebSocket connection opened");
+        };
+
+        socket.onclose = () => {
+            console.log("WebSocket connection closed");
+        };
+
+        function sendSignal(message) {
+            if (socket && socket.readyState === WebSocket.OPEN) {
+                socket.send(JSON.stringify(message));
+                console.log("Sent: ", message);
+            }
+        }
+
+        // #button-text event listener
+        document.getElementById("start-button").addEventListener("click", () => {
+            sendSignal({ message: "start" });
+        });
+    </script>
 </body>
 
 </html>

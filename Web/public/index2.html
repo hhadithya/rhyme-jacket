@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sensor Data</title>
+</head>
+
+<body>
+    <h1>Sensor Data</h1>
+    <p id="flex1">Elbow Angle 1: --</p>
+    <p id="flex2">Elbow Angle 2: --</p>
+    <p id="heartRate">Heart Rate: -- bpm</p>
+    <p id="rollAngle">Roll Angle: --°</p>
+    <p id="pitchAngle">Pitch Angle: --°</p>
+    <p id="yawAngle">Yaw Angle: --°</p>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // const flex1Element = document.getElementById('flex1');
+            // const flex2Element = document.getElementById('flex2');
+            // const heartRateElement = document.getElementById('heartRate');
+            const rollAngleElement = document.getElementById('rollAngle');
+            const pitchAngleElement = document.getElementById('pitchAngle');
+            const yawAngleElement = document.getElementById('yawAngle');
+
+            const socket = new WebSocket('ws://' + window.location.host);
+
+            socket.addEventListener("message", event => {
+                // event.data is Blob
+                event.data.text().then(text => {
+                    // text is the message
+                    var data = JSON.parse(text);
+                    console.log(data);
+                    // flex1Element.innerText = "Elbow Angle 1: " + data.flex1Angle;
+                    // flex2Element.innerText = "Elbow Angle 2: " + data.flex2Angle;
+                    // if (data.heartRate !== undefined) {
+                    //     heartRateElement.innerText = "Heart Rate: " + data.heartRate + " bpm";
+                    // }
+                    rollAngleElement.innerText = "Roll Angle: " + data.rollAngle + "°";
+                    pitchAngleElement.innerText = "Pitch Angle: " + data.pitchAngle + "°";
+                    yawAngleElement.innerText = "Yaw Angle: " + data.yawAngle + "°";
+                });
+            });
+
+            socket.onopen = () => {
+                console.log('WebSocket connection opened');
+            };
+
+            socket.onclose = () => {
+                console.log('WebSocket connection closed');
+            };
+        });
+    </script>
+</body>
+
+</html>
