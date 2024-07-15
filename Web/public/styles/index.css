@@ -71,8 +71,13 @@ body {
 #settings {
   width: 4.6vw;
   height: 4.6vw;
+<<<<<<< HEAD
+  background-image: linear-gradient(to bottom, #ffef0d, #eb3e12);  /* dark color border */
+  border: 0.3vw solid #c52104;
+=======
   background-color: #ff0;
   border: 0.2vw solid #c5c504;
+>>>>>>> 8f5b8f40137e9423aeeb4304df621f37f9707c76
   border-radius: 100%;
   display: flex;
   justify-content: center;
