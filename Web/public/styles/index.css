@@ -4,6 +4,7 @@ html {
 
 body {
   margin: 0;
+  font-family: "Fredoka One", cursive;
 }
 
 .bg {
@@ -79,7 +80,6 @@ body {
 }
 
 #battery-percentage {
-  font-family: "Roboto", sans-serif;
   font-size: 2rem;
   font-weight: bold;
 }
@@ -102,18 +102,34 @@ body {
 }
 
 #battery-percentage {
-  font-family: "Roboto", sans-serif;
   font-size: 2rem;
   font-weight: bold;
 }
 
 #index-content {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 4rem;
+}
+
+#index-content #logo {
+  width: 45vw;
+}
+
+#play {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-#index-content img {
-  width: 70vw;
+#play img {
+  width: 15vw;
+}
+
+#play p {
+  margin: 0;
 }
