@@ -83,8 +83,14 @@ body {
   width: 3vw;
 }
 
-#volume .hidden {
+.hidden {
   display: none;
+}
+
+#top-icons-right {
+  display: flex;
+  justify-items: center;
+  align-items: center;
 }
 
 #index-content img {
