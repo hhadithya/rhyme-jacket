@@ -72,6 +72,48 @@ body {
   display: none;
 }
 
+#top-icons-right {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+}
+
+#battery-percentage {
+  font-family: "Roboto", sans-serif;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+#index-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hidden {
+  display: none;
+}
+
+#top-icons-right {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+}
+
+#battery-percentage {
+  font-family: "Roboto", sans-serif;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+#index-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 #index-content img {
-  width: 50vw;
+  width: 70vw;
 }
