@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Level 1 Play</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../styles/level_1.css">
     <script type="importmap">
@@ -18,8 +19,27 @@
 </head>
 
 <body>
-    <div id="level1_start">
-        <button id="back-button">
+    <div id="container">
+        <div id="top-icons">
+            <div id="top-icons-left">
+                <div id="volume">
+                    <img src="/images/volume.png" alt="sound on">
+                    <img src="/images/mute.png" alt="sound off" class="hidden">
+                </div>
+            </div>
+
+            <div id="top-icons-right">
+                <p id="battery-percentage">100%</p>
+                <div class="battery-img">
+                    <img src="/images/battery-1.png" alt="battery 1/5 full" class="hidden">
+                    <img src="/images/battery-2.png" alt="battery 2/5 full" class="hidden">
+                    <img src="/images/battery-3.png" alt="battery 3/5 full" class="hidden">
+                    <img src="/images/battery-4.png" alt="battery 4/5 full" class="hidden">
+                    <img src="/images/battery-5.png" alt="battery 5/5 full">
+                </div>
+            </div>
+        </div>
+        <!-- <button id="back-button">
             <a id="back-link" href="/index.html"><i class="fa fa-reply" style="font-size:24px"></i></a>
         </button>
         <button id="home-button">
@@ -36,9 +56,10 @@
             <div id="start-container">
                 <button id="start-button"><a id="button-text" href="/pages/level_1_calibration.html">START</a></button>
             </div>
-        </div>
-
+        </div> -->
     </div>
+
+
     <script src="../scripts/level_1_model.js" type="module"></script>
     <script>
         const socket = new WebSocket("ws://" + window.location.host);

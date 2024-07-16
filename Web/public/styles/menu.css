@@ -77,6 +77,22 @@ body {
   gap: 1rem;
 }
 
+#top-icons-left img {
+  width: 5vw;
+  transition: width 0.3s ease-in-out;
+}
+
+#top-icons-left img:hover {
+  width: 5.5vw;
+}
+
+#top-icons-left div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 5vw;
+}
+
 #top-icons-right {
   display: flex;
   justify-items: center;
