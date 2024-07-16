@@ -59,7 +59,7 @@ body {
   width: 95vw;
 }
 
-#top-icons img {
+#top-icons-left img {
   width: 5vw;
 }
 
@@ -77,8 +77,13 @@ body {
 }
 
 #battery-percentage {
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: bold;
+  padding: 0px 15px 0px  0px ;
+}
+
+#battery-img img{
+  width: 8vw;
 }
 
 .hidden {
