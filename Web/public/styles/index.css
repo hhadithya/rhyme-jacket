@@ -79,10 +79,10 @@ body {
 #battery-percentage {
   font-size: 2.5rem;
   font-weight: bold;
-  padding: 0px 15px 0px  0px ;
+  padding: 0px 15px 0px 0px;
 }
 
-#battery-img img{
+#battery-img img {
   width: 8vw;
 }
 
@@ -100,8 +100,30 @@ body {
   font-size: 4rem;
 }
 
+.logo-area {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 #index-content #logo {
   width: 45vw;
+  transform: translateY(-2%);
+  animation: floater 3s infinite;
+  transition: ease 0.5s;
+}
+
+@keyframes floater {
+  0% {
+    transform: translateY(-2%);
+    transition: ease 0.5s;
+  }
+  50% {
+    transform: translateY(2%);
+    transition: ease 0.5s;
+  }
 }
 
 #play {
