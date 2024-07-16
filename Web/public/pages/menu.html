@@ -4,16 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../styles/index.css">
+    <link rel="stylesheet" href="/styles/menu.css">
+    <title>menu</title>
 </head>
 
 <body>
-    <div class="bg"></div>
-    <div class="bg bg2"></div>
-    <div class="bg bg3"></div>
-    <div class="content">
+    <div id="content">
         <div id="top-icons">
             <div id="top-icons-left">
                 <div id="settings">
@@ -40,18 +36,34 @@
                 </div>
             </div>
         </div>
-        <div id="index-content">
-            <img src="/images/Rhyme_Fit.png" alt="logo" id="logo">
 
-            <div id="play">
-                <a href="/pages/menu.html">
-                    <img src="/images/play.png" alt="play button">
-                </a>
-                <p>Press to Start</p>
+        <div id="container">
+            <div id="logo">
+                <img src="../images/Rhyme_Fit.png" alt="logo">
+            </div>
+
+            <div id="menu-items">
+                <button> <a href="/pages/level_1.html">NEW GAME</a></button>
+                <button> <a href="/pages/levels.html">LEVELS</a></button>
+                <button> <a href="/index.html">EXIT</a></button>
+            </div>
+
+            <div id="myModal" class="modal">
+
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <p>Do you want to exit?</p>
+                    <a href="/index.html"><button id="yes">YES</button></a>
+                    <a href="/pages/menu.html"><button id="no">NO</button></a>
+                </div>
+
             </div>
 
         </div>
     </div>
+
+    <script src="/scripts/menu.js"></script>
 </body>
 
 </html>

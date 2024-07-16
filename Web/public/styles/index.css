@@ -48,6 +48,7 @@ body {
   width: 100%;
 }
 
+/* icons on top of the page */
 #top-icons {
   display: flex;
   justify-content: space-between;
@@ -69,10 +70,6 @@ body {
   gap: 1rem;
 }
 
-#volume .hidden {
-  display: none;
-}
-
 #top-icons-right {
   display: flex;
   justify-items: center;
@@ -82,30 +79,13 @@ body {
 #battery-percentage {
   font-size: 2rem;
   font-weight: bold;
-}
-
-#index-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
 .hidden {
   display: none;
 }
 
-#top-icons-right {
-  display: flex;
-  justify-items: center;
-  align-items: center;
-}
-
-#battery-percentage {
-  font-size: 2rem;
-  font-weight: bold;
-}
-
+/* content of the page */
 #index-content {
   height: 80vh;
   display: flex;
