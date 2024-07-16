@@ -101,6 +101,9 @@ body {
   align-items: center;
 }
 
+#top-icons-right .battery-img img{
+  width: 8vw;
+}
 #battery-percentage {
   font-size: 2rem;
   font-weight: bold;
