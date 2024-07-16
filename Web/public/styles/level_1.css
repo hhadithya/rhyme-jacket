@@ -97,17 +97,24 @@ html {
   font-weight: bold;
 }
 
+#middle-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 #model-container {
-  width: 95%;
-  height: 95%;
+  width: 80%;
+  /* height: 95%; */
 }
 
 #level1_model_canvas {
   width: 100%;
   height: 100%;
-  margin: 0px 10px 0px 30px;
+  /* margin: 0px 10px 0px 30px;
   border: 5px solid white;
-  border-radius: 50px;
+  border-radius: 50px; */
 }
 
 #start-container {
