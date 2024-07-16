@@ -12,10 +12,10 @@ body {
 
 .bg {
   animation: slide 3s ease-in-out infinite alternate;
-  background-image: linear-gradient(-60deg, rgb(185, 255, 55) 50%, #09f 50%);
+  background-image: linear-gradient(-60deg, rgba(185, 255, 55, 0.5) 50%, rgb(0, 40, 58) 50%);
   bottom: 0;
   left: -50%;
-  opacity: 0.5;
+  opacity: 1;
   position: fixed;
   right: -50%;
   top: 0;
@@ -87,7 +87,10 @@ body {
 #battery-percentage {
   font-size: 2.5rem;
   font-weight: bold;
+  color: rgb(255, 255, 255);
   padding: 0px 15px 0px 0px;
+  text-shadow: -2px -2px 1px rgba(0, 0, 0, 0.6),
+  3px 3px 3px rgba(0, 0, 0, 0.4); 
 }
 
 #battery-img img {

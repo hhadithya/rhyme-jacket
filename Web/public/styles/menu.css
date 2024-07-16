@@ -5,11 +5,43 @@ html {
 body {
   margin: 0;
   font-family: "Fredoka One", cursive;
-  box-sizing: border-box;
-  width: 100%;
+  text-shadow: -2px -2px 1px rgba(0, 0, 0, 0.6),
+  3px 3px 3px rgba(0, 0, 0, 0.4); 
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+}
+
+.bg {
+  animation: slide 3s ease-in-out infinite alternate;
+  background-image: linear-gradient(-60deg, #3fa7d6 50%,#001720  50%);
+  bottom: 0;
+  left: -50%;
+  opacity: 0.5;
+  position: fixed;
+  right: -50%;
+  top: 0;
+  z-index: -1;
+}
+
+.bg2 {
+  animation-direction: alternate-reverse;
+  animation-duration: 4s;
+}
+
+.bg3 {
+  animation-duration: 5s;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(-25%);
+  }
+  100% {
+    transform: translateX(25%);
+  }
 }
 
 #content {
+  border-box: box-sizing;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -18,8 +50,7 @@ body {
   width: 100%;
 }
 
-/* top icons */
-
+/* icons on top of the page */
 #top-icons {
   display: flex;
   justify-content: space-between;
@@ -30,8 +61,13 @@ body {
   width: 95vw;
 }
 
-#top-icons img {
+#top-icons-left img {
   width: 5vw;
+  transition: width 0.3s ease-in-out;
+}
+
+#top-icons-left img:hover {
+  width: 5.5vw;
 }
 
 #top-icons-left {
@@ -47,19 +83,19 @@ body {
   align-items: center;
 }
 
+#battery-percentage {
+  font-size: 2.5rem;
+  font-weight: bold;
+  padding: 0px 15px 0px 0px;
+  color: #ffffff;
+}
+
+#battery-img img {
+  width: 8vw;
+}
+
 .hidden {
   display: none;
-}
-
-#battery-percentage {
-  font-size: 2rem;
-  font-weight: bold;
-}
-
-.battery-img {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 /* content of the page */
@@ -80,6 +116,28 @@ body {
 
 #container #logo img {
   height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#logo {
+  width: 45vw;
+  transform: translateY(-2%);
+  animation: floater 3s infinite;
+  transition: ease 0.5s;
+}
+
+@keyframes floater {
+  0% {
+    transform: translateY(-2%);
+    transition: ease 0.5s;
+  }
+  50% {
+    transform: translateY(2%);
+    transition: ease 0.5s;
+  }
 }
 
 /* menu */
@@ -181,7 +239,7 @@ body {
   background-image: none;
   border-style: none;
   box-sizing: border-box;
-  color: #fff;
+  color: #000000;
   cursor: pointer;
   display: inline-block;
   flex-direction: row;
@@ -250,6 +308,7 @@ body {
 }
 
 .menu-btn:hover:not(:disabled):after {
+  background-image: linear-gradient(92.83deg, #ff8f26 0, #f95c13 100%);
   bottom: 0;
   left: 0;
   right: 0;
