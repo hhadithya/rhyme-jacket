@@ -82,21 +82,39 @@ body {
   height: 60vh;
 }
 
+/* menu */
 #menu-items {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
   gap: 1rem;
-  margin-top: 1rem;
+  margin-top: 4rem;
   height: 45vh;
+  width: 70vw;
 }
 
+#menu-items a {
+  text-decoration: none;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#menu-items button {
+  width: 70%;
+  height: 10vh;
+  font-family: "Fredoka One", cursive;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/* modal */
 .modal {
-  display: none; /* Hidden by default */
+  /* display: none; Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
   left: 0;
   top: 0;
   width: 100%; /* Full width */
@@ -109,10 +127,10 @@ body {
 /* Modal Content */
 .modal-content {
   background-color: #fefefe;
-  margin: auto;
+  margin: 20% auto; /* 40% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
-  width: 80%;
+  width: 30%;
 }
 
 /* The Close Button */
@@ -129,3 +147,116 @@ body {
   text-decoration: none;
   cursor: pointer;
 }
+
+/*
+------------------------menu btn css---------------------- 
+ */
+.menu-btn {
+  align-items: center;
+  appearance: none;
+  background-clip: padding-box;
+  background-color: initial;
+  background-image: none;
+  border-style: none;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  flex-direction: row;
+  flex-shrink: 0;
+  font-family: Eina01, sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  justify-content: center;
+  line-height: 24px;
+  margin: 0;
+  min-height: 64px;
+  outline: none;
+  overflow: visible;
+  padding: 19px 26px;
+  pointer-events: auto;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  width: auto;
+  word-break: keep-all;
+  z-index: 0;
+}
+
+@media (min-width: 768px) {
+  .menu-btn {
+    padding: 19px 32px;
+  }
+}
+
+.menu-btn:before,
+.menu-btn:after {
+  border-radius: 80px;
+}
+
+.menu-btn:before {
+  background-color: rgba(249, 58, 19, 0.32);
+  content: "";
+  display: block;
+  height: 100%;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -2;
+}
+
+.menu-btn:after {
+  background-color: initial;
+  background-image: linear-gradient(92.83deg, #ff7426 0, #f93a13 100%);
+  bottom: 4px;
+  content: "";
+  display: block;
+  left: 4px;
+  overflow: hidden;
+  position: absolute;
+  right: 4px;
+  top: 4px;
+  transition: all 100ms ease-out;
+  z-index: -1;
+}
+
+.menu-btn:hover:not(:disabled):after {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  transition-timing-function: ease-in;
+}
+
+.menu-btn:active:not(:disabled) {
+  color: #ccc;
+}
+
+.menu-btn:active:not(:disabled):after {
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.2),
+      rgba(0, 0, 0, 0.2)
+    ),
+    linear-gradient(92.83deg, #ff7426 0, #f93a13 100%);
+  bottom: 4px;
+  left: 4px;
+  right: 4px;
+  top: 4px;
+}
+
+.menu-btn:disabled {
+  cursor: default;
+  opacity: 0.24;
+}
+
+/*
+----------------------------------------------------------- 
+ */

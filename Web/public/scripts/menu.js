@@ -7,6 +7,8 @@ var btn = document.getElementById("exit-btn");
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 
+var noBtn = document.getElementById("no");
+
 // When the user clicks the button, open the modal
 btn.onclick = function () {
   modal.style.display = "block";
@@ -14,6 +16,10 @@ btn.onclick = function () {
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function () {
+  modal.style.display = "none";
+};
+
+noBtn.onclick = function () {
   modal.style.display = "none";
 };
 
