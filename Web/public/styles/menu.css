@@ -207,16 +207,21 @@ body {
   gap: 1rem;
   position: relative;
   top: 40%;
-  background-color: #fefefe;
+  background-color: #F5B820;
   margin: auto;
   padding: 2rem 1rem;
   border: 1px solid #888;
   border-radius: 1rem;
   width: 30%;
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2), inset -2px -2px 5px rgba(255, 255, 255, 0.5);
+    transition: background-color 0.3s, box-shadow 0.3s;
+  
 }
 
 .modal-content p {
-  font-size: 2rem;
+  font-size: 3rem;
+  text-shadow: -2px -2px 1px rgba(255, 255, 255, 0.6),
+  3px 3px 3px rgba(255, 255, 255, 0.4);
 }
 
 /* The Close Button */
@@ -239,10 +244,42 @@ body {
 .modal-content div {
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
-  gap: 1rem;
+  gap: 6rem;
 }
+
+.modal-content div button {
+    border: none;
+    border-radius: 50px;
+    padding: 20px 70px;
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2), inset -2px -2px 5px rgba(255, 255, 255, 0.5);
+    transition: background-color 0.3s, box-shadow 0.3s;
+    position:relative;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#yes{
+  font-family: "Fredoka One", cursive; 
+  font-size: 2rem;
+  background-color: #c02000;
+}
+
+#no{
+  font-family: "Fredoka One", cursive; 
+  font-size: 2rem;
+  background-color: #318600;
+}
+ #yes:hover{
+  background-color: #e72700;
+ }
+
+ #no:hover{
+  background-color: #46be01;
+ }
 
 /*
 ------------------------menu btn css---------------------- 
