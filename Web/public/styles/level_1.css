@@ -30,8 +30,13 @@ html {
   width: 95vw;
 }
 
-#top-icons img {
+#top-icons-left img {
   width: 5vw;
+  transition: width 0.3s ease-in-out;
+}
+
+#top-icons-left img:hover {
+  width: 5.5vw;
 }
 
 #top-icons-left {
@@ -41,25 +46,41 @@ html {
   gap: 1rem;
 }
 
+#top-icons-left img {
+  width: 5vw;
+  transition: width 0.3s ease-in-out;
+}
+
+#top-icons-left img:hover {
+  width: 5.5vw;
+}
+
+#top-icons-left div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 5vw;
+}
+
 #top-icons-right {
   display: flex;
   justify-items: center;
   align-items: center;
 }
 
+#battery-percentage {
+  font-size: 2.5rem;
+  font-weight: bold;
+  padding: 0px 15px 0px 0px;
+  color: #ffffff;
+}
+
+#battery-img img {
+  width: 8vw;
+}
+
 .hidden {
   display: none;
-}
-
-#battery-percentage {
-  font-size: 2rem;
-  font-weight: bold;
-}
-
-.battery-img {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 /* content of the page */

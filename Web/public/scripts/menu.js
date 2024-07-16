@@ -1,13 +1,12 @@
 // Get the modal
 var modal = document.getElementById("myModal");
-
-// Get the button that opens the modal
 var btn = document.getElementById("exit-btn");
-
-// Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
-
 var noBtn = document.getElementById("no");
+
+// Get the sound on/off buttons
+const soundOn = document.getElementById("sound-on");
+const soundOff = document.getElementById("sound-off");
 
 // When the user clicks the button, open the modal
 btn.onclick = function () {
@@ -29,3 +28,14 @@ window.onclick = function (event) {
     modal.style.display = "none";
   }
 };
+
+// Sound on/off
+soundOn.addEventListener("click", () => {
+  soundOn.classList.add("hidden");
+  soundOff.classList.remove("hidden");
+});
+
+soundOff.addEventListener("click", () => {
+  soundOn.classList.remove("hidden");
+  soundOff.classList.add("hidden");
+});
