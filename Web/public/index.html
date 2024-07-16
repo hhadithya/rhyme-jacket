@@ -22,8 +22,8 @@
                     </a>
                 </div>
                 <div id="volume">
-                    <img src="/images/volume.png" alt="sound on">
-                    <img src="/images/mute.png" alt="sound off" class="hidden">
+                    <img src="/images/volume.png" alt="sound on" id="sound-on">
+                    <img src="/images/mute.png" alt="sound off" id="sound-off" class="hidden">
                 </div>
             </div>
 
@@ -52,7 +52,20 @@
         </div>
     </div>
 
-    <script src="/scripts/index.js"></script>
+    <script>
+        const soundOn = document.getElementById('sound-on');
+        const soundOff = document.getElementById('sound-off');
+
+        soundOn.addEventListener('click', () => {
+            soundOn.classList.add('hidden');
+            soundOff.classList.remove('hidden');
+        });
+
+        soundOff.addEventListener('click', () => {
+            soundOn.classList.remove('hidden');
+            soundOff.classList.add('hidden');
+        });
+    </script>
 </body>
 
 </html>
