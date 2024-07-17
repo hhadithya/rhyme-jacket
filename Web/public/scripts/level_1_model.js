@@ -58,7 +58,7 @@ function init() {
   loadAudio();
 
   const scene = new THREE.Scene();
-  scene.background = new THREE.Color(0xdddddd);
+  scene.background = new THREE.Color(0xace1af);
   const clock = new THREE.Clock();
 
   const w = window.innerWidth;
@@ -68,7 +68,7 @@ function init() {
   camera.position.x = 0;
   camera.position.y = 12;
 
-  const light = new THREE.HemisphereLight(0xffffff, 0xffffff);
+  const light = new THREE.HemisphereLight(0xffffff, 0xffffff, 4);
   light.position.set(0, 1, 0);
   scene.add(light);
 
@@ -110,11 +110,12 @@ function init() {
 
   let floorGeometry = new THREE.PlaneGeometry(5000, 5000, 1, 1);
   let floorMaterial = new THREE.MeshPhongMaterial({
-    color: 0xeeeeee,
+    color: 0xbbbbbb,
     shininess: 0,
   });
   let floor = new THREE.Mesh(floorGeometry, floorMaterial);
   floor.rotation.x = -0.5 * Math.PI;
+  floor.receiveShadow = true;
   floor.position.y = -11;
   scene.add(floor);
 
