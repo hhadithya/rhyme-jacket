@@ -6,7 +6,7 @@
 Adafruit_MPU6050 mpu;
 
 // Define the number of LEDs in the strip
-#define NUM_LEDS 9
+#define NUM_LEDS 15
 #define DATA_PIN 5  // Data pin connected to the DIN of the LED strip
 
 Adafruit_NeoPixel strip = Adafruit_NeoPixel(NUM_LEDS, DATA_PIN, NEO_GRB + NEO_KHZ800);
@@ -70,7 +70,7 @@ void loop() {
     }
   }
 
-  strip.show(); // Update the strip to show the changes
+  strip.show(); // Update the strip to show the changes`/////////6
 
   // Print roll and number of LEDs lit for debugging
   Serial.print("Roll: "); Serial.print(roll);
