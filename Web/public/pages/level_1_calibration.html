@@ -1,0 +1,59 @@
+<!-- send a signal to the microcontroller to calibrate sensors -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/level_1_calibration.css">
+    <title>Loading.......</title>
+</head>
+
+<body>
+    <!-- background animation -->
+    <div class="area">
+        <ul class="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+    <div id="context">
+
+        <div id="main-content">
+            <h1 id="topic">Stay Like This</h1>
+            <img src="/images/calibration.png" alt="child model">
+        </div>
+
+        <div id="info">
+            <p id="msg-1">Moving at the right speed will make it easy to identify the right song</p>
+            <p class="hidden" id="msg-2">If you don't move correct the model will not be moved</p>
+        </div>
+        <div class="loader"></div>
+    </div>
+
+    <script>
+        // change msg-1 to msg-2 after 3 seconds and change back to msg-1 after 3 seconds. loop this
+        setInterval(() => {
+            document.getElementById('msg-1').classList.toggle('hidden');
+            document.getElementById('msg-2').classList.toggle('hidden');
+        }, 3000);
+
+        // after 7 seconds move to another page
+        setTimeout(() => {
+            window.location.href = "/pages/level_1_game.html";
+        }, 7000);
+    </script>
+
+</body>
+
+</html>

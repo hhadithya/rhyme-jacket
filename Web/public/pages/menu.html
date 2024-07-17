@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/menu.css">
+    <title>menu</title>
+</head>
+
+<body>
+    <!-- Background Music -->
+    <audio id="background-music" src="/music/background-1.m4a" loop></audio>
+
+    <div class="bg"></div>
+    <div class="bg bg2"></div>
+    <div class="bg bg3"></div>
+    <div id="content">
+        <div id="top-icons">
+            <div id="top-icons-left">
+                <div id="settings">
+                    <a href="#setting">
+                        <img src="/images/setting.png" alt="setting">
+                    </a>
+                </div>
+                <div id="volume">
+                    <img src="/images/volume.png" alt="sound on" id="sound-on" class="hidden">
+                    <img src="/images/mute.png" alt="sound off" id="sound-off">
+                </div>
+            </div>
+
+            <div id="top-icons-right">
+                <p id="battery-percentage">100%</p>
+                <div id="battery-img">
+                    <img src="/images/battery-1.png" alt="battery 1/5 full" class="hidden">
+                    <img src="/images/battery-2.png" alt="battery 2/5 full" class="hidden">
+                    <img src="/images/battery-3.png" alt="battery 3/5 full" class="hidden">
+                    <img src="/images/battery-4.png" alt="battery 4/5 full" class="hidden">
+                    <img src="/images/battery-5.png" alt="battery 5/5 full">
+
+                </div>
+            </div>
+        </div>
+
+        <div id="container">
+            <div id="logo">
+                <img src="../images/Rhyme_Fit.png" alt="logo">
+            </div>
+
+            <div id="menu-items">
+                <a href="/pages/level_1.html">
+                    <button class="menu-btn">NEW GAME</button>
+                </a>
+                <a href="/pages/levels.html">
+                    <button class="menu-btn"> LEVELS</button>
+                </a>
+                <button id="exit-btn" class="menu-btn">EXIT</button>
+            </div>
+
+            <div id="myModal" class="modal">
+
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <p>Do you want to exit?</p>
+                    <div>
+                        <a href="/index.html" style="text-decoration: none;"><button id="yes">YES</button></a>
+                        <button id="no">NO</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <script src="/scripts/menu.js"></script>
+</body>
+
+</html>

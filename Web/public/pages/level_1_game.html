@@ -1,0 +1,115 @@
+<!-- increase the interval time -->
+<!-- show whether you are doing the exercise correctly or wrongly -->
+<!-- directing to rest page when the rate and the temperature value is high  -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 1 Game</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/level_1_game.css">
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js",
+                "jsm/": "https://cdn.jsdelivr.net/npm/three@0.161.0/examples/jsm/"
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="content">
+        <div id="top-icons">
+            <div id="top-icons-left">
+                <div id="settings">
+                    <a href="#setting">
+                        <img src="/images/setting.png" alt="setting">
+                    </a>
+                </div>
+
+                <div id="menu-icon">
+                    <a href="/pages/menu.html">
+                        <img src="/images/menu.png" alt="menu">
+                    </a>
+                </div>
+            </div>
+
+            <div id="top-icons-right">
+                <p id="battery-percentage">100%</p>
+                <div id="battery-img">
+                    <img src="/images/battery-1.png" alt="battery 1/5 full" class="hidden">
+                    <img src="/images/battery-2.png" alt="battery 2/5 full" class="hidden">
+                    <img src="/images/battery-3.png" alt="battery 3/5 full" class="hidden">
+                    <img src="/images/battery-4.png" alt="battery 4/5 full" class="hidden">
+                    <img src="/images/battery-5.png" alt="battery 5/5 full">
+                </div>
+            </div>
+        </div>
+
+        <div id="container">
+            <h1 id="topic">LEVEL 1</h1>
+
+            <div id="middle-content">
+                <canvas id="level1_model_canvas" width="1000" height="500"></canvas>
+
+                <a href="/pages/level_1_quiz.html" id="quiz" style="display: none;">
+                    <button id="button-text">
+                        QUIZ
+                    </button>
+                </a>
+            </div>
+        </div>
+
+        <!-- <div>
+            <p id="correctMove" style="color: blue; display: none;">Your Movements Are Correct</p>
+            <p id="wrongMove" style="color: red; display: none;">Your Movements Are Wrong</p>
+        </div> -->
+
+    </div>
+
+    <script src="/scripts/level_1_game_model.js" type="module"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const heartRateElement = document.getElementById('heart_rate_value');
+            const temperatureElement = document.getElementById('temperature_value');
+
+            const socket = new WebSocket('ws://' + window.location.host);
+
+            socket.addEventListener("message", event => {
+                // event.data is Blob
+                event.data.text().then(text => {
+                    // text is the message
+                    var data = JSON.parse(text);
+                    // console.log(data);
+                    if (data.heartRate !== undefined) {
+                        heartRateElement.innerText = "Heart Rate: " + data.heartRate + " bpm";
+                        // add temperature value
+                        // temperatureElement.innerText = "Temperature: " + data.temperature + "°C";
+                    }
+                });
+            });
+
+            socket.onopen = () => {
+                console.log('WebSocket connection opened');
+            };
+
+            socket.onclose = () => {
+                console.log('WebSocket connection closed');
+            };
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            // Show the next level link after 60 seconds
+            setTimeout(() => {
+                document.getElementById("quiz").style.display = "block";
+            }, 10000); // 60 seconds
+        });
+
+    </script>
+</body>
+
+</html>

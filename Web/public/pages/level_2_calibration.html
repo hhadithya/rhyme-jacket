@@ -1,0 +1,68 @@
+<!-- send a signal to the microcontroller to calibrate sensors -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single Page App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to bottom, #f1f1b8, #c5e6d9);
+            margin: 0;
+        }
+
+        #content {
+            text-align: center;
+        }
+
+        #image {
+            /* width: 700px; */
+            height: 600px;
+            background-size: contain;
+        }
+
+        #countdown {
+            font-size: 80px;
+            /* margin-top: 20px; */
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="content">
+        <div id="level2" class="hidden">
+            <div id="image"><img src="../images/ready.png" alt="starting pose"></div>
+            <div id="countdown">Get Ready: 5</div>
+        </div>
+    </div>
+
+    <script>
+        window.onload = function () {
+            document.getElementById('level2').classList.remove('hidden');
+
+            let countdownNumber = 5;
+            const countdownElement = document.getElementById('countdown');
+
+            const countdown = setInterval(() => {
+                countdownNumber--;
+                countdownElement.textContent = `Get Ready: ${countdownNumber}`;
+                if (countdownNumber === 0) {
+                    clearInterval(countdown);
+                    window.location.href = '/pages/level_2_game.html';
+                }
+            }, 1000);
+        }
+    </script>
+</body>
+
+</html>

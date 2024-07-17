@@ -1,0 +1,396 @@
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: "Fredoka One", cursive;
+  text-shadow: -2px -2px 1px rgba(0, 0, 0, 0.6),
+  3px 3px 3px rgba(0, 0, 0, 0.4); 
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+}
+
+.bg {
+  animation: slide 3s ease-in-out infinite alternate;
+  background-image: linear-gradient(-60deg, #3fa7d6 50%,#001720  50%);
+  bottom: 0;
+  left: -50%;
+  opacity: 0.5;
+  position: fixed;
+  right: -50%;
+  top: 0;
+  z-index: -1;
+}
+
+.bg2 {
+  animation-direction: alternate-reverse;
+  animation-duration: 4s;
+}
+
+.bg3 {
+  animation-duration: 5s;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(-25%);
+  }
+  100% {
+    transform: translateX(25%);
+  }
+}
+
+#content {
+  border-box: box-sizing;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+}
+
+/* icons on top of the page */
+#top-icons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  margin: 1rem auto;
+  width: 95vw;
+}
+
+#top-icons-left img {
+  width: 5vw;
+  transition: width 0.3s ease-in-out;
+}
+
+#top-icons-left img:hover {
+  width: 5.5vw;
+}
+
+#top-icons-left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+#top-icons-left img {
+  width: 5vw;
+  transition: width 0.3s ease-in-out;
+}
+
+#top-icons-left img:hover {
+  width: 5.5vw;
+}
+
+#top-icons-left div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 5vw;
+}
+
+#top-icons-right {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+}
+
+#battery-percentage {
+  font-size: 2.5rem;
+  font-weight: bold;
+  padding: 0px 15px 0px 0px;
+  color: #ffffff;
+}
+
+#battery-img img {
+  width: 8vw;
+}
+
+.hidden {
+  display: none;
+}
+
+/* content of the page */
+#container {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#container #logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 45vh;
+}
+
+#container #logo img {
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#logo {
+  width: 45vw;
+  transform: translateY(-2%);
+  animation: floater 3s infinite;
+  transition: ease 0.5s;
+}
+
+@keyframes floater {
+  0% {
+    transform: translateY(-2%);
+    transition: ease 0.5s;
+  }
+  50% {
+    transform: translateY(2%);
+    transition: ease 0.5s;
+  }
+}
+
+/* menu */
+#menu-items {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 4rem;
+  height: 45vh;
+  width: 60vw;
+}
+
+#menu-items a {
+  text-decoration: none;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#menu-items button {
+  width: 60%;
+  height: 10vh;
+  font-family: "Fredoka One", cursive;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/* modal */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.6); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+  top: 40%;
+  background-color: #F5B820;
+  margin: auto;
+  padding: 2rem 1rem;
+  border: 1px solid #888;
+  border-radius: 1rem;
+  width: 30%;
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2), inset -2px -2px 5px rgba(255, 255, 255, 0.5);
+    transition: background-color 0.3s, box-shadow 0.3s;
+  
+}
+
+.modal-content p {
+  font-size: 3rem;
+  text-shadow: -2px -2px 1px rgba(255, 255, 255, 0.6),
+  3px 3px 3px rgba(255, 255, 255, 0.4);
+}
+
+/* The Close Button */
+.close {
+  position: absolute;
+  top: 0.5rem;
+  right: 2rem;
+  color: #aaaaaa;
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-content div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6rem;
+}
+
+.modal-content div button {
+    border: none;
+    border-radius: 50px;
+    padding: 20px 70px;
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2), inset -2px -2px 5px rgba(255, 255, 255, 0.5);
+    transition: background-color 0.3s, box-shadow 0.3s;
+    position:relative;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#yes{
+  font-family: "Fredoka One", cursive; 
+  font-size: 2rem;
+  background-color: #c02000;
+}
+
+#no{
+  font-family: "Fredoka One", cursive; 
+  font-size: 2rem;
+  background-color: #318600;
+}
+ #yes:hover{
+  background-color: #e72700;
+ }
+
+ #no:hover{
+  background-color: #46be01;
+ }
+
+/*
+------------------------menu btn css---------------------- 
+ */
+.menu-btn {
+  align-items: center;
+  appearance: none;
+  background-clip: padding-box;
+  background-color: initial;
+  background-image: none;
+  border-style: none;
+  box-sizing: border-box;
+  color: #000000;
+  cursor: pointer;
+  display: inline-block;
+  flex-direction: row;
+  flex-shrink: 0;
+  font-family: Eina01, sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  justify-content: center;
+  line-height: 24px;
+  margin: 0;
+  min-height: 64px;
+  outline: none;
+  overflow: visible;
+  padding: 19px 26px;
+  pointer-events: auto;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  width: auto;
+  word-break: keep-all;
+  z-index: 0;
+}
+
+@media (min-width: 768px) {
+  .menu-btn {
+    padding: 19px 32px;
+  }
+}
+
+.menu-btn:before,
+.menu-btn:after {
+  border-radius: 80px;
+}
+
+.menu-btn:before {
+  background-color: rgba(249, 58, 19, 0.32);
+  content: "";
+  display: block;
+  height: 100%;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -2;
+}
+
+.menu-btn:after {
+  background-color: initial;
+  background-image: linear-gradient(92.83deg, #ff7426 0, #f93a13 100%);
+  bottom: 4px;
+  content: "";
+  display: block;
+  left: 4px;
+  overflow: hidden;
+  position: absolute;
+  right: 4px;
+  top: 4px;
+  transition: all 100ms ease-out;
+  z-index: -1;
+}
+
+.menu-btn:hover:not(:disabled):after {
+  background-image: linear-gradient(92.83deg, #ff8f26 0, #f95c13 100%);
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  transition-timing-function: ease-in;
+}
+
+.menu-btn:active:not(:disabled) {
+  color: #ccc;
+}
+
+.menu-btn:active:not(:disabled):after {
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.2),
+      rgba(0, 0, 0, 0.2)
+    ),
+    linear-gradient(92.83deg, #ff7426 0, #f93a13 100%);
+  bottom: 4px;
+  left: 4px;
+  right: 4px;
+  top: 4px;
+}
+
+.menu-btn:disabled {
+  cursor: default;
+  opacity: 0.24;
+}
+
+/*
+----------------------------------------------------------- 
+ */

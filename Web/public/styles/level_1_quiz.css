@@ -1,0 +1,119 @@
+body, html{
+    height: 100%;
+    margin: 0;
+    /* background: url('1.jpg') no-repeat center center fixed; image needed */
+    background-size: cover;
+    background-color: rgb(247, 239, 132);
+    font-family: 'Arial', sans-serif; 
+}
+
+#level_1_quiz {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to bottom right, #ebff7d, #7bd4fd);
+    color: white;
+    text-align: center;
+}
+
+
+#back-button,#home-button{
+    background-color: rgba(255, 255, 255, 0.534);
+    border: none;
+    border-radius: 10px;
+    padding: 30px 30px;
+    cursor: pointer;
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2), inset -2px -2px 5px rgba(255, 255, 255, 0.5);
+    transition: background-color 0.3s, box-shadow 0.3s;
+    top: 20px;
+    position: absolute;
+}
+
+#back-button{
+    left: 20px;
+}
+
+#home-button{
+    right: 20px;
+}
+
+#back-link, #home-link {
+    position: absolute;
+    top: 20px;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+}
+
+#back-link {
+    left: 20px;
+}
+
+#home-link {
+    right: 20px;
+}
+
+#back-link:hover i, #home-link:hover i {
+    color: #123bf3;
+}
+
+/* title text */
+#select-song {
+    display: flex;
+    justify-content:left;
+    align-items: center;
+    height: 20%;
+    width: 100%;
+}
+
+#select-song h1 {
+    font-size: 4em;
+    font-weight: bolder;
+    color: #000000;
+    text-align: center;
+    margin: 200px 0px 100px 150px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+#select-song img{
+    width: 90px;
+    margin: 120px 0px 0px 0px;
+
+}
+
+/* Anwsers */
+#option-button button{
+    background-color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 50px;
+    padding: 10px ;
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2), inset -2px -2px 5px rgba(255, 255, 255, 0.5);
+    transition: background-color 0.3s, box-shadow 0.3s;
+    margin: 20px;
+    font-size: 3.5em;
+    position:relative;
+    width: 750px;
+}
+#option-button button:hover{
+    background-color: #92f2ff;
+}
+#option-button a {
+    font-weight: bolder;
+    text-decoration: none;
+}
+
+#option-button #listen1,#option-button #listen2,#option-button #listen3{
+    padding:5px 50px ;
+    border-radius:5px;
+    box-shadow:inset 2px 2px 5px rgba(0, 0, 0, 0.5);
+    background-color: #00b7ff;
+    color: rgb(255, 255, 255);
+    font-weight:bold;
+    font-size: 2em;
+    font-family:'Times New Roman', Times, serif;
+    width: 200px;
+    cursor: pointer;
+}
+
+#option-button #listen1{
+    margin-top: 100px;
+}

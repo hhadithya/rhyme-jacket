@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 2 Quiz</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/styles/level_2_quiz.css">
+</head>
+
+<body>
+    <div id="level_2_quiz">
+        <button id="back-button">
+            <a id ="back-link" href="/pages/level_2_game.html"><i class="fa fa-reply" style="font-size:24px"></i></a>
+        </button>
+        <button id="home-button">
+            <a id ="home-link" href="/index.html"><i class="fa fa-home" style="font-size:24px"></i></a>
+        </button>
+
+
+        <div id="select-song">
+            <h1>Select the song</h1>
+            <img src="/images/music.png">
+        </div>
+
+
+        <div id="option-button">
+            <div>
+                <button><a href="/pages/level_2_lose.html">You are my sunshine</a></button>
+                <button id="listenButton1">Listen</button>
+                <audio id="audio1" src="/music/option_3_music.mp3"></audio>
+            </div>
+            <div>
+                <button><a href="/pages/level_2_win.html">I'm a little tea pot</a></button>
+                <button id="listenButton2">Listen</button>
+                <audio id="audio2" src="/music/level_2_music.mp3"></audio>
+            </div>
+            <div>
+                <button><a href="/pages/level_2_lose.html">Twinkle Twinkle</a></button>
+                <button id="listenButton3">Listen</button>
+                <audio id="audio3" src="/music/level_1_music.mp3"></audio>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const audio1 = document.getElementById('audio1');
+            const audio2 = document.getElementById('audio2');
+            const audio3 = document.getElementById('audio3');
+            const listenButton1 = document.getElementById('listenButton1');
+            const listenButton2 = document.getElementById('listenButton2');
+            const listenButton3 = document.getElementById('listenButton3');
+
+            let isPlaying1 = false;
+            let isPlaying2 = false;
+            let isPlaying3 = false;
+
+            listenButton1.addEventListener('click', function () {
+                if (isPlaying1) {
+                    audio1.pause();
+                    audio1.currentTime = 0;
+                } else {
+                    audio1.pause();
+                    audio2.pause();
+                    audio3.pause();
+                    audio1.play();
+                }
+                isPlaying1 = !isPlaying1;
+            });
+
+            listenButton2.addEventListener('click', function () {
+                if (isPlaying2) {
+                    audio2.pause();
+                    audio2.currentTime = 0;
+                } else {
+                    audio1.pause();
+                    audio2.pause();
+                    audio3.pause();
+                    audio2.play();
+                }
+                isPlaying2 = !isPlaying2;
+            });
+
+            listenButton3.addEventListener('click', function () {
+                if (isPlaying3) {
+                    audio3.pause();
+                    audio3.currentTime = 0;
+                } else {
+                    audio1.pause();
+                    audio2.pause();
+                    audio3.pause();
+                    audio3.play();
+                }
+                isPlaying3 = !isPlaying3;
+            });
+        });
+
+    </script>
+</body>
+
+</html>
