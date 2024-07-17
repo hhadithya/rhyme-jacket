@@ -2,7 +2,6 @@ body,
 html {
   height: 100%;
   margin: 0;
-  /* background: url('1.jpg') no-repeat center center fixed; image needed */
   background: url("/images/background-img.jpg") no-repeat center center fixed;
   background-size: cover;
   font-family: "Fredoka One", cursive;

@@ -49,27 +49,25 @@
                 </div>
             </div>
         </div>
-        
+
         <div id="container">
             <h1 id="topic">LEVEL 1</h1>
-            
-            <div id="model-container">
-                <canvas id="level1_model_canvas" width="1000" height="500"></canvas>
-            </div>
-            <div id="action-container">
-                <div>
-                    <p id="correctMove" style="color: blue; display: none;">Your Movements Are Correct</p>
-                    <p id="wrongMove" style="color: red; display: none;">Your Movements Are Wrong</p>
-                </div>
-                <div id="next_level" style="display: none;">
-                    <button id="Go-button">
-                        <a href="/pages/level_1_quiz.html" id="button-text">GO</a>
-                    </button>
-                </div>
 
+            <div id="middle-content">
+                <canvas id="level1_model_canvas" width="1000" height="500"></canvas>
+
+                <a href="/pages/level_1_quiz.html" id="quiz" style="display: none;">
+                    <button id="button-text">
+                        QUIZ
+                    </button>
+                </a>
             </div>
         </div>
 
+        <!-- <div>
+            <p id="correctMove" style="color: blue; display: none;">Your Movements Are Correct</p>
+            <p id="wrongMove" style="color: red; display: none;">Your Movements Are Wrong</p>
+        </div> -->
 
     </div>
 
@@ -107,7 +105,7 @@
         document.addEventListener("DOMContentLoaded", function () {
             // Show the next level link after 60 seconds
             setTimeout(() => {
-                document.getElementById("next_level").style.display = "block";
+                document.getElementById("quiz").style.display = "block";
             }, 10000); // 60 seconds
         });
 
