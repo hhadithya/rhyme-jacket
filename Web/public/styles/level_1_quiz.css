@@ -115,9 +115,9 @@ html {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  gap: 3rem;
   height: 60%;
-  width: 100%;
+  width: 120%;
 }
 
 .answer {
@@ -129,20 +129,21 @@ html {
   width: 100%;
 }
 
-#option-button{
+#option-button {
   background-color: lightgreen;
   border: none;
   border-radius: 50px;
-  padding: 10px ;
-  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2), inset -2px -2px 5px rgba(255, 255, 255, 0.5);
+  padding: 10px;
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2),
+    inset -2px -2px 5px rgba(255, 255, 255, 0.5);
   transition: background-color 0.3s, box-shadow 0.3s;
   margin: 20px;
   font-size: 3.5em;
-  position:relative;
-  width: 750px;
+  position: relative;
+  width: 100%;
 }
 
-#option-button:hover{
+#option-button:hover {
   background-color: rgb(178, 240, 178);
 }
 
@@ -156,6 +157,10 @@ html {
   text-shadow: #000;
 }
 
-#listen1, #listen2 ,#listen3{
-  width: 5%;
+.answer img {
+  width: 5vw;
+}
+
+.hidden {
+  display: none;
 }

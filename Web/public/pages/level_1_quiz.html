@@ -47,18 +47,21 @@
 
             <div id="middle-content">
                 <div class="answer">
-                    <button id="option-button" ><a href="/pages/level_1_win.html">Twinkle Twinkle</a></button>
-                    <img id="listen1" src="/images/listen-on.png">
+                    <button id="option-button"><a href="/pages/level_1_win.html">Twinkle Twinkle</a></button>
+                    <img id="listen1-off" src="/images/listen-off.png" alt="sound off">
+                    <img id="listen1-on" src="/images/listen-on.png" alt="sound on" class="hidden">
                     <audio id="audio1" src="/music/level_1_music.mp3"></audio>
                 </div>
                 <div class="answer">
                     <button id="option-button"><a href="/pages/level_1_lose.html">I'm a little tea pot</a></button>
-                    <img id="listen2" src="/images/listen-on.png">
+                    <img id="listen2-off" src="/images/listen-off.png" alt="sound off">
+                    <img id="listen2-on" src="/images/listen-on.png" alt="sound on" class="hidden">
                     <audio id="audio2" src="/music/level_2_music.mp3"></audio>
                 </div>
                 <div class="answer">
                     <button id="option-button"><a href="/pages/level_1_lose.html">You are my sunshine</a></button>
-                    <img id="listen3" src="/images/listen-on.png">
+                    <img id="listen3-off" src="/images/listen-off.png" alt="sound off">
+                    <img id="listen3-on" src="/images/listen-on.png" alt="sound on" class="hidden">
                     <audio id="audio3" src="/music/option_3_music.mp3"></audio>
                 </div>
             </div>
@@ -67,38 +70,56 @@
     </div>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const audio1 = document.getElementById("audio1");
-            const audio2 = document.getElementById("audio2");
-            const audio3 = document.getElementById("audio3");
-            let isPlaying = false;
-            let currentAudio = null;
+        const audio1 = document.getElementById("audio1");
+        const audio2 = document.getElementById("audio2");
+        const audio3 = document.getElementById("audio3");
 
-            function handleListenClick(audioElement) {
-                if (isPlaying) {
-                    currentAudio.pause();
-                    currentAudio.currentTime = 0;
-                } else {
-                    audio1.pause();
-                    audio2.pause();
-                    audio3.pause();
-                    audioElement.play();
-                    currentAudio = audioElement;
-                }
-                isPlaying = !isPlaying;
-            }
+        const listen1Off = document.getElementById("listen1-off");
+        const listen2Off = document.getElementById("listen2-off");
+        const listen3Off = document.getElementById("listen3-off");
 
-            document.getElementById("listen1").addEventListener("click", function () {
-                handleListenClick(audio1);
-            });
+        const listen1On = document.getElementById("listen1-on");
+        const listen2On = document.getElementById("listen2-on");
+        const listen3On = document.getElementById("listen3-on");
 
-            document.getElementById("listen2").addEventListener("click", function () {
-                handleListenClick(audio2);
-            });
+        const optionButton1 = document.getElementById("option-button");
+        const optionButton2 = document.getElementById("option-button");
+        const optionButton3 = document.getElementById("option-button");
 
-            document.getElementById("listen3").addEventListener("click", function () {
-                handleListenClick(audio3);
-            });
+        listen1Off.addEventListener("click", () => {
+            audio1.play();
+            listen1Off.classList.add("hidden");
+            listen1On.classList.remove("hidden");
+        });
+
+        listen1On.addEventListener("click", () => {
+            audio1.pause();
+            listen1On.classList.add("hidden");
+            listen1Off.classList.remove("hidden");
+        });
+
+        listen2Off.addEventListener("click", () => {
+            audio2.play();
+            listen2Off.classList.add("hidden");
+            listen2On.classList.remove("hidden");
+        });
+
+        listen2On.addEventListener("click", () => {
+            audio2.pause();
+            listen2On.classList.add("hidden");
+            listen2Off.classList.remove("hidden");
+        });
+
+        listen3Off.addEventListener("click", () => {
+            audio3.play();
+            listen3Off.classList.add("hidden");
+            listen3On.classList.remove("hidden");
+        });
+
+        listen3On.addEventListener("click", () => {
+            audio3.pause();
+            listen3On.classList.add("hidden");
+            listen3Off.classList.remove("hidden");
         });
     </script>
 </body>
