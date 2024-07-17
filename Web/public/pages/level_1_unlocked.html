@@ -6,10 +6,108 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles/level_1_unlocked.css">
-    <title>Document</title>
+    <title>levels</title>
 </head>
 
 <body>
+    <!-- Background Music -->
+    <audio id="background-music" src="/music/background-1.m4a" loop></audio>
+
+    <div id="content">
+        <div id="top-icons">
+            <div id="top-icons-left">
+                <div id="settings">
+                    <a href="#setting">
+                        <img src="/images/setting.png" alt="setting">
+                    </a>
+                </div>
+
+                <div id="menu-icon">
+                    <a href="/pages/menu.html">
+                        <img src="/images/menu.png" alt="menu">
+                    </a>
+                </div>
+
+                <div id="volume">
+                    <img src="/images/volume.png" alt="sound on" id="sound-on">
+                    <img src="/images/mute.png" alt="sound off" id="sound-off" class="hidden">
+                </div>
+            </div>
+
+            <div id="top-icons-right">
+                <p id="battery-percentage">100%</p>
+                <div id="battery-img">
+                    <img src="/images/battery-1.png" alt="battery 1/5 full" class="hidden">
+                    <img src="/images/battery-2.png" alt="battery 2/5 full" class="hidden">
+                    <img src="/images/battery-3.png" alt="battery 3/5 full" class="hidden">
+                    <img src="/images/battery-4.png" alt="battery 4/5 full" class="hidden">
+                    <img src="/images/battery-5.png" alt="battery 5/5 full">
+                </div>
+            </div>
+        </div>
+
+        <div id="container">
+            <h1 id="topic">
+                LEVELS
+            </h1>
+
+            <div id="level-items">
+                <div id="level-item">
+                    <a href="/pages/level_1.html">
+                        <img src="/images/level/1-unlock.png" alt="level 1 unlock">
+                    </a>
+                </div>
+                <div id="level-item">
+                    <img src="/images/level/2-locked.png" alt="level 2 locked">
+                </div>
+                <div id="level-item">
+                    <img src="/images/level/3-locked.png" alt="level 3 locked">
+                </div>
+                <div id="level-item">
+                    <img src="/images/level/4-locked.png" alt="level 4 locked">
+                </div>
+                <div id="level-item">
+                    <img src="/images/level/5-locked.png" alt="level 5 locked">
+                </div>
+                <div id="level-item">
+                    <img src="/images/level/6-locked.png" alt="level 6 locked">
+                </div>
+                <div id="level-item">
+                    <img src="/images/level/7-locked.png" alt="level 7 locked">
+                </div>
+                <div id="level-item">
+                    <img src="/images/level/8-locked.png" alt="level 8 locked">
+                </div>
+                <div id="level-item">
+                    <img src="/images/level/9-locked.png" alt="level 9 locked">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const soundOn = document.getElementById("sound-on");
+        const soundOff = document.getElementById("sound-off");
+        const audio = document.getElementById("background-music");
+
+        // play music when page is loaded
+        audio.play();
+
+        // play music when sound is on
+        soundOn.addEventListener("click", () => {
+            soundOn.classList.add("hidden");
+            soundOff.classList.remove("hidden");
+            audio.pause();
+        });
+
+        // stop music when sound is off
+        soundOff.addEventListener("click", () => {
+            soundOff.classList.add("hidden");
+            soundOn.classList.remove("hidden");
+            audio.play();
+        });
+
+    </script>
 
 </body>
 
