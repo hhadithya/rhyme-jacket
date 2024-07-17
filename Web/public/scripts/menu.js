@@ -7,6 +7,10 @@ var noBtn = document.getElementById("no");
 // Get the sound on/off buttons
 const soundOn = document.getElementById("sound-on");
 const soundOff = document.getElementById("sound-off");
+const audio = document.getElementById("background-music");
+
+// play music when page is loaded
+audio.play();
 
 // When the user clicks the button, open the modal
 btn.onclick = function () {
@@ -29,13 +33,16 @@ window.onclick = function (event) {
   }
 };
 
-// Sound on/off
+// play music when sound is on
 soundOn.addEventListener("click", () => {
   soundOn.classList.add("hidden");
   soundOff.classList.remove("hidden");
+  audio.pause();
 });
 
+// stop music when sound is off
 soundOff.addEventListener("click", () => {
-  soundOn.classList.remove("hidden");
   soundOff.classList.add("hidden");
+  soundOn.classList.remove("hidden");
+  audio.play();
 });
