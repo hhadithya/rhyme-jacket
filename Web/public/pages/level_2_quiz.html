@@ -5,98 +5,123 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Level 2 Quiz</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles/level_2_quiz.css">
 </head>
 
 <body>
-    <div id="level_2_quiz">
-        <button id="back-button">
-            <a id ="back-link" href="/pages/level_2_game.html"><i class="fa fa-reply" style="font-size:24px"></i></a>
-        </button>
-        <button id="home-button">
-            <a id ="home-link" href="/index.html"><i class="fa fa-home" style="font-size:24px"></i></a>
-        </button>
+    <div id="content">
+        <div id="top-icons">
+            <div id="top-icons-left">
+                <div id="settings">
+                    <a href="#setting">
+                        <img src="/images/setting.png" alt="setting">
+                    </a>
+                </div>
 
-
-        <div id="select-song">
-            <h1>Select the song</h1>
-            <img src="/images/music.png">
-        </div>
-
-
-        <div id="option-button">
-            <div>
-                <button><a href="/pages/level_2_lose.html">You are my sunshine</a></button>
-                <button id="listenButton1">Listen</button>
-                <audio id="audio1" src="/music/option_3_music.mp3"></audio>
+                <div id="menu-icon">
+                    <a href="/pages/menu.html">
+                        <img src="/images/menu.png" alt="menu">
+                    </a>
+                </div>
             </div>
-            <div>
-                <button><a href="/pages/level_2_win.html">I'm a little tea pot</a></button>
-                <button id="listenButton2">Listen</button>
-                <audio id="audio2" src="/music/level_2_music.mp3"></audio>
-            </div>
-            <div>
-                <button><a href="/pages/level_2_lose.html">Twinkle Twinkle</a></button>
-                <button id="listenButton3">Listen</button>
-                <audio id="audio3" src="/music/level_1_music.mp3"></audio>
+
+            <div id="top-icons-right">
+                <p id="battery-percentage">100%</p>
+                <div id="battery-img">
+                    <img src="/images/battery-1.png" alt="battery 1/5 full" class="hidden">
+                    <img src="/images/battery-2.png" alt="battery 2/5 full" class="hidden">
+                    <img src="/images/battery-3.png" alt="battery 3/5 full" class="hidden">
+                    <img src="/images/battery-4.png" alt="battery 4/5 full" class="hidden">
+                    <img src="/images/battery-5.png" alt="battery 5/5 full">
+                </div>
             </div>
         </div>
+
+        <div id="container">
+            <div id="top-content">
+                <h1 id="topic">SELECT THE SONG</h1>
+                <img src="/images/music.png">
+            </div>
+
+            <div id="middle-content">
+                <div class="answer">
+                    <button id="option-button"><a href="/pages/level_2_lose.html">You are my sunshine</a></button>
+                    <img id="listen1-off" src="/images/listen-off.png" alt="sound off">
+                    <img id="listen1-on" src="/images/listen-on.png" alt="sound on" class="hidden">
+                    <audio id="audio1" src="/music/option_3_music.mp3"></audio>
+                </div>
+                <div class="answer">
+                    <button id="option-button"><a href="/pages/level_2_win.html">I'm a little tea pot</a></button>
+                    <img id="listen2-off" src="/images/listen-off.png" alt="sound off">
+                    <img id="listen2-on" src="/images/listen-on.png" alt="sound on" class="hidden">
+                    <audio id="audio2" src="/music/level_2_music.mp3"></audio>
+                </div>
+                <div class="answer">
+                    <button id="option-button"><a href="/pages/level_2_lose.html">Twinkle Twinkle</a></button>
+                    <img id="listen3-off" src="/images/listen-off.png" alt="sound off">
+                    <img id="listen3-on" src="/images/listen-on.png" alt="sound on" class="hidden">
+                    <audio id="audio3" src="/music/level_1_music.mp3"></audio>
+                </div>
+            </div>
+        </div>
+
     </div>
 
+
+
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const audio1 = document.getElementById('audio1');
-            const audio2 = document.getElementById('audio2');
-            const audio3 = document.getElementById('audio3');
-            const listenButton1 = document.getElementById('listenButton1');
-            const listenButton2 = document.getElementById('listenButton2');
-            const listenButton3 = document.getElementById('listenButton3');
+        const audio1 = document.getElementById("audio1");
+        const audio2 = document.getElementById("audio2");
+        const audio3 = document.getElementById("audio3");
 
-            let isPlaying1 = false;
-            let isPlaying2 = false;
-            let isPlaying3 = false;
+        const listen1Off = document.getElementById("listen1-off");
+        const listen2Off = document.getElementById("listen2-off");
+        const listen3Off = document.getElementById("listen3-off");
 
-            listenButton1.addEventListener('click', function () {
-                if (isPlaying1) {
-                    audio1.pause();
-                    audio1.currentTime = 0;
-                } else {
-                    audio1.pause();
-                    audio2.pause();
-                    audio3.pause();
-                    audio1.play();
-                }
-                isPlaying1 = !isPlaying1;
-            });
+        const listen1On = document.getElementById("listen1-on");
+        const listen2On = document.getElementById("listen2-on");
+        const listen3On = document.getElementById("listen3-on");
 
-            listenButton2.addEventListener('click', function () {
-                if (isPlaying2) {
-                    audio2.pause();
-                    audio2.currentTime = 0;
-                } else {
-                    audio1.pause();
-                    audio2.pause();
-                    audio3.pause();
-                    audio2.play();
-                }
-                isPlaying2 = !isPlaying2;
-            });
+        const optionButton1 = document.getElementById("option-button");
+        const optionButton2 = document.getElementById("option-button");
+        const optionButton3 = document.getElementById("option-button");
 
-            listenButton3.addEventListener('click', function () {
-                if (isPlaying3) {
-                    audio3.pause();
-                    audio3.currentTime = 0;
-                } else {
-                    audio1.pause();
-                    audio2.pause();
-                    audio3.pause();
-                    audio3.play();
-                }
-                isPlaying3 = !isPlaying3;
-            });
+        listen1Off.addEventListener("click", () => {
+            audio1.play();
+            listen1Off.classList.add("hidden");
+            listen1On.classList.remove("hidden");
         });
 
+        listen1On.addEventListener("click", () => {
+            audio1.pause();
+            listen1On.classList.add("hidden");
+            listen1Off.classList.remove("hidden");
+        });
+
+        listen2Off.addEventListener("click", () => {
+            audio2.play();
+            listen2Off.classList.add("hidden");
+            listen2On.classList.remove("hidden");
+        });
+
+        listen2On.addEventListener("click", () => {
+            audio2.pause();
+            listen2On.classList.add("hidden");
+            listen2Off.classList.remove("hidden");
+        });
+
+        listen3Off.addEventListener("click", () => {
+            audio3.play();
+            listen3Off.classList.add("hidden");
+            listen3On.classList.remove("hidden");
+        });
+
+        listen3On.addEventListener("click", () => {
+            audio3.pause();
+            listen3On.classList.add("hidden");
+            listen3Off.classList.remove("hidden");
+        });
     </script>
 </body>
 
