@@ -128,8 +128,67 @@ body {
   }
 }
 
+/* main content of the page */
 #context {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#main-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* height: 60%; */
+}
+
+#topic {
+  font-size: 50px;
+  text-align: center;
+}
+
+#main-content img {
+  margin: -1rem 0;
+  width: 90%;
+}
+
+/* loader */
+.loader {
+  height: 1rem;
+  width: 40%;
+  border: 1px solid #018244;
+  border-radius: 1rem;
+  --c: no-repeat linear-gradient(#018244 0 0);
+  background: var(--c), var(--c), #b8f5d7;
+  background-size: 60% 100%;
+  animation: l16 3s infinite;
+}
+@keyframes l16 {
+  0% {
+    background-position: -150% 0, -150% 0;
+  }
+  66% {
+    background-position: 250% 0, -150% 0;
+  }
+  100% {
+    background-position: 250% 0, 250% 0;
+  }
+}
+
+#info {
+  color: #ff0035;
+  font-size: 1.5rem;
+  text-align: center;
+  width: 50%;
+  height: 5%;
+  margin-bottom: 2rem;
+}
+
+.hidden {
+  display: none;
 }
