@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
   loadAudio();
 
   const scene = new THREE.Scene();
-  scene.background = new THREE.Color(0xdddddd);
+  scene.background = new THREE.Color(0xace1af);
 
   const clock = new THREE.Clock();
   const camera = new THREE.PerspectiveCamera(
@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
   camera.position.x = 0;
   camera.position.y = 6;
 
-  const light = new THREE.HemisphereLight(0xffffff, 0xffffff);
+  const light = new THREE.HemisphereLight(0xffffff, 0xffffff, 6);
   light.position.set(0, 1, 0);
   scene.add(light);
 

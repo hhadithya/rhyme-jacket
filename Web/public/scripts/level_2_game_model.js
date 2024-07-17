@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
   loadAudio();
 
   const scene = new THREE.Scene();
-  scene.background = new THREE.Color(0xdddddd);
+  scene.background = new THREE.Color(0xace1af);
   const clock = new THREE.Clock();
 
   const w = window.innerWidth;
@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
   camera.position.x = 0;
   camera.position.y = 6;
 
-  const light = new THREE.HemisphereLight(0xffffff, 0xffffff);
+  const light = new THREE.HemisphereLight(0xffffff, 0xffffff, 6);
   light.position.set(0, 1, 0);
   scene.add(light);
 
@@ -146,7 +146,7 @@ document.addEventListener("DOMContentLoaded", function () {
     shininess: 0,
   });
   const floor = new THREE.Mesh(floorGeometry, floorMaterial);
-  floor.rotation.x = -0.5 * Math.PI;
+  floor.rotation.x = -0.6 * Math.PI;
   floor.receiveShadow = true;
   floor.position.y = -11;
   scene.add(floor);
