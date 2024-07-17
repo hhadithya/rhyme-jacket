@@ -58,7 +58,7 @@ function init() {
   loadAudio();
 
   const scene = new THREE.Scene();
-  scene.background = new THREE.Color(0xdddddd);
+  scene.background = new THREE.Color(0xace1af);
   const clock = new THREE.Clock();
 
   const w = window.innerWidth;
@@ -68,7 +68,7 @@ function init() {
   camera.position.x = 0;
   camera.position.y = 12;
 
-  const light = new THREE.HemisphereLight(0xffffff, 0xffffff);
+  const light = new THREE.HemisphereLight(0xeeeeee, 0xeeeeee, 2);
   light.position.set(0, 1, 0);
   scene.add(light);
 

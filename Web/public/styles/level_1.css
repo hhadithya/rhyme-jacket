@@ -3,9 +3,8 @@ html {
   height: 100%;
   margin: 0;
   /* background: url('1.jpg') no-repeat center center fixed; image needed */
-  background: url("/images/background-img.jpg");
+  background: url("/images/background-img.jpg") no-repeat center center fixed;
   background-size: cover;
-  /* background-color: rgb(247, 239, 132); */
   font-family: "Fredoka One", cursive;
   box-sizing: border-box;
 }
@@ -17,7 +16,6 @@ html {
   align-items: center;
   height: 100vh;
   width: 100%;
-  /* background: linear-gradient(to bottom right, #ebff7d, #7bd4fd); */
   text-align: center;
 }
 
@@ -111,7 +109,6 @@ html {
 #level1_model_canvas {
   width: 80%;
   border: 5px solid lightgreen;
-  /* border-image: linear-gradient(to right, #ebff7d, #7bd4fd) 1; */
   border-radius: 50px;
   box-shadow: 0 6px 10px lightgreen;
 }
@@ -128,11 +125,15 @@ html {
   width: 80%;
 }
 
+#start-button:hover {
+  background-color: #4caf50;
+}
+
 #button-text {
   text-decoration: none;
   font-family: "Fredoka One", cursive;
   font-size: 3rem;
-  background-color: lightgreen;
+  background-color: transparent;
   border: none;
   cursor: pointer;
 }
