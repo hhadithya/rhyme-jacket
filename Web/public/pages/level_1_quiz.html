@@ -5,43 +5,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Level 1 Quiz</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/styles/level_1_quiz.css">
 </head>
 
 <body>
-    <div id="level_1_quiz">
-        <button id="back-button">
-            <a id ="back-link" href="/pages/level_1_game.html"><i class="fa fa-reply" style="font-size:24px"></i></a>
-        </button>
-        <button id="home-button">
-            <a id ="home-link" href="/index.html"><i class="fa fa-home" style="font-size:24px"></i></a>
-        </button>
+    <div id="content">
+        <div id="top-icons">
+            <div id="top-icons-left">
+                <div id="settings">
+                    <a href="#setting">
+                        <img src="/images/setting.png" alt="setting">
+                    </a>
+                </div>
 
-        
-        <div id="select-song">
-            <h1>Select the song</h1>
-            <img src="/images/music.png">
-        </div>
-
-
-        <div id="option-button">
-            <div>
-                <button><a href="/pages/level_1_win.html">Twinkle Twinkle</a></button>
-                <button id="listen1">Listen</button>
-                <audio id="audio1" src="/music/level_1_music.mp3"></audio>
+                <div id="menu-icon">
+                    <a href="/pages/menu.html">
+                        <img src="/images/menu.png" alt="menu">
+                    </a>
+                </div>
             </div>
-            <div>
-                <button><a href="/pages/level_1_lose.html">I'm a little tea pot</a></button>
-                <button id="listen2">Listen</button>
-                <audio id="audio2" src="/music/level_2_music.mp3"></audio>
-            </div>
-            <div>
-                <button><a href="/pages/level_1_lose.html">You are my sunshine</a></button>
-                <button id="listen3">Listen</button>
-                <audio id="audio3" src="/music/option_3_music.mp3"></audio>
+
+            <div id="top-icons-right">
+                <p id="battery-percentage">100%</p>
+                <div id="battery-img">
+                    <img src="/images/battery-1.png" alt="battery 1/5 full" class="hidden">
+                    <img src="/images/battery-2.png" alt="battery 2/5 full" class="hidden">
+                    <img src="/images/battery-3.png" alt="battery 3/5 full" class="hidden">
+                    <img src="/images/battery-4.png" alt="battery 4/5 full" class="hidden">
+                    <img src="/images/battery-5.png" alt="battery 5/5 full">
+                </div>
             </div>
         </div>
+
+        <div id="container">
+            <div id="top-content">
+                <h1 id="topic">SELECT THE SONG</h1>
+                <img src="/images/music.png">
+            </div>
+
+            <div id="middle-content">
+                <div class="answer">
+                    <button><a href="/pages/level_1_win.html">Twinkle Twinkle</a></button>
+                    <button id="listen1">Listen</button>
+                    <audio id="audio1" src="/music/level_1_music.mp3"></audio>
+                </div>
+                <div class="answer">
+                    <button><a href="/pages/level_1_lose.html">I'm a little tea pot</a></button>
+                    <button id="listen2">Listen</button>
+                    <audio id="audio2" src="/music/level_2_music.mp3"></audio>
+                </div>
+                <div class="answer">
+                    <button><a href="/pages/level_1_lose.html">You are my sunshine</a></button>
+                    <button id="listen3">Listen</button>
+                    <audio id="audio3" src="/music/option_3_music.mp3"></audio>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <script>
