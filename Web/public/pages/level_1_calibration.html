@@ -5,64 +5,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Single Page App</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background: linear-gradient(to bottom, #f1f1b8, #c5e6d9);
-            margin: 0;
-        }
-
-        #content {
-            text-align: center;
-        }
-
-        #image {
-            /* width: 700px; */
-            height: 600px;
-            background-size: contain;
-        }
-
-        #countdown {
-            font-size: 80px;
-            /* margin-top: 20px; */
-        }
-
-        .hidden {
-            display: none;
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/level_1_calibration.css">
+    <title>Loading.......</title>
 </head>
 
 <body>
-    <div id="content">
-        <div id="level2" class="hidden">
-            <div id="image"><img src="../images/ready.png" alt="starting pose"></div>
-            <div id="countdown">Get Ready: 3</div>
-        </div>
+    <!-- background animation -->
+    <div class="area">
+        <ul class="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
     </div>
 
-    <script>
-        window.onload = function () {
-            document.getElementById('level2').classList.remove('hidden');
+    <div id="context">
 
-            let countdownNumber = 3;
-            const countdownElement = document.getElementById('countdown');
+        <h1>Stay Like This</h1>
+    </div>
 
-            const countdown = setInterval(() => {
-                countdownNumber--;
-                countdownElement.textContent = `Get Ready: ${countdownNumber}`;
-                if (countdownNumber === 0) {
-                    clearInterval(countdown);
-                    window.location.href = '/pages/level_1_game.html';
-                }
-            }, 1666);
-        }
-    </script>
+
 </body>
 
 </html>
