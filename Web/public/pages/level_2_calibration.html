@@ -5,64 +5,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Single Page App</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background: linear-gradient(to bottom, #f1f1b8, #c5e6d9);
-            margin: 0;
-        }
-
-        #content {
-            text-align: center;
-        }
-
-        #image {
-            /* width: 700px; */
-            height: 600px;
-            background-size: contain;
-        }
-
-        #countdown {
-            font-size: 80px;
-            /* margin-top: 20px; */
-        }
-
-        .hidden {
-            display: none;
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/level_2_calibration.css">
+    <title>Loading.......</title>
 </head>
 
 <body>
-    <div id="content">
-        <div id="level2" class="hidden">
-            <div id="image"><img src="../images/ready.png" alt="starting pose"></div>
-            <div id="countdown">Get Ready: 5</div>
+    <!-- background animation -->
+    <div class="area">
+        <ul class="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+    <div id="context">
+
+        <div id="main-content">
+            <h1 id="topic">Stay Like This</h1>
+            <img src="/images/calibration.png" alt="child model">
         </div>
+
+        <div id="info">
+            <p id="msg-1">Moving at the right speed will make it easy to identify the right song</p>
+            <p class="hidden" id="msg-2">If you don't move correct the model will not be moved</p>
+        </div>
+        <div class="loader"></div>
     </div>
 
     <script>
-        window.onload = function () {
-            document.getElementById('level2').classList.remove('hidden');
+        // change msg-1 to msg-2 after 3 seconds and change back to msg-1 after 3 seconds. loop this
+        setInterval(() => {
+            document.getElementById('msg-1').classList.toggle('hidden');
+            document.getElementById('msg-2').classList.toggle('hidden');
+        }, 3000);
 
-            let countdownNumber = 5;
-            const countdownElement = document.getElementById('countdown');
-
-            const countdown = setInterval(() => {
-                countdownNumber--;
-                countdownElement.textContent = `Get Ready: ${countdownNumber}`;
-                if (countdownNumber === 0) {
-                    clearInterval(countdown);
-                    window.location.href = '/pages/level_2_game.html';
-                }
-            }, 1000);
-        }
+        // after 7 seconds move to another page
+        setTimeout(() => {
+            window.location.href = "/pages/level_2_game.html";
+        }, 7000);
     </script>
+
 </body>
 
 </html>
