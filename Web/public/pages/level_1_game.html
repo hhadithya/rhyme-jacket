@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Level 1 Game</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles/level_1_game.css">
     <script type="importmap">
         {
@@ -22,19 +22,37 @@
 </head>
 
 <body>
-    <div id="level1_start">
-        <button id="back-button">
-            <a id="back-link" href="/pages/level_1.html"><i class="fa fa-reply" style="font-size:24px"></i></a>
-        </button>
-        <button id="home-button">
-            <a id="home-link" href="/index.html"><i class="fa fa-home" style="font-size:24px"></i></a>
-        </button>
+    <div id="content">
+        <div id="top-icons">
+            <div id="top-icons-left">
+                <div id="settings">
+                    <a href="#setting">
+                        <img src="/images/setting.png" alt="setting">
+                    </a>
+                </div>
 
-        <div id="Level">
-            <h1>Level 1</h1>
+                <div id="menu-icon">
+                    <a href="/pages/menu.html">
+                        <img src="/images/menu.png" alt="menu">
+                    </a>
+                </div>
+            </div>
+
+            <div id="top-icons-right">
+                <p id="battery-percentage">100%</p>
+                <div id="battery-img">
+                    <img src="/images/battery-1.png" alt="battery 1/5 full" class="hidden">
+                    <img src="/images/battery-2.png" alt="battery 2/5 full" class="hidden">
+                    <img src="/images/battery-3.png" alt="battery 3/5 full" class="hidden">
+                    <img src="/images/battery-4.png" alt="battery 4/5 full" class="hidden">
+                    <img src="/images/battery-5.png" alt="battery 5/5 full">
+                </div>
+            </div>
         </div>
-
-        <div id="content-container">
+        
+        <div id="container">
+            <h1 id="topic">LEVEL 1</h1>
+            
             <div id="model-container">
                 <canvas id="level1_model_canvas" width="1000" height="500"></canvas>
             </div>
@@ -50,16 +68,6 @@
                 </div>
 
             </div>
-        </div>
-
-        <div id="data-container">
-            <button id="temp-button">Temperature
-                <span id="temperature_value">XYZ</span> ℃
-            </button>
-
-            <button id="heart-button">Heart Rate
-                <span id="heart_rate_value">XYZ</span> BPM
-            </button>
         </div>
 
 

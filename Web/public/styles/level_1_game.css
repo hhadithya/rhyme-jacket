@@ -3,79 +3,99 @@ html {
   height: 100%;
   margin: 0;
   /* background: url('1.jpg') no-repeat center center fixed; image needed */
+  background: url("/images/background-img.jpg") no-repeat center center fixed;
   background-size: cover;
-  background-color: rgb(247, 239, 132);
-  font-family: "Arial", sans-serif;
+  font-family: "Fredoka One", cursive;
+  box-sizing: border-box;
 }
 
-#level1_start {
+#content {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   height: 100vh;
-  background: linear-gradient(to bottom right, #ebff7d, #7bd4fd);
-  color: white;
+  width: 100%;
   text-align: center;
 }
 
-#back-button,
-#home-button {
-  background-color: rgba(255, 255, 255, 0.534);
-  border: none;
-  border-radius: 10px;
-  padding: 30px 30px;
-  cursor: pointer;
-  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2),
-    inset -2px -2px 5px rgba(255, 255, 255, 0.5);
-  transition: background-color 0.3s, box-shadow 0.3s;
-  top: 20px;
+/* top icons */
+#top-icons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   position: absolute;
+  top: 0;
+  margin: 1rem auto;
+  width: 95vw;
 }
 
-#back-button {
-  left: 20px;
+#top-icons-left img {
+  width: 5vw;
+  transition: width 0.3s ease-in-out;
 }
 
-#home-button {
-  right: 20px;
+#top-icons-left img:hover {
+  width: 5.5vw;
 }
 
-#back-link,
-#home-link {
-  position: absolute;
-  top: 20px;
-  color: rgb(0, 0, 0);
-  text-decoration: none;
-}
-
-#back-link {
-  left: 20px;
-}
-
-#home-link {
-  right: 20px;
-}
-
-#back-link:hover i,
-#home-link:hover i {
-  color: #123bf3;
-}
-
-/* title text */
-#Level {
+#top-icons-left {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 20%;
-  width: 100%;
+  gap: 1rem;
 }
 
-#Level h1 {
-  font-size: 6em;
-  font-weight: bolder;
-  color: #000000;
-  text-align: center;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+#top-icons-left img {
+  width: 5vw;
+  transition: width 0.3s ease-in-out;
+}
+
+#top-icons-left img:hover {
+  width: 5.5vw;
+}
+
+#top-icons-left div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 5vw;
+}
+
+#top-icons-right {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+}
+
+#battery-percentage {
+  font-size: 2.5rem;
+  font-weight: bold;
+  padding: 0px 15px 0px 0px;
+  color: #ffffff;
+}
+
+#battery-img img {
+  width: 8vw;
+}
+
+.hidden {
+  display: none;
+}
+
+/* content of the page */
+#container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 85%;
+}
+
+#topic {
+  font-size: 4rem;
+  font-weight: bold;
+  margin-top: 0.5rem;
 }
 
 #content-container {
