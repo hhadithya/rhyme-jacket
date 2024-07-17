@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Level 2 Game</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles/level_2_game.css">
     <script type="importmap">
         {
@@ -22,54 +22,62 @@
 </head>
 
 <body>
-    <div id="level2_start">
-        <button id="back-button">
-            <a id="back-link" href="/pages/level_2_calibration.html"><i class="fa fa-reply"
-                    style="font-size:24px"></i></a>
-        </button>
-        <button id="home-button">
-            <a id="home-link" href="/index.html"><i class="fa fa-home" style="font-size:24px"></i></a>
-        </button>
-
-        <div id="Level">
-            <h1>Level 2</h1>
-        </div>
-
-        <div id="content-container">
-            <div id="model-container">
-                <canvas id="three-canvas" width="1000" height="500"></canvas>
-            </div>
-            <div id="action-container">
-                <!-- <div>
-                    <p id="correctMove" style="color: blue;">Your Movements Are Correct</p>
-                    <p id="wrongMove" style="color: red;">Your Movements Are Wrong</p>
-                </div> -->
-                <div id="next_level" style="display: none;">
-                    <!-- style="display: none;" || should add into above div tag -->
-                    <button id="Go-button">
-                        <a href="/pages/level_2_quiz.html" id="button-text">GO</a>
-                    </button>
+    <div id="content">
+        <div id="top-icons">
+            <div id="top-icons-left">
+                <div id="settings">
+                    <a href="#setting">
+                        <img src="/images/setting.png" alt="setting">
+                    </a>
                 </div>
 
+                <div id="menu-icon">
+                    <a href="/pages/menu.html">
+                        <img src="/images/menu.png" alt="menu">
+                    </a>
+                </div>
+            </div>
+
+            <div id="top-icons-right">
+                <p id="battery-percentage">100%</p>
+                <div id="battery-img">
+                    <img src="/images/battery-1.png" alt="battery 1/5 full" class="hidden">
+                    <img src="/images/battery-2.png" alt="battery 2/5 full" class="hidden">
+                    <img src="/images/battery-3.png" alt="battery 3/5 full" class="hidden">
+                    <img src="/images/battery-4.png" alt="battery 4/5 full" class="hidden">
+                    <img src="/images/battery-5.png" alt="battery 5/5 full">
+                </div>
             </div>
         </div>
 
-        <div id="data-container">
-            <button id="temp-button">Temperature
-                <span id="temperature_value">XYZ</span> ℃
-            </button>
+        <div id="container">
+            <h1 id="topic">LEVEL 1</h1>
 
-            <button id="heart-button">Heart Rate
-                <span id="heart_rate_value">XYZ</span> BPM
-            </button>
+            <div id="middle-content">
+                <canvas id="three-canvas" width="1000" height="500"></canvas>
+
+                <a href="/pages/level_2_quiz.html" id="quiz" style="display: none;">
+                    <button id="button-text">
+                        QUIZ
+                    </button>
+                </a>
+            </div>
         </div>
+
+        <!-- <div>
+            <p id="correctMove" style="color: blue; display: none;">Your Movements Are Correct</p>
+            <p id="wrongMove" style="color: red; display: none;">Your Movements Are Wrong</p>
+        </div> -->
+
     </div>
+
+
 
     <script src="/scripts/level_2_game_model.js" type="module"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             setTimeout(function () {
-                document.getElementById('next_level').style.display = 'block';
+                document.getElementById('quiz').style.display = 'block';
             }, 10000); // 60 seconds (1 minute)
         });
     </script>
