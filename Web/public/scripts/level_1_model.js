@@ -68,7 +68,7 @@ function init() {
   camera.position.x = 0;
   camera.position.y = 12;
 
-  const light = new THREE.HemisphereLight(0xffffff, 0xffffff, 4);
+  const light = new THREE.HemisphereLight(0xffffff, 0xffffff, 6);
   light.position.set(0, 1, 0);
   scene.add(light);
 
@@ -83,6 +83,7 @@ function init() {
 
       model.scale.set(12, 12, 12);
       model.position.y = 3;
+
       scene.add(model);
 
       function animate() {
