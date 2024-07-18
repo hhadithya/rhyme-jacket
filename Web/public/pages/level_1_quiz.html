@@ -82,10 +82,6 @@
         const listen2On = document.getElementById("listen2-on");
         const listen3On = document.getElementById("listen3-on");
 
-        const optionButton1 = document.getElementById("option-button");
-        const optionButton2 = document.getElementById("option-button");
-        const optionButton3 = document.getElementById("option-button");
-
         listen1Off.addEventListener("click", () => {
             audio1.play();
             listen1Off.classList.add("hidden");
@@ -121,6 +117,7 @@
             listen3On.classList.add("hidden");
             listen3Off.classList.remove("hidden");
         });
+
     </script>
 </body>
 

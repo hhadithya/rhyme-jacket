@@ -109,6 +109,15 @@
             audio.play();
         });
 
+        // when mouse hovers items with hover class plays a sound
+        const hoverItems = document.querySelectorAll(".hover");
+        hoverItems.forEach(item => {
+            item.addEventListener("mouseover", () => {
+                const hoverSound = new Audio("/music/click.mp3");
+                hoverSound.play();
+            });
+        });
+
     </script>
 
 </body>
