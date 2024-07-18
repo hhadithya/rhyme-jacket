@@ -18,6 +18,11 @@
                         <img src="/images/setting.png" alt="setting">
                     </a>
                 </div>
+
+                <div id="volume">
+                    <img src="/images/volume.png" alt="sound on" id="sound-on" class="hidden">
+                    <img src="/images/mute.png" alt="sound off" id="sound-off">
+                </div>
             </div>
 
             <div id="top-icons-right">
@@ -44,7 +49,7 @@
 
                 <div id="stats">
                     <div id="heart-rate">
-                        <div id="heart-no-input" class="hidden">
+                        <div id="heart-no-input">
                             <img src="/images/heart-black.png" alt="heart">
                             <p> -- </p>
 
@@ -54,13 +59,13 @@
                             <p style="color: green;">GOOD</p>
 
                         </div>
-                        <div id="heart-bad">
+                        <div id="heart-bad" class="hidden">
                             <img src="/images/heart.png" alt="heart condition-bad">
                             <p style="color: red;">BAD</p>
                         </div>
                     </div>
                     <div id="temperature">
-                        <div id="temp-no-input" class="hidden">
+                        <div id="temp-no-input">
                             <img src="/images/temp-black.png" alt="heart-no-input">
                             <p> -- </p>
                         </div>
@@ -68,7 +73,7 @@
                             <img src="/images/temp-green.png" alt="thermostat">
                             <p style="color: green;">GOOD</p>
                         </div>
-                        <div id="temp-bad">
+                        <div id="temp-bad" class="hidden">
                             <img src="/images/temp.png" alt="">
                             <p style="color: red;">BAD</p>
                         </div>
@@ -77,14 +82,20 @@
             </div>
 
             <div id="bottom-content">
-                <p id="checking" class="hidden"> Checking your body conditions...<span style="color: red;">keep
+                <p id="checking"> Checking your body conditions...<span style="color: red;">keep
                         still</span></p>
                 <p id="good-to-go" class="hidden">Your body condition good. Redirecting to the game.....</p>
-                <p id="bad-to-go">Your body condition is not good. Exiting game.....</p>
+                <p id="bad-to-go" class="hidden">Your body condition is not good. Exiting game.....</p>
             </div>
         </div>
     </div>
 
+    <script>
+        setTimeout(() => {
+            window.location.href = "/pages/menu.html";
+        }, 10000);
+
+    </script>
 </body>
 
 </html>
