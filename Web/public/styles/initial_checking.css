@@ -72,6 +72,7 @@ html {
   font-weight: bold;
   padding: 0px 15px 0px 0px;
   color: #ffffff;
+  text-shadow: -2px -2px 1px rgba(0, 0, 0, 0.6), 3px 3px 3px rgba(0, 0, 0, 0.4);
 }
 
 #battery-img img {
