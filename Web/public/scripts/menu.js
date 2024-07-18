@@ -53,16 +53,17 @@ soundOff.addEventListener("click", () => {
 // play a sound when #new-game, #levels and #exit buttons are clicked
 const newGame = document.getElementById("new-game");
 const levels = document.getElementById("levels");
-const exit = document.getElementById("exit");
+const exit = document.getElementById("exit-btn");
 
-newGame.addEventListener("click", () => {
+// mouseover sound effect
+newGame.addEventListener("mouseover", () => {
   clickSound.play();
 });
 
-levels.addEventListener("click", () => {
+levels.addEventListener("mouseover", () => {
   clickSound.play();
 });
 
-exit.addEventListener("click", () => {
+exit.addEventListener("mouseover", () => {
   clickSound.play();
 });

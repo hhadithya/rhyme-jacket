@@ -4,80 +4,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../styles/index.css">
+    <link rel="stylesheet" href="/styles/connecting.css">
+    <title>Connecting......</title>
 </head>
 
 <body>
-    <!-- Background Music -->
-    <audio id="background-music" src="/music/background-1.m4a" loop></audio>
-
-    <div class="bg"></div>
-    <div class="bg bg2"></div>
-    <div class="bg bg3"></div>
-    <div class="content">
-        <div id="top-icons">
-            <div id="top-icons-left">
-                <div id="settings">
-                    <a href="#setting">
-                        <img src="/images/setting.png" alt="setting">
-                    </a>
-                </div>
-                <div id="volume">
-                    <img src="/images/volume.png" alt="sound on" id="sound-on" class="hidden">
-                    <img src="/images/mute.png" alt="sound off" id="sound-off">
-                </div>
-            </div>
-
-            <div id="top-icons-right">
-                <p id="battery-percentage">100%</p>
-                <div id="battery-img">
-                    <img src="/images/battery-1.png" alt="battery 1/5 full" class="hidden">
-                    <img src="/images/battery-2.png" alt="battery 2/5 full" class="hidden">
-                    <img src="/images/battery-3.png" alt="battery 3/5 full" class="hidden">
-                    <img src="/images/battery-4.png" alt="battery 4/5 full" class="hidden">
-                    <img src="/images/battery-5.png" alt="battery 5/5 full">
-
-                </div>
-            </div>
+    <div id="content">
+        <div id="logo">
+            <img src="/images/Rhyme_Fit.png" alt="">
         </div>
-        <div id="index-content">
-            <div class="logo-area">
-                <img src="/images/Rhyme_Fit.png" alt="logo" id="logo">
+
+        <Div id="middle-content">
+            <div id="connecting">
+                <div class="loader"></div>
+                <div id="text-1">Connecting To The Device
+                    <div class="loader_1"></div>
+                </div>
             </div>
-            <div id="play">
-                <a href="/pages/initial_checking.html">
-                    <img src="/images/play.png" id="play-button" alt="play button">
-                </a>
-                <p class="zoom-in-out">Press to Start</p>
+
+            <div id="good-to-go">
+                <div id="like">
+                    <img src="/images/like.png" alt="like">
+                </div>
+                <p id="text-2">
+                    Good To Go
+                </p>
             </div>
-        </div>
+        </Div>
     </div>
 
     <script>
-        const soundOn = document.getElementById('sound-on');
-        const soundOff = document.getElementById('sound-off');
-        const audio = document.getElementById('background-music');
+        // Function to check the condition
+        function checkCondition() {
+            // Replace this with your actual condition check logic
+            return true; // Example: return true if condition is met
+        }
 
-        // play music when page is loaded
-        audio.play();
+        // Function to handle the UI update and redirection
+        function handleUIUpdateAndRedirect() {
+            document.getElementById('connecting').style.display = 'none';
+            document.getElementById('good-to-go').style.display = 'flex';
 
-        // play music when sound is on
-        soundOn.addEventListener('click', () => {
-            soundOn.classList.add('hidden');
-            soundOff.classList.remove('hidden');
-            audio.pause();
-        });
+            // Redirect to another page after displaying #good-to-go for 3 seconds
+            setTimeout(() => {
+                window.location.href = '/home.html'; // Replace with the URL of the page you want to redirect to
+            }, 3000);
+        }
 
-        // stop music when sound is off
-        soundOff.addEventListener('click', () => {
-            soundOff.classList.add('hidden');
-            soundOn.classList.remove('hidden');
-            audio.play();
-        });
+        // Check the condition at regular intervals (e.g., every 1 second)
+        const intervalId = setInterval(() => {
+            if (checkCondition()) {
+                clearInterval(intervalId); // Stop checking the condition
+                handleUIUpdateAndRedirect(); // Update UI and handle redirection
+            }
+        }, 5000);
 
     </script>
+
 </body>
 
 </html>

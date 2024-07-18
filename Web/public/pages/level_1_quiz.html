@@ -82,9 +82,7 @@
         const listen2On = document.getElementById("listen2-on");
         const listen3On = document.getElementById("listen3-on");
 
-        const optionButton1 = document.getElementById("option-button");
-        const optionButton2 = document.getElementById("option-button");
-        const optionButton3 = document.getElementById("option-button");
+        const optionButton = document.getElementById("option-button");
 
         listen1Off.addEventListener("click", () => {
             audio1.play();
@@ -121,6 +119,13 @@
             listen3On.classList.add("hidden");
             listen3Off.classList.remove("hidden");
         });
+
+        // when a optionButton is hovered over, the click sound will play
+        optionButton.addEventListener("mouseover", () => {
+            const clickSound = new Audio("/music/click.mp3");
+            clickSound.play();
+        });
+
     </script>
 </body>
 
