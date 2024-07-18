@@ -94,7 +94,7 @@ html {
 #topic {
   font-size: 4rem;
   font-weight: bold;
-  margin-top: 0.5rem;
+  margin: 0 0 1rem;
 }
 
 #middle-content {
@@ -124,7 +124,7 @@ html {
   width: 80%;
 }
 
-#start-button:hover {
+#quiz:hover {
   background-color: #4caf50;
 }
 

@@ -1,19 +1,43 @@
+<!-- send a signal back to the LED stripes -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Level 1 Lose</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Winning Page</title>
     <link rel="stylesheet" href="/styles/level_1_lose.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <div>
-        <a href="/index.html" id="home-button"><i class="fa fa-home" style="font-size:28px"></i></a>
-        <h2>Wrong Answer!!!</h2>
-        <a href="/pages/level_1_quiz.html" id="retry"><button>RETRY</button></a>
+    <div class="container">
+        <div id="top-icons">
+            <div id="top-icons-left">
+                <div id="settings">
+                    <a href="#setting">
+                        <img src="/images/setting.png" alt="setting">
+                    </a>
+                </div>
+            </div>
+
+            <div id="top-icons-right">
+                <p id="battery-percentage">100%</p>
+                <div id="battery-img">
+                    <img src="/images/battery-1.png" alt="battery 1/5 full" class="hidden">
+                    <img src="/images/battery-2.png" alt="battery 2/5 full" class="hidden">
+                    <img src="/images/battery-3.png" alt="battery 3/5 full" class="hidden">
+                    <img src="/images/battery-4.png" alt="battery 4/5 full" class="hidden">
+                    <img src="/images/battery-5.png" alt="battery 5/5 full">
+
+                </div>
+            </div>
+        </div>
+
+        <div id="lose">
+            <h1>Wrong Answer!</h1>
+            <a href="/pages/level_1_quiz.html" id="retry"><button>RETRY</button></a>
+        </div>
     </div>
 </body>
 

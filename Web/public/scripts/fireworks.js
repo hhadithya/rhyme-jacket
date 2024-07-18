@@ -8,7 +8,7 @@ class Firework {
     this.x = x;
     this.y = y;
     this.length = Math.random() * 30 + 100; // Length of lightning bolt
-    this.color = "white"; // Color of lightning bolt
+    this.color = "lightyellow"; // Color of lightning bolt
     this.alpha = Math.random() * 0.1 + 0.3; // Random alpha value
     this.decay = Math.random() * 0.02 + 0.01;
   }
@@ -38,7 +38,7 @@ class Firework {
 let fireworks = [];
 
 function addFirework() {
-  const numFireworks = 30; // Number of fireworks to add per frame
+  const numFireworks = 5; // Number of fireworks to add per frame
   for (let i = 0; i < numFireworks; i++) {
     const x = Math.random() * canvas.width;
     const y = Math.random() * canvas.height;

@@ -1,0 +1,137 @@
+body,
+html {
+  height: 100%;
+  margin: 0;
+  background: url("/images/checking-bg.png") no-repeat center center fixed;
+  background-size: cover;
+  font-family: "Fredoka One", cursive;
+  box-sizing: border-box;
+}
+
+#content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  text-align: center;
+}
+
+#logo {
+  height: 60vh;
+}
+
+#logo img {
+  height: 100%;
+}
+
+#middle-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#connecting {
+  display: flex;
+  /* display: none; */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  font-size: 2rem;
+  height: 30vh;
+}
+
+.loader {
+  width: 40vh;
+  height: 20vh;
+  border-radius: 200px 200px 0 0;
+  -webkit-mask: repeating-radial-gradient(
+    farthest-side at bottom,
+    #0000 0,
+    #000 1px 12%,
+    #0000 calc(12% + 1px) 20%
+  );
+  background: radial-gradient(farthest-side at bottom, #5f15ff 0 95%, #0000 0)
+    bottom/0% 0% no-repeat #ddd;
+  animation: l10 2s infinite steps(6);
+}
+
+@keyframes l10 {
+  100% {
+    background-size: 120% 120%;
+  }
+}
+
+#connecting #text-1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.loader_1 {
+  height: 30px;
+  aspect-ratio: 2.5;
+  --_g: no-repeat radial-gradient(farthest-side, #000 90%, #0000);
+  background: var(--_g), var(--_g), var(--_g), var(--_g);
+  background-size: 20% 50%;
+  animation: l43 1s infinite linear;
+}
+
+@keyframes l43 {
+  0% {
+    background-position: calc(0 * 100% / 3) 50%, calc(1 * 100% / 3) 50%,
+      calc(2 * 100% / 3) 50%, calc(3 * 100% / 3) 50%;
+  }
+  16.67% {
+    background-position: calc(0 * 100% / 3) 0, calc(1 * 100% / 3) 50%,
+      calc(2 * 100% / 3) 50%, calc(3 * 100% / 3) 50%;
+  }
+  33.33% {
+    background-position: calc(0 * 100% / 3) 100%, calc(1 * 100% / 3) 0,
+      calc(2 * 100% / 3) 50%, calc(3 * 100% / 3) 50%;
+  }
+  50% {
+    background-position: calc(0 * 100% / 3) 50%, calc(1 * 100% / 3) 100%,
+      calc(2 * 100% / 3) 0, calc(3 * 100% / 3) 50%;
+  }
+  66.67% {
+    background-position: calc(0 * 100% / 3) 50%, calc(1 * 100% / 3) 50%,
+      calc(2 * 100% / 3) 100%, calc(3 * 100% / 3) 0;
+  }
+  83.33% {
+    background-position: calc(0 * 100% / 3) 50%, calc(1 * 100% / 3) 50%,
+      calc(2 * 100% / 3) 50%, calc(3 * 100% / 3) 100%;
+  }
+  100% {
+    background-position: calc(0 * 100% / 3) 50%, calc(1 * 100% / 3) 50%,
+      calc(2 * 100% / 3) 50%, calc(3 * 100% / 3) 50%;
+  }
+}
+
+#good-to-go {
+  /* display: flex; */
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  height: 30vh;
+}
+
+#like {
+  height: 20vh;
+}
+
+#like img {
+  height: 100%;
+}
+
+#text-2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0;
+}
