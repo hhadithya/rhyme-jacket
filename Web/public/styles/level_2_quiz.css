@@ -70,8 +70,9 @@ html {
 #battery-percentage {
   font-size: 2.5rem;
   font-weight: bold;
+  color: rgb(255, 255, 255);
   padding: 0px 15px 0px 0px;
-  color: #000;
+  text-shadow: -2px -2px 1px rgba(0, 0, 0, 0.6), 3px 3px 3px rgba(0, 0, 0, 0.4);
 }
 
 #battery-img img {
