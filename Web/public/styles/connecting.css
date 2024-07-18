@@ -32,6 +32,17 @@ html {
   align-items: center;
 }
 
+#connecting {
+  display: flex;
+  /* display: none; */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  font-size: 2rem;
+  height: 30vh;
+}
+
 .loader {
   width: 40vh;
   height: 20vh;
@@ -42,7 +53,7 @@ html {
     #000 1px 12%,
     #0000 calc(12% + 1px) 20%
   );
-  background: radial-gradient(farthest-side at bottom, #514b82 0 95%, #0000 0)
+  background: radial-gradient(farthest-side at bottom, #5f15ff 0 95%, #0000 0)
     bottom/0% 0% no-repeat #ddd;
   animation: l10 2s infinite steps(6);
 }
@@ -53,13 +64,11 @@ html {
   }
 }
 
-#connecting {
+#connecting #text-1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
-  height: 20vh;
-  font-size: 2rem;
+  gap: 1rem;
 }
 
 .loader_1 {
@@ -70,6 +79,7 @@ html {
   background-size: 20% 50%;
   animation: l43 1s infinite linear;
 }
+
 @keyframes l43 {
   0% {
     background-position: calc(0 * 100% / 3) 50%, calc(1 * 100% / 3) 50%,
@@ -101,6 +111,27 @@ html {
   }
 }
 
-.hidden {
+#good-to-go {
+  /* display: flex; */
   display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  height: 30vh;
+}
+
+#like {
+  height: 20vh;
+}
+
+#like img {
+  height: 100%;
+}
+
+#text-2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0;
 }

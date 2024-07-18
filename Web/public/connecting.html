@@ -16,19 +16,51 @@
         </div>
 
         <Div id="middle-content">
-            <div class="loader"></div>
-            <div>
-                <img src="/images/like.png" alt="" class="hidden">
+            <div id="connecting">
+                <div class="loader"></div>
+                <div id="text-1">Connecting To The Device
+                    <div class="loader_1"></div>
+                </div>
+            </div>
+
+            <div id="good-to-go">
+                <div id="like">
+                    <img src="/images/like.png" alt="like">
+                </div>
+                <p id="text-2">
+                    Good To Go
+                </p>
             </div>
         </Div>
-
-        <div id="connecting">
-            <p id="loading">
-                Connecting To The Device
-            <div class="loader_1"></div>
-            </p>
-        </div>
     </div>
+
+    <script>
+        // Function to check the condition
+        function checkCondition() {
+            // Replace this with your actual condition check logic
+            return true; // Example: return true if condition is met
+        }
+
+        // Function to handle the UI update and redirection
+        function handleUIUpdateAndRedirect() {
+            document.getElementById('connecting').style.display = 'none';
+            document.getElementById('good-to-go').style.display = 'flex';
+
+            // Redirect to another page after displaying #good-to-go for 3 seconds
+            setTimeout(() => {
+                window.location.href = '/index.html'; // Replace with the URL of the page you want to redirect to
+            }, 3000);
+        }
+
+        // Check the condition at regular intervals (e.g., every 1 second)
+        const intervalId = setInterval(() => {
+            if (checkCondition()) {
+                clearInterval(intervalId); // Stop checking the condition
+                handleUIUpdateAndRedirect(); // Update UI and handle redirection
+            }
+        }, 1000);
+
+    </script>
 
 </body>
 
