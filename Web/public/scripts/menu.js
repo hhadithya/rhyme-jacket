@@ -12,9 +12,6 @@ const audio = document.getElementById("background-music");
 // get click sound to a constant
 const clickSound = new Audio("../music/click.mp3");
 
-// play music when page is loaded
-audio.play();
-
 // When the user clicks the button, open the modal
 btn.onclick = function () {
   modal.style.display = "block";
@@ -35,6 +32,9 @@ window.onclick = function (event) {
     modal.style.display = "none";
   }
 };
+
+// play music when page is loaded
+audio.play();
 
 // play music when sound is on
 soundOn.addEventListener("click", () => {
