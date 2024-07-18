@@ -105,7 +105,7 @@ html {
   height: 90%;
 }
 
-#three-canvas{
+#three-canvas {
   width: 80%;
   border: 5px solid lightgreen;
   border-radius: 50px;
@@ -124,7 +124,7 @@ html {
   width: 80%;
 }
 
-#start-button:hover {
+#quiz:hover {
   background-color: #4caf50;
 }
 
