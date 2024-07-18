@@ -34,7 +34,7 @@
 
         <div id="container">
             <div id="logo">
-                <img src="/images/Rhyme_Fit.png" alt="logo">
+                <img src="/images/Rhyme_Fit_2.png" alt="logo">
             </div>
 
             <div id="middle-content">
@@ -44,20 +44,44 @@
 
                 <div id="stats">
                     <div id="heart-rate">
-                        <img src="/images/heart.png" alt="heart">
-                        <p id="heart-no-input"> -- </p>
-                        <p id="heart-good" class="hidden">GOOD</p>
-                        <p id="heart-bad" class="hidden">BAD</p>
+                        <div id="heart-no-input" class="hidden">
+                            <img src="/images/heart-black.png" alt="heart">
+                            <p> -- </p>
+
+                        </div>
+                        <div id="heart-good" class="hidden">
+                            <img src="/images/heart-green.png" alt="heart condition-good">
+                            <p style="color: green;">GOOD</p>
+
+                        </div>
+                        <div id="heart-bad">
+                            <img src="/images/heart.png" alt="heart condition-bad">
+                            <p style="color: red;">BAD</p>
+                        </div>
                     </div>
                     <div id="temperature">
-                        <img src="/images/temp.png" alt="thermostat">
-                        <p id="temp-no-input"> -- </p>
-                        <p id="temp-good" class="hidden">GOOD</p>
-                        <p id="temp-bad" class="hidden">BAD</p>
+                        <div id="temp-no-input" class="hidden">
+                            <img src="/images/temp-black.png" alt="heart-no-input">
+                            <p> -- </p>
+                        </div>
+                        <div id="temp-good" class="hidden">
+                            <img src="/images/temp-green.png" alt="thermostat">
+                            <p style="color: green;">GOOD</p>
+                        </div>
+                        <div id="temp-bad">
+                            <img src="/images/temp.png" alt="">
+                            <p style="color: red;">BAD</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
+            <div id="bottom-content">
+                <p id="checking" class="hidden"> Checking your body conditions...<span style="color: red;">keep
+                        still</span></p>
+                <p id="good-to-go" class="hidden">Your body condition good. Redirecting to the game.....</p>
+                <p id="bad-to-go">Your body condition is not good. Exiting game.....</p>
+            </div>
         </div>
     </div>
 
