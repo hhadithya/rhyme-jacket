@@ -1,0 +1,104 @@
+body,
+html {
+  height: 100%;
+  margin: 0;
+  background: url("/images/background-img.jpg") no-repeat center center fixed;
+  background-size: cover;
+  font-family: "Fredoka One", cursive;
+  box-sizing: border-box;
+}
+
+#content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  text-align: center;
+}
+
+/* top icons */
+#top-icons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  margin: 1rem auto;
+  width: 95vw;
+}
+
+#top-icons-left img {
+  width: 5vw;
+  transition: width 0.3s ease-in-out;
+}
+
+#top-icons-left img:hover {
+  width: 5.5vw;
+}
+
+#top-icons-left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+#top-icons-left img {
+  width: 5vw;
+  transition: width 0.3s ease-in-out;
+}
+
+#top-icons-left img:hover {
+  width: 5.5vw;
+}
+
+#top-icons-left div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 5vw;
+}
+
+#top-icons-right {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+}
+
+#battery-percentage {
+  font-size: 2.5rem;
+  font-weight: bold;
+  padding: 0px 15px 0px 0px;
+  color: #ffffff;
+}
+
+#battery-img img {
+  width: 8vw;
+}
+
+.hidden {
+  display: none;
+}
+
+/* content of the page */
+#container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+#logo img {
+  width: 20%;
+  margin: 0 auto;
+}
+
+#middle-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
