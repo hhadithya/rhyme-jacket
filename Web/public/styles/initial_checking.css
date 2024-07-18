@@ -102,3 +102,30 @@ html {
   justify-content: center;
   width: 100%;
 }
+
+#model-img {
+  width: 45%;
+}
+
+#model-img img {
+  width: 80%;
+}
+
+#stats {
+  width: 45%;
+}
+
+#stats img {
+  width: 10vw;
+}
+
+#heart-rate,
+#temperature {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.hidden {
+  display: none;
+}
