@@ -9,6 +9,9 @@ const soundOn = document.getElementById("sound-on");
 const soundOff = document.getElementById("sound-off");
 const audio = document.getElementById("background-music");
 
+// get click sound to a constant
+const clickSound = new Audio("../music/click.mp3");
+
 // play music when page is loaded
 audio.play();
 
@@ -45,4 +48,21 @@ soundOff.addEventListener("click", () => {
   soundOff.classList.add("hidden");
   soundOn.classList.remove("hidden");
   audio.play();
+});
+
+// play a sound when #new-game, #levels and #exit buttons are clicked
+const newGame = document.getElementById("new-game");
+const levels = document.getElementById("levels");
+const exit = document.getElementById("exit");
+
+newGame.addEventListener("click", () => {
+  clickSound.play();
+});
+
+levels.addEventListener("click", () => {
+  clickSound.play();
+});
+
+exit.addEventListener("click", () => {
+  clickSound.play();
 });
