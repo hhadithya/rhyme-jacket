@@ -5,12 +5,13 @@ html {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background:url(/images/lose.bg.png)  no-repeat  center center fixed;
+  background: url(/images/lose.bg.png) no-repeat center center fixed;
   background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
   font-family: "Fredoka One", cursive;
+  cursor: url("/images/mouse-1.png"), auto;
 }
 
 /* icons on top of the page */
@@ -90,7 +91,6 @@ html {
   width: 100%;
 }
 
-
 #lose {
   display: flex;
   flex-direction: column;
@@ -106,9 +106,7 @@ h1 {
   font-family: "Fredoka One", cursive;
   margin-bottom: 5%;
   text-shadow: -2px -2px 1px rgba(0, 0, 0, 0.6), 3px 3px 3px rgba(0, 0, 0, 0.4);
-
 }
-
 
 #retry {
   text-decoration: none;
@@ -126,8 +124,9 @@ h1 {
   border: none;
   border-radius: 50px;
   padding: 20px 30px;
-  cursor: pointer;
-  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2), inset -2px -2px 5px rgba(255, 255, 255, 0.5);
+  /* cursor: pointer; */
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2),
+    inset -2px -2px 5px rgba(255, 255, 255, 0.5);
   transition: background-color 0.3s, box-shadow 0.3s;
   width: 400px;
 }
@@ -136,5 +135,5 @@ h1 {
   color: #ffffff;
   box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2),
     inset -2px -2px 5px rgba(255, 255, 255, 0.8);
-    background-color: rgb(250, 123, 49);
-  }
+  background-color: rgb(250, 123, 49);
+}

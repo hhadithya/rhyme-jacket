@@ -7,6 +7,7 @@ body {
   font-family: "Fredoka One", cursive;
   text-shadow: -2px -2px 1px rgba(0, 0, 0, 0.6), 3px 3px 3px rgba(0, 0, 0, 0.4);
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+  cursor: url("/images/mouse-1.png"), auto;
 }
 
 .bg {
@@ -237,7 +238,7 @@ body {
 .close:focus {
   color: #000;
   text-decoration: none;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 .modal-content div {
@@ -256,7 +257,7 @@ body {
     inset -2px -2px 5px rgba(255, 255, 255, 0.5);
   transition: background-color 0.3s, box-shadow 0.3s;
   position: relative;
-  cursor: pointer;
+  /* cursor: pointer; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -293,7 +294,7 @@ body {
   border-style: none;
   box-sizing: border-box;
   color: #000000;
-  cursor: pointer;
+  /* cursor: pointer; */
   display: inline-block;
   flex-direction: row;
   flex-shrink: 0;
@@ -387,7 +388,7 @@ body {
 }
 
 .menu-btn:disabled {
-  cursor: default;
+  /* cursor: default; */
   opacity: 0.24;
 }
 

@@ -6,6 +6,7 @@ html {
   background-size: cover;
   font-family: "Fredoka One", cursive;
   box-sizing: border-box;
+  cursor: url("/images/mouse.png"), auto;
 }
 
 #content {

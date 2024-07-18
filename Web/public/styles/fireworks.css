@@ -1,6 +1,7 @@
 body {
   /* background: #ffffff; */
   overflow: hidden;
+  cursor: url("/images/mouse-1.png"), auto;
 }
 
 .pyro > .before,

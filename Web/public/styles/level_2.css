@@ -7,8 +7,8 @@ html {
   background-size: cover;
   font-family: "Fredoka One", cursive;
   box-sizing: border-box;
+  cursor: url("/images/mouse-1.png"), auto;
 }
-
 
 #content {
   display: flex;
@@ -135,5 +135,5 @@ html {
   font-size: 3rem;
   background-color: transparent;
   border: none;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
