@@ -35,28 +35,64 @@
     </div>
 
     <script>
-        // Function to check the condition
-        function checkCondition() {
-            // Replace this with your actual condition check logic
-            return true; // Example: return true if condition is met
-        }
+        var connection = new WebSocket("ws://" + location.hostname + ":8080/");
+        var firstMessageReceived = false;
 
-        // Function to handle the UI update and redirection
-        function handleUIUpdateAndRedirect() {
-            document.getElementById('connecting').style.display = 'none';
-            document.getElementById('good-to-go').style.display = 'flex';
+        connection.onopen = function () {
+            console.log("WebSocket connection established.");
+        };
 
-            // Redirect to another page after displaying #good-to-go for 3 seconds
-            setTimeout(() => {
-                window.location.href = '/pages/home.html'; // Replace with the URL of the page you want to redirect to
-            }, 3000);
-        }
+        connection.onerror = function (error) {
+            console.error("WebSocket error:", error);
+        };
 
-        // Check the condition at regular intervals (e.g., every 1 second)
-        const intervalId = setInterval(() => {
-            if (checkCondition()) {
-                clearInterval(intervalId); // Stop checking the condition
-                handleUIUpdateAndRedirect(); // Update UI and handle redirection
+        connection.onmessage = function (event) {
+            if (!firstMessageReceived) {
+                console.log("First data message received from server.");
+                firstMessageReceived = true;
+
+                // Function to check the condition
+                function checkCondition() {
+                    // Replace this with your actual condition check logic
+                    return true; // Example: return true if condition is met
+                }
+
+                // Function to handle the UI update and redirection
+                function handleUIUpdateAndRedirect() {
+                    document.getElementById('connecting').style.display = 'none';
+                    document.getElementById('good-to-go').style.display = 'flex';
+
+                    // Send a message to the server before redirecting
+                    connection.send(JSON.stringify({
+                        type: 'redirect',
+                        message: 'A client is being redirected to home page'
+                    }));
+
+                    // Redirect to another page after displaying #good-to-go for 3 seconds
+                    setTimeout(() => {
+                        window.location.href = '/pages/home.html'; // Replace with the URL of the page you want to redirect to
+                    }, 3000);
+                }
+
+                // Check the condition at regular intervals (e.g., every 1 second)
+                const intervalId = setInterval(() => {
+                    if (checkCondition()) {
+                        clearInterval(intervalId); // Stop checking the condition
+                        handleUIUpdateAndRedirect(); // Update UI and handle redirection
+                    }
+                }, 5000);
+            }
+
+            event.data.text().then(text => {
+                var data = JSON.parse(text);
+                console.log(data);
+            });
+        };
+
+        // console log when first message is received every 5 seconds
+        setInterval(() => {
+            if (firstMessageReceived) {
+                console.log("First data message received from server.");
             }
         }, 5000);
 
