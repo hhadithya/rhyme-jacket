@@ -60,6 +60,8 @@
         const soundOff = document.getElementById('sound-off');
         const audio = document.getElementById('background-music');
 
+        var connection = new WebSocket("ws://" + location.hostname + ":3000/");
+
         // play music when page is loaded
         audio.play();
 
@@ -75,6 +77,13 @@
             soundOff.classList.add('hidden');
             soundOn.classList.remove('hidden');
             audio.play();
+        });
+
+        connection.addEventListener("message", (event) => {
+            event.data.text().then((text) => {
+                const data = JSON.parse(text);
+                console.log(data);
+            });
         });
 
     </script>
