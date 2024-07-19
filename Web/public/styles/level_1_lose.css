@@ -33,6 +33,7 @@ html {
 
 #top-icons-left img:hover {
   width: 5.5vw;
+  cursor: url("/images/mouse-1.png"), auto;
 }
 
 #top-icons-left {
@@ -49,6 +50,7 @@ html {
 
 #top-icons-left img:hover {
   width: 5.5vw;
+  cursor: url("/images/mouse-1.png"), auto;
 }
 
 #top-icons-left div {
@@ -129,6 +131,7 @@ h1 {
     inset -2px -2px 5px rgba(255, 255, 255, 0.5);
   transition: background-color 0.3s, box-shadow 0.3s;
   width: 400px;
+  cursor: url("/images/mouse-1.png"), auto;
 }
 
 #retry button:hover {
@@ -136,4 +139,5 @@ h1 {
   box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2),
     inset -2px -2px 5px rgba(255, 255, 255, 0.8);
   background-color: rgb(250, 123, 49);
+  cursor: url("/images/mouse-1.png"), auto;
 }

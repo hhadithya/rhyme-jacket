@@ -37,6 +37,7 @@ html {
 
 #top-icons-left img:hover {
   width: 5.5vw;
+  cursor: url("/images/mouse-1.png"), auto;
 }
 
 #top-icons-left {
@@ -53,6 +54,7 @@ html {
 
 #top-icons-left img:hover {
   width: 5.5vw;
+  cursor: url("/images/mouse-1.png"), auto;
 }
 
 #top-icons-left div {
@@ -147,6 +149,7 @@ html {
 
 #option-button:hover {
   background-color: rgb(178, 240, 178);
+  cursor: url("/images/mouse-1.png"), auto;
 }
 
 #option-button a {
@@ -157,6 +160,11 @@ html {
   font-family: "Fredoka One", cursive;
   font-size: 3rem;
   text-shadow: #000;
+  cursor: url("/images/mouse-1.png"), auto;
+}
+
+#option-button a:hover{
+  cursor: url("/images/mouse-1.png"), auto;
 }
 
 .answer img {

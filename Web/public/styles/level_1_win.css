@@ -33,6 +33,7 @@ html {
 
 #top-icons-left img:hover {
   width: 5.5vw;
+  cursor: url("/images/mouse-1.png"), auto;
 }
 
 #top-icons-left {
@@ -49,6 +50,7 @@ html {
 
 #top-icons-left img:hover {
   width: 5.5vw;
+  cursor: url("/images/mouse-1.png"), auto;
 }
 
 #top-icons-left div {
@@ -125,6 +127,11 @@ h1 {
 
 #nextLevelButton:hover {
   background-color: rgb(80, 204, 253);
+  cursor: url("/images/mouse-1.png"), auto;
+}
+
+#nextLevelButton a:hover {
+  cursor: url("/images/mouse-1.png"), auto;
 }
 
 #fireworksCanvas {

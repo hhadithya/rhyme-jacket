@@ -37,6 +37,7 @@ html {
 
 #top-icons-left img:hover {
   width: 5.5vw;
+  cursor: url("/images/mouse-1.png"), auto;
 }
 
 #top-icons-left {
@@ -53,6 +54,7 @@ html {
 
 #top-icons-left img:hover {
   width: 5.5vw;
+  cursor: url("/images/mouse-1.png"), auto;
 }
 
 #top-icons-left div {
@@ -123,10 +125,12 @@ html {
   transition: background-color 0.3s, box-shadow 0.3s;
   font-size: 3.5em;
   width: 80%;
+  cursor: url("/images/mouse-1.png"), auto;
 }
 
 #quiz:hover {
   background-color: #4caf50;
+  cursor: url("/images/mouse-1.png"), auto;
 }
 
 #button-text {
@@ -135,5 +139,4 @@ html {
   font-size: 3rem;
   background-color: transparent;
   border: none;
-  /* cursor: pointer; */
-}
+  cursor: url("/images/mouse-1.png"), auto;}
