@@ -60,7 +60,7 @@
         const soundOff = document.getElementById('sound-off');
         const audio = document.getElementById('background-music');
 
-        var connection = new WebSocket("ws://" + location.hostname + ":3000/");
+        var connection = new WebSocket("ws://" + location.hostname + ":8080/");
 
         // play music when page is loaded
         audio.play();
@@ -85,6 +85,17 @@
                 console.log(data);
             });
         });
+
+        // console log when the connection is opened
+        connection.onopen = () => {
+            console.log("WebSocket connection opened");
+        };
+
+        // send a message to the server 5 seconds after the connection is opened
+        setTimeout(() => {
+            connection.send("Hello from the client!");
+            console.log("Sent: Hello from the client!");
+        }, 5000);
 
     </script>
 </body>
