@@ -91,34 +91,39 @@ setInterval(() => {
   var batteryImg = document.getElementById("battery-img").children;
 
   if (batteryPercentage <= 20) {
-    batteryImg[0].classList.remove("hidden");
-    batteryImg[1].classList.add("hidden");
-    batteryImg[2].classList.add("hidden");
-    batteryImg[3].classList.add("hidden");
-    batteryImg[4].classList.add("hidden");
-  } else if (batteryPercentage <= 40) {
     batteryImg[0].classList.add("hidden");
     batteryImg[1].classList.remove("hidden");
     batteryImg[2].classList.add("hidden");
     batteryImg[3].classList.add("hidden");
     batteryImg[4].classList.add("hidden");
-  } else if (batteryPercentage <= 60) {
+    batteryImg[5].classList.add("hidden");
+  } else if (batteryPercentage <= 40) {
     batteryImg[0].classList.add("hidden");
     batteryImg[1].classList.add("hidden");
     batteryImg[2].classList.remove("hidden");
     batteryImg[3].classList.add("hidden");
     batteryImg[4].classList.add("hidden");
-  } else if (batteryPercentage <= 80) {
+    batteryImg[5].classList.add("hidden");
+  } else if (batteryPercentage <= 60) {
     batteryImg[0].classList.add("hidden");
     batteryImg[1].classList.add("hidden");
     batteryImg[2].classList.add("hidden");
     batteryImg[3].classList.remove("hidden");
     batteryImg[4].classList.add("hidden");
-  } else {
+    batteryImg[5].classList.add("hidden");
+  } else if (batteryPercentage <= 80) {
     batteryImg[0].classList.add("hidden");
     batteryImg[1].classList.add("hidden");
     batteryImg[2].classList.add("hidden");
     batteryImg[3].classList.add("hidden");
     batteryImg[4].classList.remove("hidden");
+    batteryImg[5].classList.add("hidden");
+  } else {
+    batteryImg[0].classList.add("hidden");
+    batteryImg[1].classList.add("hidden");
+    batteryImg[2].classList.add("hidden");
+    batteryImg[3].classList.add("hidden");
+    batteryImg[4].classList.add("hidden");
+    batteryImg[5].classList.remove("hidden");
   }
 }, 500);

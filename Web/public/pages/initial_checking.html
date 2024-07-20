@@ -29,13 +29,14 @@
             </div>
 
             <div id="top-icons-right">
-                <p id="battery-percentage">100%</p>
+                <p id="battery-percentage">--%</p>
                 <div id="battery-img">
+                    <img src="/images/battery-0.png" alt="battery 0/5 full">
                     <img src="/images/battery-1.png" alt="battery 1/5 full" class="hidden">
                     <img src="/images/battery-2.png" alt="battery 2/5 full" class="hidden">
                     <img src="/images/battery-3.png" alt="battery 3/5 full" class="hidden">
                     <img src="/images/battery-4.png" alt="battery 4/5 full" class="hidden">
-                    <img src="/images/battery-5.png" alt="battery 5/5 full">
+                    <img src="/images/battery-5.png" alt="battery 5/5 full" class="hidden">
                 </div>
             </div>
         </div>
@@ -54,7 +55,7 @@
                     <div id="heart-rate">
                         <div id="heart-no-input">
                             <img src="/images/heart-black.png" alt="heart">
-                            <p> -- </p>
+                            <p id="heart-value"> -- </p>
 
                         </div>
                         <div id="heart-good" class="hidden">
@@ -98,6 +99,7 @@
         const soundOff = document.getElementById("sound-off");
         const audio = document.getElementById("background-music");
         const batteryPercentageElement = document.getElementById("battery-percentage");
+        const heartValue = document.getElementById("heart-value");
 
         var connection = new WebSocket("ws://" + location.hostname + ":8080/");
 
@@ -130,6 +132,9 @@
                 if (data.batteryPercentage !== undefined) {
                     batteryPercentageElement.textContent = data.batteryPercentage.toFixed(0) + '%';
                 }
+                if (data.heartRate !== undefined) {
+                    heartValue.textContent = data.heartRate;
+                }
             });
         };
 
@@ -139,35 +144,40 @@
             var batteryImg = document.getElementById('battery-img').children;
 
             if (batteryPercentage <= 20) {
-                batteryImg[0].classList.remove('hidden');
-                batteryImg[1].classList.add('hidden');
-                batteryImg[2].classList.add('hidden');
-                batteryImg[3].classList.add('hidden');
-                batteryImg[4].classList.add('hidden');
-            } else if (batteryPercentage <= 40) {
                 batteryImg[0].classList.add('hidden');
                 batteryImg[1].classList.remove('hidden');
                 batteryImg[2].classList.add('hidden');
                 batteryImg[3].classList.add('hidden');
                 batteryImg[4].classList.add('hidden');
-            } else if (batteryPercentage <= 60) {
+                batteryImg[5].classList.add('hidden');
+            } else if (batteryPercentage <= 40) {
                 batteryImg[0].classList.add('hidden');
                 batteryImg[1].classList.add('hidden');
                 batteryImg[2].classList.remove('hidden');
                 batteryImg[3].classList.add('hidden');
                 batteryImg[4].classList.add('hidden');
-            } else if (batteryPercentage <= 80) {
+                batteryImg[5].classList.add('hidden');
+            } else if (batteryPercentage <= 60) {
                 batteryImg[0].classList.add('hidden');
                 batteryImg[1].classList.add('hidden');
                 batteryImg[2].classList.add('hidden');
                 batteryImg[3].classList.remove('hidden');
                 batteryImg[4].classList.add('hidden');
-            } else {
+                batteryImg[5].classList.add('hidden');
+            } else if (batteryPercentage <= 80) {
                 batteryImg[0].classList.add('hidden');
                 batteryImg[1].classList.add('hidden');
                 batteryImg[2].classList.add('hidden');
                 batteryImg[3].classList.add('hidden');
                 batteryImg[4].classList.remove('hidden');
+                batteryImg[5].classList.add('hidden');
+            } else {
+                batteryImg[0].classList.add('hidden');
+                batteryImg[1].classList.add('hidden');
+                batteryImg[2].classList.add('hidden');
+                batteryImg[3].classList.add('hidden');
+                batteryImg[4].classList.add('hidden');
+                batteryImg[5].classList.remove('hidden');
             }
         }, 500);
 

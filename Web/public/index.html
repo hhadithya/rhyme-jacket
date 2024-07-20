@@ -28,7 +28,7 @@
                     <img src="/images/like.gif" alt="like">
                 </div>
                 <p id="text-2">
-                    Connected
+                    The Device is Connected
                 </p>
             </div>
         </Div>
@@ -36,7 +36,7 @@
 
     <script>
         var connection = new WebSocket("ws://" + location.hostname + ":8080/");
-        var firstMessageReceived = false;
+        var connectionEstablished = false;
 
         connection.onopen = function () {
             console.log("WebSocket connection established.");
@@ -47,54 +47,68 @@
         };
 
         connection.onmessage = function (event) {
-            if (!firstMessageReceived) {
-                console.log("First data message received from server.");
-                firstMessageReceived = true;
+            // if (!firstMessageReceived) {
+            //     console.log("First data message received from server.");
+            //     firstMessageReceived = true;
 
-                // Function to check the condition
-                function checkCondition() {
-                    // Replace this with your actual condition check logic
-                    return true; // Example: return true if condition is met
-                }
+            //     // Function to check the condition
+            //     function checkCondition() {
+            //         // Replace this with your actual condition check logic
+            //         return true; // Example: return true if condition is met
+            //     }
 
-                // Function to handle the UI update and redirection
-                function handleUIUpdateAndRedirect() {
-                    document.getElementById('connecting').style.display = 'none';
-                    document.getElementById('good-to-go').style.display = 'flex';
+            //     // Function to handle the UI update and redirection
+            //     function handleUIUpdateAndRedirect() {
+            //         document.getElementById('connecting').style.display = 'none';
+            //         document.getElementById('good-to-go').style.display = 'flex';
 
-                    // Send a message to the server before redirecting
-                    connection.send(JSON.stringify({
-                        type: 'redirect',
-                        message: 'true'
-                    }));
+            //         // Send a message to the server before redirecting
+            //         connection.send(JSON.stringify({
+            //             type: 'redirect',
+            //             message: 'true'
+            //         }));
 
-                    // Redirect to another page after displaying #good-to-go for 3 seconds
-                    setTimeout(() => {
-                        window.location.href = '/pages/home.html'; // Replace with the URL of the page you want to redirect to
-                    }, 3000);
-                }
+            //         // Redirect to another page after displaying #good-to-go for 3 seconds
+            //         setTimeout(() => {
+            //             window.location.href = '/pages/home.html'; // Replace with the URL of the page you want to redirect to
+            //         }, 3000);
+            //     }
 
-                // Check the condition at regular intervals (e.g., every 1 second)
-                const intervalId = setInterval(() => {
-                    if (checkCondition()) {
-                        clearInterval(intervalId); // Stop checking the condition
-                        handleUIUpdateAndRedirect(); // Update UI and handle redirection
-                    }
-                }, 5000);
-            }
+            //     // Check the condition at regular intervals (e.g., every 1 second)
+            //     const intervalId = setInterval(() => {
+            //         if (checkCondition()) {
+            //             clearInterval(intervalId); // Stop checking the condition
+            //             handleUIUpdateAndRedirect(); // Update UI and handle redirection
+            //         }
+            //     }, 2000);
+            // }
 
             event.data.text().then(text => {
                 var data = JSON.parse(text);
-                console.log(data);
+                console.log("Received message:", data);
+
+                if (data.ConnectionStatus === true && !connectionEstablished) {
+                    connectionEstablished = true;
+                    handleUIUpdateAndRedirect();
+                }
             });
         };
 
-        // console log when first message is received every 5 seconds
-        setInterval(() => {
-            if (firstMessageReceived) {
-                console.log("First data message received from server.");
-            }
-        }, 5000);
+        function handleUIUpdateAndRedirect() {
+            document.getElementById('connecting').style.display = 'none';
+            document.getElementById('good-to-go').style.display = 'flex';
+
+            // Send a message to the server before redirecting
+            connection.send(JSON.stringify({
+                type: 'redirect',
+                message: 'true'
+            }));
+
+            // Redirect to another page after displaying #good-to-go for 3 seconds
+            setTimeout(() => {
+                window.location.href = '/pages/home.html'; // Replace with the URL of the page you want to redirect to
+            }, 3000);
+        }
 
     </script>
 

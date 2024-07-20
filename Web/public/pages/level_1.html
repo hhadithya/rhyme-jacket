@@ -35,13 +35,14 @@
             </div>
 
             <div id="top-icons-right">
-                <p id="battery-percentage">100%</p>
+                <p id="battery-percentage">--%</p>
                 <div id="battery-img">
+                    <img src="/images/battery-0.png" alt="battery 1/5 full">
                     <img src="/images/battery-1.png" alt="battery 1/5 full" class="hidden">
                     <img src="/images/battery-2.png" alt="battery 2/5 full" class="hidden">
                     <img src="/images/battery-3.png" alt="battery 3/5 full" class="hidden">
                     <img src="/images/battery-4.png" alt="battery 4/5 full" class="hidden">
-                    <img src="/images/battery-5.png" alt="battery 5/5 full">
+                    <img src="/images/battery-5.png" alt="battery 5/5 full" class="hidden">
                 </div>
             </div>
         </div>
@@ -87,35 +88,40 @@
             var batteryImg = document.getElementById("battery-img").children;
 
             if (batteryPercentage <= 20) {
-                batteryImg[0].classList.remove("hidden");
-                batteryImg[1].classList.add("hidden");
-                batteryImg[2].classList.add("hidden");
-                batteryImg[3].classList.add("hidden");
-                batteryImg[4].classList.add("hidden");
-            } else if (batteryPercentage <= 40) {
                 batteryImg[0].classList.add("hidden");
                 batteryImg[1].classList.remove("hidden");
                 batteryImg[2].classList.add("hidden");
                 batteryImg[3].classList.add("hidden");
                 batteryImg[4].classList.add("hidden");
-            } else if (batteryPercentage <= 60) {
+                batteryImg[5].classList.add("hidden");
+            } else if (batteryPercentage <= 40) {
                 batteryImg[0].classList.add("hidden");
                 batteryImg[1].classList.add("hidden");
                 batteryImg[2].classList.remove("hidden");
                 batteryImg[3].classList.add("hidden");
                 batteryImg[4].classList.add("hidden");
-            } else if (batteryPercentage <= 80) {
+                batteryImg[5].classList.add("hidden");
+            } else if (batteryPercentage <= 60) {
                 batteryImg[0].classList.add("hidden");
                 batteryImg[1].classList.add("hidden");
                 batteryImg[2].classList.add("hidden");
                 batteryImg[3].classList.remove("hidden");
                 batteryImg[4].classList.add("hidden");
-            } else {
+                batteryImg[5].classList.add("hidden");
+            } else if (batteryPercentage <= 80) {
                 batteryImg[0].classList.add("hidden");
                 batteryImg[1].classList.add("hidden");
                 batteryImg[2].classList.add("hidden");
                 batteryImg[3].classList.add("hidden");
                 batteryImg[4].classList.remove("hidden");
+                batteryImg[5].classList.add("hidden");
+            } else {
+                batteryImg[0].classList.add("hidden");
+                batteryImg[1].classList.add("hidden");
+                batteryImg[2].classList.add("hidden");
+                batteryImg[3].classList.add("hidden");
+                batteryImg[4].classList.add("hidden");
+                batteryImg[5].classList.remove("hidden");
             }
         }, 500);
 
