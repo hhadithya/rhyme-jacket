@@ -90,6 +90,11 @@
                 if (data.ConnectionStatus === true && !connectionEstablished) {
                     connectionEstablished = true;
                     handleUIUpdateAndRedirect();
+                } else {
+                    connection.send(JSON.stringify({
+                        type: 'redirect',
+                        message: 'false'
+                    }));
                 }
             });
         };

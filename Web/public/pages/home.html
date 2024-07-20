@@ -94,14 +94,22 @@
             });
         };
 
-        // if playButton is clicked, send a message to the server
-        playButton.addEventListener('click', () => {
-            console.log("button clicked");
+        // when page is fully loaded, send a message to the server
+        window.addEventListener('load', () => {
             connection.send(JSON.stringify({
                 type: 'redirect',
-                message: 'body-checking'
+                message: 'home'
             }));
         });
+
+        // // if playButton is clicked, send a message to the server
+        // playButton.addEventListener('click', () => {
+        //     console.log("button clicked");
+        //     connection.send(JSON.stringify({
+        //         type: 'redirect',
+        //         message: 'body-checking'
+        //     }));
+        // });
 
         // change battery image based on battery percentage
         setInterval(() => {
@@ -136,13 +144,20 @@
                 batteryImg[3].classList.add('hidden');
                 batteryImg[4].classList.remove('hidden');
                 batteryImg[5].classList.add('hidden');
-            } else {
+            } else if (batteryPercentage <= 100) {
                 batteryImg[0].classList.add('hidden');
                 batteryImg[1].classList.add('hidden');
                 batteryImg[2].classList.add('hidden');
                 batteryImg[3].classList.add('hidden');
                 batteryImg[4].classList.add('hidden');
                 batteryImg[5].classList.remove('hidden');
+            } else {
+                batteryImg[0].classList.remove('hidden');
+                batteryImg[1].classList.add('hidden');
+                batteryImg[2].classList.add('hidden');
+                batteryImg[3].classList.add('hidden');
+                batteryImg[4].classList.add('hidden');
+                batteryImg[5].classList.add('hidden');
             }
         }, 500);
     </script>
