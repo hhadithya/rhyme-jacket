@@ -121,4 +121,4 @@ setInterval(() => {
     batteryImg[3].classList.add("hidden");
     batteryImg[4].classList.remove("hidden");
   }
-}, 1000);
+}, 500);

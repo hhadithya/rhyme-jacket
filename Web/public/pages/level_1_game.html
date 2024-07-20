@@ -73,34 +73,60 @@
 
     <script src="/scripts/level_1_game_model.js" type="module"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const heartRateElement = document.getElementById('heart_rate_value');
-            const temperatureElement = document.getElementById('temperature_value');
+        const batteryPercentageElement = document.getElementById("battery-percentage");
+        var connection = new WebSocket("ws://" + location.hostname + ":8080/");
 
-            const socket = new WebSocket('ws://' + window.location.host);
+        connection.onmessage = function (event) {
+            event.data.text().then((text) => {
+                var data = JSON.parse(text);
+                console.log(data);
 
-            socket.addEventListener("message", event => {
-                // event.data is Blob
-                event.data.text().then(text => {
-                    // text is the message
-                    var data = JSON.parse(text);
-                    // console.log(data);
-                    if (data.heartRate !== undefined) {
-                        heartRateElement.innerText = "Heart Rate: " + data.heartRate + " bpm";
-                        // add temperature value
-                        // temperatureElement.innerText = "Temperature: " + data.temperature + "°C";
-                    }
-                });
+                // Update the battery percentage element
+                if (data.batteryPercentage !== undefined) {
+                    // round the battery percentage to 0 decimal places
+                    batteryPercentageElement.textContent =
+                        data.batteryPercentage.toFixed(0) + "%";
+                }
             });
+        };
 
-            socket.onopen = () => {
-                console.log('WebSocket connection opened');
-            };
+        // change battery image based on battery percentage
+        setInterval(() => {
+            var batteryPercentage = parseFloat(batteryPercentageElement.textContent);
+            var batteryImg = document.getElementById("battery-img").children;
 
-            socket.onclose = () => {
-                console.log('WebSocket connection closed');
-            };
-        });
+            if (batteryPercentage <= 20) {
+                batteryImg[0].classList.remove("hidden");
+                batteryImg[1].classList.add("hidden");
+                batteryImg[2].classList.add("hidden");
+                batteryImg[3].classList.add("hidden");
+                batteryImg[4].classList.add("hidden");
+            } else if (batteryPercentage <= 40) {
+                batteryImg[0].classList.add("hidden");
+                batteryImg[1].classList.remove("hidden");
+                batteryImg[2].classList.add("hidden");
+                batteryImg[3].classList.add("hidden");
+                batteryImg[4].classList.add("hidden");
+            } else if (batteryPercentage <= 60) {
+                batteryImg[0].classList.add("hidden");
+                batteryImg[1].classList.add("hidden");
+                batteryImg[2].classList.remove("hidden");
+                batteryImg[3].classList.add("hidden");
+                batteryImg[4].classList.add("hidden");
+            } else if (batteryPercentage <= 80) {
+                batteryImg[0].classList.add("hidden");
+                batteryImg[1].classList.add("hidden");
+                batteryImg[2].classList.add("hidden");
+                batteryImg[3].classList.remove("hidden");
+                batteryImg[4].classList.add("hidden");
+            } else {
+                batteryImg[0].classList.add("hidden");
+                batteryImg[1].classList.add("hidden");
+                batteryImg[2].classList.add("hidden");
+                batteryImg[3].classList.add("hidden");
+                batteryImg[4].classList.remove("hidden");
+            }
+        }, 500);
 
         document.addEventListener("DOMContentLoaded", function () {
             // Show the next level link after 60 seconds

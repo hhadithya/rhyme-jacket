@@ -37,13 +37,71 @@
         <div id="win">
             <h1>Level Completed!</h1>
             <button id="nextLevelButton"><a href="/pages/level_3_unlocked.html"
-                style="text-decoration: none;color: black;"><b>Next Level</b></a></button>
+                    style="text-decoration: none;color: black;"><b>Next Level</b></a></button>
         </div>
     </div>
     <canvas id="fireworksCanvas"></canvas>
 
 
     <script src="/scripts/fireworks.js"></script>
+    <script>
+        const batteryPercentageElement = document.getElementById("battery-percentage");
+
+        var connection = new WebSocket("ws://" + location.hostname + ":8080/");
+
+        connection.onmessage = function (event) {
+            event.data.text().then((text) => {
+                var data = JSON.parse(text);
+                console.log(data);
+
+                // Update the battery percentage element
+                if (data.batteryPercentage !== undefined) {
+                    // round the battery percentage to 0 decimal places
+                    batteryPercentageElement.textContent =
+                        data.batteryPercentage.toFixed(0) + "%";
+                }
+            });
+        };
+
+        // change battery image based on battery percentage
+        setInterval(() => {
+            var batteryPercentage = parseFloat(batteryPercentageElement.textContent);
+            var batteryImg = document.getElementById("battery-img").children;
+
+            if (batteryPercentage <= 20) {
+                batteryImg[0].classList.remove("hidden");
+                batteryImg[1].classList.add("hidden");
+                batteryImg[2].classList.add("hidden");
+                batteryImg[3].classList.add("hidden");
+                batteryImg[4].classList.add("hidden");
+            } else if (batteryPercentage <= 40) {
+                batteryImg[0].classList.add("hidden");
+                batteryImg[1].classList.remove("hidden");
+                batteryImg[2].classList.add("hidden");
+                batteryImg[3].classList.add("hidden");
+                batteryImg[4].classList.add("hidden");
+            } else if (batteryPercentage <= 60) {
+                batteryImg[0].classList.add("hidden");
+                batteryImg[1].classList.add("hidden");
+                batteryImg[2].classList.remove("hidden");
+                batteryImg[3].classList.add("hidden");
+                batteryImg[4].classList.add("hidden");
+            } else if (batteryPercentage <= 80) {
+                batteryImg[0].classList.add("hidden");
+                batteryImg[1].classList.add("hidden");
+                batteryImg[2].classList.add("hidden");
+                batteryImg[3].classList.remove("hidden");
+                batteryImg[4].classList.add("hidden");
+            } else {
+                batteryImg[0].classList.add("hidden");
+                batteryImg[1].classList.add("hidden");
+                batteryImg[2].classList.add("hidden");
+                batteryImg[3].classList.add("hidden");
+                batteryImg[4].classList.remove("hidden");
+            }
+        }, 500);
+
+    </script>
 </body>
 
 </html>

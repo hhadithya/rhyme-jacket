@@ -44,6 +44,63 @@
 
 
     <script src="/scripts/fireworks.js"></script>
+    <script>
+        const batteryPercentageElement = document.getElementById("battery-percentage");
+
+        var connection = new WebSocket("ws://" + location.hostname + ":8080/");
+
+        connection.onmessage = function (event) {
+            event.data.text().then((text) => {
+                var data = JSON.parse(text);
+                console.log(data);
+
+                // Update the battery percentage element
+                if (data.batteryPercentage !== undefined) {
+                    // round the battery percentage to 0 decimal places
+                    batteryPercentageElement.textContent =
+                        data.batteryPercentage.toFixed(0) + "%";
+                }
+            });
+        };
+
+        // change battery image based on battery percentage
+        setInterval(() => {
+            var batteryPercentage = parseFloat(batteryPercentageElement.textContent);
+            var batteryImg = document.getElementById("battery-img").children;
+
+            if (batteryPercentage <= 20) {
+                batteryImg[0].classList.remove("hidden");
+                batteryImg[1].classList.add("hidden");
+                batteryImg[2].classList.add("hidden");
+                batteryImg[3].classList.add("hidden");
+                batteryImg[4].classList.add("hidden");
+            } else if (batteryPercentage <= 40) {
+                batteryImg[0].classList.add("hidden");
+                batteryImg[1].classList.remove("hidden");
+                batteryImg[2].classList.add("hidden");
+                batteryImg[3].classList.add("hidden");
+                batteryImg[4].classList.add("hidden");
+            } else if (batteryPercentage <= 60) {
+                batteryImg[0].classList.add("hidden");
+                batteryImg[1].classList.add("hidden");
+                batteryImg[2].classList.remove("hidden");
+                batteryImg[3].classList.add("hidden");
+                batteryImg[4].classList.add("hidden");
+            } else if (batteryPercentage <= 80) {
+                batteryImg[0].classList.add("hidden");
+                batteryImg[1].classList.add("hidden");
+                batteryImg[2].classList.add("hidden");
+                batteryImg[3].classList.remove("hidden");
+                batteryImg[4].classList.add("hidden");
+            } else {
+                batteryImg[0].classList.add("hidden");
+                batteryImg[1].classList.add("hidden");
+                batteryImg[2].classList.add("hidden");
+                batteryImg[3].classList.add("hidden");
+                batteryImg[4].classList.remove("hidden");
+            }
+        }, 500);
+    </script>
 </body>
 
 </html>
