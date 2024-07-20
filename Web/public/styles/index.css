@@ -31,6 +31,8 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0px;
+  margin: 0px;
 }
 
 #connecting {
@@ -119,11 +121,15 @@ html {
   justify-content: center;
   align-items: center;
   font-size: 3rem;
-  height: 30vh;
+  height: 40vh;
+  padding: 0px;
+  margin: 0px;
 }
 
 #like {
-  height: 20vh;
+  height: 35vh;
+  position: absolute;
+  top:57%;
 }
 
 #like img {
@@ -131,8 +137,10 @@ html {
 }
 
 #text-2 {
-  display: flex;
+  padding-top: 60%;
+  z-index:+1;
+  display: absolute;
   justify-content: center;
   align-items: center;
-  margin: 1rem 0;
+  margin:0;
 }
