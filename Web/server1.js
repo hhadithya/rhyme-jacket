@@ -17,6 +17,7 @@ wss.on("connection", (ws) => {
   ws.on("message", (message) => {
     try {
       const data = JSON.parse(message);
+      console.log("Received message:", data);
 
       if (data.type === "redirect") {
         // Broadcast the redirect message to all clients
