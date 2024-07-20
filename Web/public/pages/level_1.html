@@ -68,6 +68,16 @@
         const batteryPercentageElement = document.getElementById("battery-percentage");
         var connection = new WebSocket("ws://" + location.hostname + ":8080/");
 
+        // when the page is loaded send a message to the server
+        window.addEventListener("load", () => {
+            connection.send(
+                JSON.stringify({
+                    type: "redirect",
+                    message: "L1_demo",
+                })
+            );
+        });
+
         connection.onmessage = function (event) {
             event.data.text().then((text) => {
                 var data = JSON.parse(text);

@@ -97,6 +97,16 @@
         // play music when page is loaded
         audio.play();
 
+        // when page is loaded send a message to server 
+        window.addEventListener("load", () => {
+            connection.send(
+                JSON.stringify({
+                    type: "redirect",
+                    message: "L1_unlocked",
+                })
+            );
+        });
+
         // play music when sound is on
         soundOn.addEventListener("click", () => {
             soundOn.classList.add("hidden");

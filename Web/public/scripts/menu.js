@@ -12,6 +12,16 @@ const batteryPercentageElement = document.getElementById("battery-percentage");
 
 var connection = new WebSocket("ws://" + location.hostname + ":8080/");
 
+// when page is loaded send a message to server
+window.addEventListener("load", () => {
+  connection.send(
+    JSON.stringify({
+      type: "redirect",
+      message: "menu",
+    })
+  );
+});
+
 // get click sound to a constant
 const clickSound = new Audio("../music/click.mp3");
 

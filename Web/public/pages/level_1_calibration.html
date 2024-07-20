@@ -42,6 +42,18 @@
     </div>
 
     <script>
+        var connection = new WebSocket("ws://" + location.hostname + ":8080/");
+
+        // when the page is fully loaded send a message to the server 
+        window.addEventListener("load", () => {
+            connection.send(
+                JSON.stringify({
+                    type: "redirect",
+                    message: "L1_calibration",
+                })
+            );
+        });
+
         // change msg-1 to msg-2 after 3 seconds and change back to msg-1 after 3 seconds. loop this
         setInterval(() => {
             document.getElementById('msg-1').classList.toggle('hidden');

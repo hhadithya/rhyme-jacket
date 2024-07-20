@@ -87,6 +87,16 @@
 
         var connection = new WebSocket("ws://" + location.hostname + ":8080/");
 
+        // send a message when is loaded
+        window.addEventListener("load", () => {
+            connection.send(
+                JSON.stringify({
+                    type: "redirect",
+                    message: "L1_quiz",
+                })
+            );
+        });
+
         listen1Off.addEventListener("click", () => {
             audio1.play();
             listen1Off.classList.add("hidden");
