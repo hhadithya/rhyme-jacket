@@ -125,5 +125,18 @@ html {
 #readings {
   height: 100%;
   width: 60%;
+  background-color: #ffffff;
   border-radius: 20px;
+  border: 0.7rem solid #ffffff71;
+  box-shadow: 0 6px 10px #ffffff71;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+#line{
+  width: 100%;
+  display: flex;
+}
+
+
