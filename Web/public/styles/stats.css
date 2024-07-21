@@ -107,6 +107,10 @@ html {
   justify-content: space-between;
 }
 
+#container img {
+  width: 30%;
+}
+
 #model {
   height: 100%;
   width: 30%;
@@ -134,9 +138,7 @@ html {
   align-items: center;
 }
 
-#line{
+#line {
   width: 100%;
   display: flex;
 }
-
-
