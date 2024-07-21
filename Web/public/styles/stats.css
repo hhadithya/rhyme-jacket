@@ -101,7 +101,7 @@ html {
 /* content of the page */
 #container {
   height: 70%;
-  margin-top: 10vh;
+  margin-top: 15vh;
   display: flex;
   align-items: center;
   justify-content: space-between;
