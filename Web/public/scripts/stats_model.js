@@ -1,10 +1,10 @@
 import * as THREE from "three";
 import { GLTFLoader } from "jsm/loaders/GLTFLoader.js";
-// import { OrbitControls } from "jsm/controls/OrbitControls.js";
+import { OrbitControls } from "jsm/controls/OrbitControls.js";
 
 const canvas = document.getElementById("stat_model_canvas");
 
-let model;
+let model, rightArm, leftArm;
 
 function init() {
   const scene = new THREE.Scene();
@@ -28,6 +28,11 @@ function init() {
     "https://threejs.org/examples/models/gltf/Michelle.glb",
     function (gltf) {
       model = gltf.scene;
+
+      rightArm = model.getObjectByName("mixamorigRightArm");
+      leftArm = model.getObjectByName("mixamorigLeftArm");
+
+      rightArm.rotation.x = leftArm.rotation.x = 0.95;
 
       model.scale.set(12, 12, 12);
       model.position.y = 3;
