@@ -8,7 +8,7 @@ let model, rightArm, leftArm;
 
 function init() {
   const scene = new THREE.Scene();
-  scene.background = new THREE.Color(0xB0DEEE);
+  scene.background = new THREE.Color(0xb0deee);
   const camera = new THREE.PerspectiveCamera(
     75,
     window.innerWidth / window.innerHeight,
