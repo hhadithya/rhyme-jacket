@@ -100,10 +100,11 @@ html {
 
 /* content of the page */
 #container {
-  height: 90%;
+  height: 70%;
+  margin-top: 10vh;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 #model {
