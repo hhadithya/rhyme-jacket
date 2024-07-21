@@ -7,7 +7,7 @@ html {
   background-size: cover;
   font-family: "Fredoka One", cursive;
   box-sizing: border-box;
-  cursor: url("/images/mouse-1.png"), auto;
+  cursor: url("/images/mouse-3.png"), auto;
 }
 
 #content {
@@ -38,7 +38,7 @@ html {
 
 #top-icons-left img:hover {
   width: 5.5vw;
-  cursor: url("/images/mouse-1.png"), auto;
+  cursor: url("/images/mouse-3-pointer.png"), auto;
 }
 
 #top-icons-left {
@@ -55,7 +55,7 @@ html {
 
 #top-icons-left img:hover {
   width: 5.5vw;
-  cursor: url("/images/mouse-1.png"), auto;
+  cursor: url("/images/mouse-3-pointer.png"), auto;
 }
 
 #top-icons-left div {
@@ -129,7 +129,7 @@ html {
 
 #start-button:hover {
   background-color: #4caf50;
-  cursor: url("/images/mouse-1.png"), auto;
+  cursor: url("/images/mouse-3-pointer.png"), auto;
 }
 
 #button-text {
@@ -138,4 +138,4 @@ html {
   font-size: 3rem;
   background-color: transparent;
   border: none;
-  cursor: url("/images/mouse-1.png"), auto;}
+  cursor: url("/images/mouse-3-pointer.png"), auto;}

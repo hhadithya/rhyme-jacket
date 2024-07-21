@@ -110,7 +110,10 @@ html {
 
 #level-item img {
   width: 10vw;
-  cursor: url("/images/mouse-2.png"), auto;
+}
+
+#level-item-active img {
+  width: 10vw;
 }
 
 #level-item img:hover{
@@ -118,8 +121,15 @@ html {
   cursor: url("/images/mouse-2.png"), auto;
 }
 
+#level-item-active img:hover{
+  width: 10vw;
+  cursor: url("/images/mouse-2-pointer.png"), auto;
+}
+
 .hover:hover {
   transform: scale(1.05);
   transition: transform 0.3s ease-in-out;
   cursor: url("/images/mouse-2-pointer.png"), auto;
 }
+
+
