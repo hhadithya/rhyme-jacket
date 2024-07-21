@@ -80,6 +80,16 @@
 
         var connection = new WebSocket("ws://" + location.hostname + ":8080/");
 
+        // send a message when the page is loaded
+        window.addEventListener("load", () => {
+            connection.send(
+                JSON.stringify({
+                    type: "redirect",
+                    message: "L2_game",
+                })
+            );
+        });
+
         document.addEventListener("DOMContentLoaded", function () {
             setTimeout(function () {
                 document.getElementById('quiz').style.display = 'block';
@@ -100,8 +110,8 @@
             });
         };
 
-             // change battery image based on battery percentage
-             setInterval(() => {
+        // change battery image based on battery percentage
+        setInterval(() => {
             var batteryPercentage = parseFloat(batteryPercentageElement.textContent);
             var batteryImg = document.getElementById("battery-img").children;
 

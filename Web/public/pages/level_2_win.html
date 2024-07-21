@@ -29,7 +29,7 @@
                     <img src="/images/battery-2.png" alt="battery 2/5 full" class="hidden">
                     <img src="/images/battery-3.png" alt="battery 3/5 full" class="hidden">
                     <img src="/images/battery-4.png" alt="battery 4/5 full" class="hidden">
-                    <img src="/images/battery-5.png" alt="battery 5/5 full" class="hidden"> 
+                    <img src="/images/battery-5.png" alt="battery 5/5 full" class="hidden">
 
                 </div>
             </div>
@@ -50,6 +50,16 @@
 
         var connection = new WebSocket("ws://" + location.hostname + ":8080/");
 
+        // send a message when the page is loaded
+        window.addEventListener("load", () => {
+            connection.send(
+                JSON.stringify({
+                    type: "redirect",
+                    message: "L2_win",
+                })
+            );
+        });
+
         connection.onmessage = function (event) {
             event.data.text().then((text) => {
                 var data = JSON.parse(text);
@@ -64,8 +74,8 @@
             });
         };
 
-                // change battery image based on battery percentage
-                setInterval(() => {
+        // change battery image based on battery percentage
+        setInterval(() => {
             var batteryPercentage = parseFloat(batteryPercentageElement.textContent);
             var batteryImg = document.getElementById("battery-img").children;
 

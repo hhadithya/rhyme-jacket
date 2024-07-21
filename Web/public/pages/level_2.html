@@ -69,6 +69,16 @@
 
         var connection = new WebSocket("ws://" + location.hostname + ":8080/");
 
+        // send a message when the page is loaded
+        window.addEventListener("load", () => {
+            connection.send(
+                JSON.stringify({
+                    type: "redirect",
+                    message: "L2_demo",
+                })
+            );
+        });
+
         connection.onmessage = function (event) {
             event.data.text().then((text) => {
                 var data = JSON.parse(text);
@@ -83,8 +93,8 @@
             });
         };
 
-                // change battery image based on battery percentage
-                setInterval(() => {
+        // change battery image based on battery percentage
+        setInterval(() => {
             var batteryPercentage = parseFloat(batteryPercentageElement.textContent);
             var batteryImg = document.getElementById("battery-img").children;
 

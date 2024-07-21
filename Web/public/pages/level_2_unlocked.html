@@ -99,6 +99,16 @@
         // play music when page is loaded
         audio.play();
 
+        // send a message when the page is loaded
+        window.addEventListener("load", () => {
+            connection.send(
+                JSON.stringify({
+                    type: "redirect",
+                    message: "L2_unlocked",
+                })
+            );
+        });
+
         // play music when sound is on
         soundOn.addEventListener("click", () => {
             soundOn.classList.add("hidden");
@@ -136,8 +146,8 @@
             });
         };
 
-               // change battery image based on battery percentage
-               setInterval(() => {
+        // change battery image based on battery percentage
+        setInterval(() => {
             var batteryPercentage = parseFloat(batteryPercentageElement.textContent);
             var batteryImg = document.getElementById("battery-img").children;
 

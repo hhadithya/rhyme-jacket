@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/stats.css">
+    <title>stats</title>
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js",
+                "jsm/": "https://cdn.jsdelivr.net/npm/three@0.161.0/examples/jsm/"
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <!-- Background Music -->
+    <audio id="background-music" src="/music/background-1.m4a" loop></audio>
+
+    <div id="content">
+        <div id="top-icons">
+            <div id="top-icons-left">
+                <div id="settings">
+                    <a href="#setting">
+                        <img src="/images/setting.png" alt="setting">
+                    </a>
+                </div>
+
+                <div id="volume">
+                    <img src="/images/volume.png" alt="sound on" id="sound-on">
+                    <img src="/images/mute.png" alt="sound off" id="sound-off" class="hidden">
+                </div>
+            </div>
+
+            <div id="top-icons-right">
+                <p id="battery-percentage">--%</p>
+                <div id="battery-img">
+                    <img src="/images/battery-0.png" alt="battery 0/5 full">
+                    <img src="/images/battery-1.png" alt="battery 1/5 full" class="hidden">
+                    <img src="/images/battery-2.png" alt="battery 2/5 full" class="hidden">
+                    <img src="/images/battery-3.png" alt="battery 3/5 full" class="hidden">
+                    <img src="/images/battery-4.png" alt="battery 4/5 full" class="hidden">
+                    <img src="/images/battery-5.png" alt="battery 5/5 full" class="hidden">
+                </div>
+            </div>
+        </div>
+
+
+        <script src="/scripts/stats_model.js" type="module"></script>
+        <script>
+            const audio = document.getElementById("background-music");
+
+            audio.play();
+
+        </script>
+</body>
+
+</html>

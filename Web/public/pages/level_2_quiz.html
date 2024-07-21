@@ -88,6 +88,16 @@
 
         var connection = new WebSocket("ws://" + location.hostname + ":8080/");
 
+        // send a message when the page is loaded
+        window.addEventListener("load", () => {
+            connection.send(
+                JSON.stringify({
+                    type: "redirect",
+                    message: "L2_quiz",
+                })
+            );
+        });
+
         listen1Off.addEventListener("click", () => {
             audio1.play();
             listen1Off.classList.add("hidden");
@@ -138,8 +148,8 @@
             });
         };
 
-           // change battery image based on battery percentage
-           setInterval(() => {
+        // change battery image based on battery percentage
+        setInterval(() => {
             var batteryPercentage = parseFloat(batteryPercentageElement.textContent);
             var batteryImg = document.getElementById("battery-img").children;
 
