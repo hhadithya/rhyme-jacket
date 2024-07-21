@@ -49,13 +49,101 @@
             </div>
         </div>
 
+        <div id="container">
+            <div id="logo">
+                <img src="/images/Rhyme_Fit_2.png" alt="logo">
+            </div>
+
+            <div id="middle-content">
+                <div id="model-img">
+                    <img src="/images/model standing.png" alt="model image">
+                </div>
+
+                <div id="stats">
+                    
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+ 
+        </div>
+    </div>
 
         <script src="/scripts/stats_model.js" type="module"></script>
         <script>
             const audio = document.getElementById("background-music");
 
+            const batteryPercentageElement = document.getElementById("battery-percentage");
+
+            var connection = new WebSocket("ws://" + location.hostname + ":8080/");
+
             audio.play();
 
+            connection.onmessage = function (event) {
+            event.data.text().then((text) => {
+                var data = JSON.parse(text);
+                console.log(data);
+
+                // Update the battery percentage element
+                if (data.batteryPercentage !== undefined) {
+                    // round the battery percentage to 0 decimal places
+                    batteryPercentageElement.textContent =
+                        data.batteryPercentage.toFixed(0) + "%";
+                }
+            });
+        };
+
+
+        // change battery image based on battery percentage
+        setInterval(() => {
+            var batteryPercentage = parseFloat(batteryPercentageElement.textContent);
+            var batteryImg = document.getElementById('battery-img').children;
+
+            if (batteryPercentage <= 20) {
+                batteryImg[0].classList.add('hidden');
+                batteryImg[1].classList.remove('hidden');
+                batteryImg[2].classList.add('hidden');
+                batteryImg[3].classList.add('hidden');
+                batteryImg[4].classList.add('hidden');
+                batteryImg[5].classList.add('hidden');
+            } else if (batteryPercentage <= 40) {
+                batteryImg[0].classList.add('hidden');
+                batteryImg[1].classList.add('hidden');
+                batteryImg[2].classList.remove('hidden');
+                batteryImg[3].classList.add('hidden');
+                batteryImg[4].classList.add('hidden');
+                batteryImg[5].classList.add('hidden');
+            } else if (batteryPercentage <= 60) {
+                batteryImg[0].classList.add('hidden');
+                batteryImg[1].classList.add('hidden');
+                batteryImg[2].classList.add('hidden');
+                batteryImg[3].classList.remove('hidden');
+                batteryImg[4].classList.add('hidden');
+                batteryImg[5].classList.add('hidden');
+            } else if (batteryPercentage <= 80) {
+                batteryImg[0].classList.add('hidden');
+                batteryImg[1].classList.add('hidden');
+                batteryImg[2].classList.add('hidden');
+                batteryImg[3].classList.add('hidden');
+                batteryImg[4].classList.remove('hidden');
+                batteryImg[5].classList.add('hidden');
+            } else if (batteryPercentage <= 100) {
+                batteryImg[0].classList.add('hidden');
+                batteryImg[1].classList.add('hidden');
+                batteryImg[2].classList.add('hidden');
+                batteryImg[3].classList.add('hidden');
+                batteryImg[4].classList.add('hidden');
+                batteryImg[5].classList.remove('hidden');
+            } else {
+                batteryImg[0].classList.remove('hidden');
+                batteryImg[1].classList.add('hidden');
+                batteryImg[2].classList.add('hidden');
+                batteryImg[3].classList.add('hidden');
+                batteryImg[4].classList.add('hidden');
+                batteryImg[5].classList.add('hidden');
+            }
+        }, 500);
         </script>
 </body>
 
