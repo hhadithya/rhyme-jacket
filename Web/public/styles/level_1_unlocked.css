@@ -6,7 +6,7 @@ html {
   background-size: cover;
   font-family: "Fredoka One", cursive;
   box-sizing: border-box;
-  cursor: url("/images/mouse-1.png"), auto;
+  cursor: url("/images/mouse-2.png"), auto;
 }
 
 #content {
@@ -37,7 +37,7 @@ html {
 
 #top-icons-left img:hover {
   width: 5.5vw;
-  cursor: url("/images/mouse-1.png"), auto;
+  cursor: url("/images/mouse-2-pointer.png"), auto;
 }
 
 #top-icons-left {
@@ -54,7 +54,7 @@ html {
 
 #top-icons-left img:hover {
   width: 5.5vw;
-  cursor: url("/images/mouse-1.png"), auto;
+  cursor: url("/images/mouse-2-pointer.png"), auto;
 }
 
 #top-icons-left div {
@@ -105,21 +105,31 @@ html {
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
   margin-top: 2rem;
-  cursor: url("/images/mouse-1.png"), auto;
+  cursor: url("/images/mouse-2.png"), auto;
 }
 
 #level-item img {
   width: 10vw;
-  cursor: url("/images/mouse-1.png"), auto;
+}
+
+#level-item-active img {
+  width: 10vw;
 }
 
 #level-item img:hover{
   width: 10vw;
-  cursor: url("/images/mouse-1.png"), auto;
+  cursor: url("/images/mouse-2.png"), auto;
+}
+
+#level-item-active img:hover{
+  width: 10vw;
+  cursor: url("/images/mouse-2-pointer.png"), auto;
 }
 
 .hover:hover {
   transform: scale(1.05);
   transition: transform 0.3s ease-in-out;
-  cursor: url("/images/mouse-1.png"), auto;
+  cursor: url("/images/mouse-2-pointer.png"), auto;
 }
+
+
