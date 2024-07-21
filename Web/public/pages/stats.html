@@ -59,22 +59,45 @@
             </div>
 
             <div id="readings">
-                <div id="">Sensor readings</div>
-                <div id="line">
-                    <div id="heart"><img src="/images/heart-icon.png"></div>
-                    <div id="temperature"><img src="/images/temp-icon.png"></div>
+                <div id="readings-topic">Sensor readings</div>
+                <div id="section-1" class="data-section">
+                    <div id="heart">
+                        <img src="/images/heart-icon.png">
+                        <p><span>--</span>BPM</p>
+                    </div>
+                    <div id="temperature">
+                        <img src="/images/temp-icon.png">
+                        <p><span>--</span>℃</p>
+                    </div>
                 </div>
-                <div id="line">
+                <div id="section-2" class="data-section">
                     <div id="flex"><img src="/images/flex-icon.png"></div>
-                    <div id="r-flex">Right :</div>
-                    <div id="l-flex">Left :</div>
+                    <div id="flex-reading">
+                        <div id="r-flex">Right : <span>--</span>°</div>
+                        <div id="l-flex">Left : <span>--</span>°</div>
+                    </div>
                 </div>
-                <div id="line">
+                <div id="section-3" class="data-section">
                     <div id="gyro"><img src="/images/mpu-icon.png"></div>
                     <div id="gyro-readings">
-                        <div id="gyro-R">X:</div>
-                        <div id="gyro-L">Y:</div>
-                        <div id="gyro-C">Z:</div>
+                        <div id="gyro-R">
+                            <h3>Right</h3>
+                            <p>Y :- <span>--</span></p>
+                            <p>P :- <span>--</span></p>
+                            <p>R :- <span>--</span></p>
+                        </div>
+                        <div id="gyro-L">
+                            <h3>Left</h3>
+                            <p>Y :- <span>--</span></p>
+                            <p>P :- <span>--</span></p>
+                            <p>R :- <span>--</span></p>
+                        </div>
+                        <div id="gyro-C">
+                            <h3>Center</h3>
+                            <p>Y :- <span>--</span></p>
+                            <p>P :- <span>--</span></p>
+                            <p>R :- <span>--</span></p>
+                        </div>
                     </div>
 
                 </div>
