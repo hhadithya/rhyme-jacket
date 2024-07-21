@@ -8,7 +8,7 @@ let model;
 
 function init() {
   const scene = new THREE.Scene();
-  scene.background = new THREE.Color(0xace1a1);
+  scene.background = new THREE.Color(0xd6f8ff);
   const camera = new THREE.PerspectiveCamera(
     75,
     window.innerWidth / window.innerHeight,

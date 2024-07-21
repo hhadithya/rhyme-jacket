@@ -110,6 +110,8 @@ html {
 #model {
   height: 100%;
   width: 30%;
+  border: 0.7rem solid #ffffff71;
+  border-radius: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -123,4 +125,5 @@ html {
 #readings {
   height: 100%;
   width: 60%;
+  border-radius: 20px;
 }
