@@ -19,7 +19,7 @@
 
 <body>
     <!-- Background Music -->
-    <audio id="background-music" src="/music/background-1.m4a" loop></audio>
+    <!-- <audio id="background-music" src="/music/background-1.m4a" loop></audio> -->
 
     <div id="content">
         <div id="top-icons">
@@ -36,6 +36,10 @@
                 </div>
             </div>
 
+            <div id="logo">
+                <img src="/images/Rhyme_Fit_2.png" alt="logo">
+            </div>
+
             <div id="top-icons-right">
                 <p id="battery-percentage">--%</p>
                 <div id="battery-img">
@@ -50,37 +54,28 @@
         </div>
 
         <div id="container">
-            <div id="logo">
-                <img src="/images/Rhyme_Fit_2.png" alt="logo">
+            <div id="model">
+                <canvas id="stat_model_canvas" width="1000" height="500"></canvas>
             </div>
 
-            <div id="middle-content">
-                <div id="model-img">
-                    <img src="/images/model standing.png" alt="model image">
-                </div>
+            <div id="readings">
 
-                <div id="stats">
-                    
-                        </div>
-                    </div>
-                </div>
             </div>
-
- 
         </div>
     </div>
+    </div>
 
-        <script src="/scripts/stats_model.js" type="module"></script>
-        <script>
-            const audio = document.getElementById("background-music");
+    <script src="../scripts/stats_model.js" type="module"></script>
+    <script>
+        // const audio = document.getElementById("background-music");
 
-            const batteryPercentageElement = document.getElementById("battery-percentage");
+        const batteryPercentageElement = document.getElementById("battery-percentage");
 
-            var connection = new WebSocket("ws://" + location.hostname + ":8080/");
+        var connection = new WebSocket("ws://" + location.hostname + ":8080/");
 
-            audio.play();
+        // audio.play();
 
-            connection.onmessage = function (event) {
+        connection.onmessage = function (event) {
             event.data.text().then((text) => {
                 var data = JSON.parse(text);
                 console.log(data);
@@ -144,7 +139,7 @@
                 batteryImg[5].classList.add('hidden');
             }
         }, 500);
-        </script>
+    </script>
 </body>
 
 </html>
