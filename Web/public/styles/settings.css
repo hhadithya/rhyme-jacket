@@ -137,7 +137,24 @@ input[type="range"]{
   font-size: 2.5rem;
 }
 
+#stat-button{
+  font-family: "Fredoka One", cursive;
+  font-size: 0.9em;
+  background-color: rgb(203, 255, 83);
+  border: none;
+  border-radius: 50px;
+  padding: 10px 50px ;
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2),
+    inset -2px -2px 5px rgba(255, 255, 255, 0.5);
+  transition: background-color 0.3s, box-shadow 0.3s;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  cursor: url("/images/mouse-2-pointer.png"), auto;
+}
+
 #stat-text{
   cursor: url("/images/mouse-2-pointer.png"), auto;
-
+  text-decoration: none;
+  color: #000;
 }
