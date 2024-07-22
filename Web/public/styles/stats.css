@@ -26,7 +26,7 @@ html {
   align-items: center;
   position: absolute;
   top: 0;
-  margin: 1rem auto;
+  margin: 0.5rem auto 1rem;
   width: 95vw;
 }
 
@@ -100,10 +100,9 @@ html {
 
 /* content of the page */
 #container {
-  height: 70%;
+  height: 75%;
   width: 95%;
   margin-top: 15vh;
-  /* padding: 0 2rem; */
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -127,35 +126,37 @@ html {
 #readings {
   height: 100%;
   width: 60%;
-  background-color: #ffffff;
   border-radius: 20px;
+  background-color: #ffffff;
   border: 0.7rem solid #ffffff71;
   box-shadow: 0 6px 10px #ffffff71;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 1.2rem;
+  /* justify-content: space-between; */
   align-items: center;
 }
 
 #readings-topic {
   width: 75%;
-  height: 8%;
-  font-size: 3rem;
+  height: 5%;
+  font-size: 2.5rem;
   font-weight: bold;
   color: #000000;
   text-align: left;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .data-section {
   width: 80%;
   display: flex;
   align-items: center;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: medium;
-  background-color: #efefefc9;
+  background-color: #dadada;
   border-radius: 20px;
-  padding: 0.5rem 1rem 0.5rem 2rem;
+  padding: 0.5rem 1rem 0.5rem 3rem;
+  box-shadow: 0px 6px 10px #d9d9d9;
 }
 
 .data-section img {
@@ -163,7 +164,7 @@ html {
 }
 
 #section-1 {
-  height: 18%;
+  height: 15%;
   justify-content: space-between;
 }
 
@@ -171,12 +172,12 @@ html {
 #temperature {
   width: 45%;
   display: flex;
-  /* justify-content: center; */
   align-items: center;
+  gap: 3rem;
 }
 
 #section-2 {
-  height: 18%;
+  height: 15%;
   justify-content: space-between;
 }
 
@@ -187,11 +188,12 @@ html {
 }
 
 #flex-reading {
-  width: 60%;
+  width: 70%;
   height: 100%;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  margin-right: 1rem;
 }
 
 #section-3 {
@@ -208,10 +210,18 @@ html {
   align-items: top;
 }
 
+#gyro img {
+  margin-top: 1.5rem;
+}
+
 #gyro-readings {
   width: 70%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 2rem;
+}
+
+#gyro-readings div {
+  width: 25%;
 }
