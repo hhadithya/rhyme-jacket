@@ -49,6 +49,13 @@ window.onclick = function (event) {
 // play music when page is loaded
 audio.play();
 
+const savedVolume = localStorage.getItem("volume");
+if (savedVolume) {
+  audio.volume = savedVolume / 100;
+} else {
+  audio.volume = 0.5;
+}
+
 // play music when sound is on
 soundOn.addEventListener("click", () => {
   soundOn.classList.add("hidden");

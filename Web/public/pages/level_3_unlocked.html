@@ -54,17 +54,17 @@
             </h1>
 
             <div id="level-items">
-                <div  id="level-item-active" class="hover">
+                <div id="level-item-active" class="hover">
                     <a href="/pages/level_1.html">
                         <img src="/images/level/1-completed.png" alt="level 1 unlock">
                     </a>
                 </div>
-                <div  id="level-item-active" class="hover">
+                <div id="level-item-active" class="hover">
                     <a href="/pages/level_2.html">
                         <img src="/images/level/2-completed.png" alt="level 1 unlock">
                     </a>
                 </div>
-                <div  id="level-item-active" class="hover">
+                <div id="level-item-active" class="hover">
                     <img src="/images/level/3-unlock.png" alt="level 3 locked">
                 </div>
                 <div id="level-item">
@@ -111,6 +111,13 @@
         // play music when page is loaded
         audio.play();
 
+        const savedVolume = localStorage.getItem("volume");
+        if (savedVolume) {
+            audio.volume = savedVolume / 100;
+        } else {
+            audio.volume = 0.5;
+        }
+
         // play music when sound is on
         soundOn.addEventListener("click", () => {
             soundOn.classList.add("hidden");
@@ -148,8 +155,8 @@
             });
         };
 
-         // change battery image based on battery percentage
-         setInterval(() => {
+        // change battery image based on battery percentage
+        setInterval(() => {
             var batteryPercentage = parseFloat(batteryPercentageElement.textContent);
             var batteryImg = document.getElementById('battery-img').children;
 

@@ -12,6 +12,9 @@
 </head>
 
 <body>
+    <!-- Background Music -->
+    <audio id="background-music" src="/music/background-1.m4a" loop></audio>
+
     <!-- background animation -->
     <div class="area">
         <ul class="circles">
@@ -43,6 +46,7 @@
     </div>
 
     <script>
+        const audio = document.getElementById("background-music");
         var connection = new WebSocket("ws://" + location.hostname + ":8080/");
 
         // when the page is fully loaded send a message to the server 
@@ -54,6 +58,16 @@
                 })
             );
         });
+
+        // play music when page is loaded
+        audio.play();
+
+        const savedVolume = localStorage.getItem("volume");
+        if (savedVolume) {
+            audio.volume = savedVolume / 100;
+        } else {
+            audio.volume = 0.5;
+        }
 
         // change msg-1 to msg-2 after 3 seconds and change back to msg-1 after 3 seconds. loop this
         setInterval(() => {

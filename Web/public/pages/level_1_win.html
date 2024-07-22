@@ -74,8 +74,8 @@
                 }
             });
         };
-            // change battery image based on battery percentage
-            setInterval(() => {
+        // change battery image based on battery percentage
+        setInterval(() => {
             var batteryPercentage = parseFloat(batteryPercentageElement.textContent);
             var batteryImg = document.getElementById('battery-img').children;
 
@@ -122,8 +122,8 @@
                 batteryImg[4].classList.add('hidden');
                 batteryImg[5].classList.add('hidden');
             }
-        }, 500);
-        
+        }, 100);
+
     </script>
 </body>
 

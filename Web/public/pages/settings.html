@@ -18,15 +18,15 @@
     <div id="content">
         <div id="top-icons">
             <div id="top-icons-left">
-                <div id="volume">
-                    <img src="/images/volume.png" alt="sound on" id="sound-on">
-                    <img src="/images/mute.png" alt="sound off" id="sound-off" class="hidden">
-                </div>
-
                 <div id="menu-icon">
                     <a href="/pages/menu.html">
                         <img src="/images/menu.png" alt="menu">
                     </a>
+                </div>
+
+                <div id="volume">
+                    <img src="/images/volume.png" alt="sound on" id="sound-on">
+                    <img src="/images/mute.png" alt="sound off" id="sound-off" class="hidden">
                 </div>
             </div>
 
@@ -70,6 +70,21 @@
         const audio = document.getElementById('background-music');
         const batteryPercentageElement = document.getElementById("battery-percentage");
         const volumeRange = document.getElementById('volume-range');
+
+        const savedVolume = localStorage.getItem('volume');
+        if (savedVolume) {
+            volumeRange.value = savedVolume;
+            audio.volume = savedVolume / 100;
+        } else {
+            audio.volume = 0.5;
+            volumeRange.value = 50;
+        }
+
+        // save volume to local storage
+        volumeRange.addEventListener('input', () => {
+            audio.volume = volumeRange.value / 100;
+            localStorage.setItem('volume', volumeRange.value);
+        });
 
         var connection = new WebSocket("ws://" + location.hostname + ":8080/");
 

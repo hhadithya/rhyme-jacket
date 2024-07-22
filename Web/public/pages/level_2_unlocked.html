@@ -54,12 +54,12 @@
             </h1>
 
             <div id="level-items">
-                <div  id="level-item-active" class="hover">
+                <div id="level-item-active" class="hover">
                     <a href="/pages/level_1.html">
                         <img src="/images/level/1-completed.png" alt="level 1 unlock">
                     </a>
                 </div>
-                <div  id="level-item-active" class="hover">
+                <div id="level-item-active" class="hover">
                     <a href="/pages/level_2.html">
                         <img src="/images/level/2-unlock.png" alt="level 1 unlock">
                     </a>
@@ -99,6 +99,13 @@
 
         // play music when page is loaded
         audio.play();
+
+        const savedVolume = localStorage.getItem("volume");
+        if (savedVolume) {
+            audio.volume = savedVolume / 100;
+        } else {
+            audio.volume = 0.5;
+        }
 
         // send a message when the page is loaded
         window.addEventListener("load", () => {
