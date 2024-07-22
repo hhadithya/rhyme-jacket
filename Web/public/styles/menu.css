@@ -176,7 +176,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: url("/images/mouse-1-pointer.png"), auto;
+  cursor: url("/images/mouse-1.png"), auto;
 }
 
 #menu-items a button:hover{
