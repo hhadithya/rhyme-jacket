@@ -127,7 +127,7 @@ h1 {
 
 #nextLevelButton:hover {
   background-color:rgb(248, 255, 116);
-  cursor: url("/images/mouse-1-pointer.png"), auto;
+  cursor: url("/images/mouse-1.png"), auto;
 }
 
 #nextLevelButton a:hover {
