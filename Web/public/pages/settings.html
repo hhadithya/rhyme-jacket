@@ -48,13 +48,21 @@
             <h1>Settings</h1>
 
             <div class="volume">
-                <div class="icon">
+                <div id="volume-text">
+                    Volume:
+                </div>
+                <div id="volume-data">
+                    <i class="fa fa-volume-down icon-size" aria-hidden="true"></i>
+                    <input id="volume-range" type="range" min="0" max="100" value="50" class="volume-range">
                     <i class="fa fa-volume-up icon-size" aria-hidden="true"></i>
                 </div>
-                <input id="volume-range" type="range" min="0" max="100" value="50" class="volume-range">
             </div>
 
-            <div id="stats"><a href="/pages/stats.html">Sensor Readings</a></div>
+            <div id="stats">
+                <button id="stat-button">
+                    <a href="/pages/stats.html" id="stat-text">Sensor Readings</a>
+                </button>
+            </div>
         </div>
     </div>
 

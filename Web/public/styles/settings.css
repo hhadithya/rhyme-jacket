@@ -89,7 +89,6 @@ html {
 #container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   gap: 1rem;
   padding: 1rem;
@@ -100,9 +99,45 @@ html {
   border-radius: 1rem;
 }
 
+h1{
+  font-size: 4rem;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  text-align:center;
+
+}
 /* volume bar */
 .volume {
+  display:flex;
+  flex-direction: column;
+  font-size: 2.5rem;
+  width: 100%;
+}
+
+#volume-text{
+  text-align: left;
+  margin-left:5% ;
+}
+
+#volume-data{
+  margin:3% 0% 3% 12% ;
+}
+
+input[type="range"]{
+  width: 70%;
+  cursor: url("/images/mouse-2-pointer.png"), auto;
+}
+
+#stats{
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-size: 2.5rem;
+}
+
+#stat-text{
+  cursor: url("/images/mouse-2-pointer.png"), auto;
+
 }
