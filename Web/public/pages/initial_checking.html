@@ -72,7 +72,7 @@
                     <div id="temperature">
                         <div id="temp-no-input">
                             <img src="/images/temp-black.png" alt="heart-no-input">
-                            <p> -- </p>
+                            <p id="temp-value"> -- </p>
                         </div>
                         <div id="temp-good" class="hidden">
                             <img src="/images/temp-green.png" alt="thermostat">
@@ -100,7 +100,8 @@
         const soundOff = document.getElementById("sound-off");
         const audio = document.getElementById("background-music");
         const batteryPercentageElement = document.getElementById("battery-percentage");
-        const heartValue = document.getElementById("heart-value");
+
+        let heartValue, tempValue;
 
         var connection = new WebSocket("ws://" + location.hostname + ":8080/");
 
@@ -136,7 +137,7 @@
 
         setTimeout(() => {
             window.location.href = "/pages/menu.html";
-        }, 10000);
+        }, 60000);
 
         connection.onmessage = function (event) {
             event.data.text().then(text => {
@@ -147,8 +148,12 @@
                 if (data.batteryPercentage !== undefined) {
                     batteryPercentageElement.textContent = data.batteryPercentage.toFixed(0) + '%';
                 }
-                if (data.heartRate !== undefined) {
-                    heartValue.textContent = data.heartRate;
+                if (data.BPM !== undefined) {
+                    heartValue = data.BPM;
+                }
+
+                if (data.Temp !== undefined) {
+                    tempValue = data.Temp;
                 }
             });
         };
@@ -200,6 +205,15 @@
                 batteryImg[3].classList.add('hidden');
                 batteryImg[4].classList.add('hidden');
                 batteryImg[5].classList.add('hidden');
+            }
+        }, 100);
+
+        // if body temperature is between 25 and 30, show good condition
+        setInterval(() => {
+            if (tempValue >= 25 && tempValue <= 35) {
+                document.getElementById('temp-no-input').classList.add('hidden');
+                document.getElementById('temp-good').classList.remove('hidden');
+                document.getElementById('temp-bad').classList.add('hidden');
             }
         }, 100);
 
