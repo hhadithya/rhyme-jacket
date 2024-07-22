@@ -106,39 +106,3 @@ html {
   justify-content: center;
   align-items: center;
 }
-
-.volume input[type="range"] {
-  display: none;
-}
-
-.volume .icon-size {
-  font-size: 2rem;
-}
-
-.volume .bar-hoverbox {
-  padding: 10px 15px;
-  opacity: 0.7;
-  transition: opacity 0.2s;
-}
-
-.volume .bar-hoverbox:hover {
-  opacity: 1;
-  cursor: pointer;
-}
-
-.volume .bar {
-  background: #999;
-  height: 7px;
-  width: 120px;
-  border-radius: 15px;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.volume .bar .bar-fill {
-  background: #fff;
-  width: 0%;
-  height: 100%;
-  background-clip: border-box;
-  pointer-events: none;
-}
