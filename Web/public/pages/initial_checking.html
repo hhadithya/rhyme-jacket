@@ -105,6 +105,12 @@
         var connection = new WebSocket("ws://" + location.hostname + ":8080/");
 
         audio.play();
+        const savedVolume = localStorage.getItem("volume");
+        if (savedVolume) {
+            audio.volume = savedVolume / 100;
+        } else {
+            audio.volume = 0.5;
+        }
 
         // when page is loaded send a message to the server
         window.addEventListener("load", () => {
@@ -195,7 +201,7 @@
                 batteryImg[4].classList.add('hidden');
                 batteryImg[5].classList.add('hidden');
             }
-        }, 500);
+        }, 100);
 
     </script>
 </body>

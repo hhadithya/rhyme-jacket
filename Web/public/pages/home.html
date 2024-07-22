@@ -69,6 +69,13 @@
         // play music when page is loaded
         audio.play();
 
+        const savedVolume = localStorage.getItem("volume");
+        if (savedVolume) {
+            audio.volume = savedVolume / 100;
+        } else {
+            audio.volume = 0.5;
+        }
+
         // play music when sound is on
         soundOn.addEventListener('click', () => {
             soundOn.classList.add('hidden');
@@ -160,7 +167,7 @@
                 batteryImg[4].classList.add('hidden');
                 batteryImg[5].classList.add('hidden');
             }
-        }, 500);
+        }, 100);
     </script>
 </body>
 
