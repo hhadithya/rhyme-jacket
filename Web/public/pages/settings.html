@@ -65,6 +65,21 @@
         const batteryPercentageElement = document.getElementById("battery-percentage");
         const volumeRange = document.getElementById('volume-range');
 
+        const savedVolume = localStorage.getItem('volume');
+        if (savedVolume) {
+            volumeRange.value = savedVolume;
+            audio.volume = savedVolume / 100;
+        } else {
+            audio.volume = 0.5;
+            volumeRange.value = 50;
+        }
+
+        // save volume to local storage
+        volumeRange.addEventListener('input', () => {
+            audio.volume = volumeRange.value / 100;
+            localStorage.setItem('volume', volumeRange.value);
+        });
+
         var connection = new WebSocket("ws://" + location.hostname + ":8080/");
 
         // play music when page is loaded

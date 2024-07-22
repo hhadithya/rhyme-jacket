@@ -20,7 +20,7 @@
 
 <body>
     <!-- Background Music -->
-    <!-- <audio id="background-music" src="/music/background-1.m4a" loop></audio> -->
+    <audio id="background-music" src="/music/background-1.m4a" loop></audio>
 
     <div id="content">
         <div id="top-icons">
@@ -64,18 +64,18 @@
                 <div id="section-1" class="data-section">
                     <div id="heart">
                         <img src="/images/heart-icon.png">
-                        <p><span>--</span>BPM</p>
+                        <p><span id="heart-value">--</span>BPM</p>
                     </div>
                     <div id="temperature">
                         <img src="/images/temp-icon.png">
-                        <p><span>--</span>℃</p>
+                        <p><span id="temp-value">--</span>℃</p>
                     </div>
                 </div>
                 <div id="section-2" class="data-section">
                     <div id="flex"><img src="/images/flex-icon.png"></div>
                     <div id="flex-reading">
-                        <div id="r-flex">Right : <span>--</span>°</div>
-                        <div id="l-flex">Left : <span>--</span>°</div>
+                        <div id="r-flex">Right : <span id="r-flex-value">--</span>°</div>
+                        <div id="l-flex">Left : <span id="l-flex-value">--</span>°</div>
                     </div>
                 </div>
                 <div id="section-3" class="data-section">
@@ -83,21 +83,21 @@
                     <div id="gyro-readings">
                         <div id="gyro-R">
                             <h3>Right</h3>
-                            <p>Y : <span>--</span></p>
-                            <p>P : <span>--</span></p>
-                            <p>R : <span>--</span></p>
+                            <p>Y : <span id="r-gyro-y">--</span></p>
+                            <p>P : <span id="r-gyro-p">--</span></p>
+                            <p>R : <span id="r-gyro-r">--</span></p>
                         </div>
                         <div id="gyro-L">
                             <h3>Left</h3>
-                            <p>Y : <span>--</span></p>
-                            <p>P : <span>--</span></p>
-                            <p>R : <span>--</span></p>
+                            <p>Y : <span id="l-gyro-y">--</span></p>
+                            <p>P : <span id="l-gyro-p">--</span></p>
+                            <p>R : <span id="l-gyro-r">--</span></p>
                         </div>
                         <div id="gyro-C">
                             <h3>Center</h3>
-                            <p>Y : <span>--</span></p>
-                            <p>P : <span>--</span></p>
-                            <p>R : <span>--</span></p>
+                            <p>Y : <span id="c-gyro-y">--</span></p>
+                            <p>P : <span id="c-gyro-p">--</span></p>
+                            <p>R : <span id="c-gyro-r">--</span></p>
                         </div>
                     </div>
 
@@ -109,13 +109,59 @@
 
     <script src="../scripts/stats_model.js" type="module"></script>
     <script>
-        // const audio = document.getElementById("background-music");
-
+        const soundOn = document.getElementById("sound-on");
+        const soundOff = document.getElementById("sound-off");
+        const audio = document.getElementById("background-music");
+        const heartValue = document.getElementById("heart-value");
+        const tempValue = document.getElementById("temp-value");
+        const flexRightValue = document.getElementById("r-flex-value");
+        const flexLeftValue = document.getElementById("l-flex-value");
         const batteryPercentageElement = document.getElementById("battery-percentage");
+        const rightGyroYaw = document.getElementById("r-gyro-y");
+        const rightGyroPitch = document.getElementById("r-gyro-p");
+        const rightGyroRoll = document.getElementById("r-gyro-r");
+        const leftGyroYaw = document.getElementById("l-gyro-y");
+        const leftGyroPitch = document.getElementById("l-gyro-p");
+        const leftGyroRoll = document.getElementById("l-gyro-r");
+        const centerGyroYaw = document.getElementById("c-gyro-y");
+        const centerGyroPitch = document.getElementById("c-gyro-p");
+        const centerGyroRoll = document.getElementById("c-gyro-r");
 
         var connection = new WebSocket("ws://" + location.hostname + ":8080/");
 
-        // audio.play();
+
+        // when page is loaded send a message to server
+        window.addEventListener("load", () => {
+            connection.send(
+                JSON.stringify({
+                    type: "redirect",
+                    message: "Sensor-readings",
+                })
+            );
+        });
+
+        audio.play();
+
+        const savedVolume = localStorage.getItem("volume");
+        if (savedVolume) {
+            audio.volume = savedVolume / 100;
+        } else {
+            audio.volume = 0.5;
+        }
+
+        // play music when sound is on
+        soundOn.addEventListener("click", () => {
+            soundOn.classList.add("hidden");
+            soundOff.classList.remove("hidden");
+            audio.pause();
+        });
+
+        // stop music when sound is off
+        soundOff.addEventListener("click", () => {
+            soundOff.classList.add("hidden");
+            soundOn.classList.remove("hidden");
+            audio.play();
+        });
 
         connection.onmessage = function (event) {
             event.data.text().then((text) => {
@@ -128,6 +174,52 @@
                     batteryPercentageElement.textContent =
                         data.batteryPercentage.toFixed(0) + "%";
                 }
+
+                // Update the sensor readings
+                if (data.BPM !== undefined) {
+                    heartValue.textContent = data.BPM;
+                }
+                if (data.temperature !== undefined) {
+                    tempValue.textContent = data.temperature;
+                }
+
+                if (data.flex1Angle !== undefined) {
+                    flexLeftValue.textContent = data.flex1Angle;
+                }
+                if (data.flex2Angle !== undefined) {
+                    flexRightValue.textContent = data.flex2Angle;
+                }
+
+                if (data.yawRight !== undefined) {
+                    rightGyroYaw.textContent = data.yawRight;
+                }
+                if (data.pitchRight !== undefined) {
+                    rightGyroPitch.textContent = data.pitchRight;
+                }
+                if (data.rollRight !== undefined) {
+                    rightGyroRoll.textContent = data.rollRight;
+                }
+
+                if (data.yawLeft !== undefined) {
+                    leftGyroYaw.textContent = data.yawLeft;
+                }
+                if (data.pitchLeft !== undefined) {
+                    leftGyroPitch.textContent = data.pitchLeft;
+                }
+                if (data.rollLeft !== undefined) {
+                    leftGyroRoll.textContent = data.rollLeft;
+                }
+
+                if (data.yawCenter !== undefined) {
+                    centerGyroYaw.textContent = data.yawCenter;
+                }
+                if (data.pitchCenter !== undefined) {
+                    centerGyroPitch.textContent = data.pitchCenter;
+                }
+                if (data.rollCenter !== undefined) {
+                    centerGyroRoll.textContent = data.rollCenter;
+                }
+
             });
         };
 
