@@ -1,45 +1,15 @@
+body,
 html {
   height: 100%;
-}
-
-body {
   margin: 0;
+  background: url("/images/home-bg.png") no-repeat center center fixed;
+  background-size: cover;
   font-family: "Fredoka One", cursive;
-  text-shadow: -2px -2px 1px rgba(0, 0, 0, 0.6), 3px 3px 3px rgba(0, 0, 0, 0.4);
-  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
   cursor: url("/images/mouse-1.png"), auto;
 }
 
-.bg {
-  animation: slide 3s ease-in-out infinite alternate;
-  background-image: linear-gradient(-60deg, #3fa7d6 50%, #001720 50%);
-  bottom: 0;
-  left: -50%;
-  opacity: 0.5;
-  position: fixed;
-  right: -50%;
-  top: 0;
-  z-index: -1;
-}
-
-.bg2 {
-  animation-direction: alternate-reverse;
-  animation-duration: 4s;
-}
-
-.bg3 {
-  animation-duration: 5s;
-}
-
-@keyframes slide {
-  0% {
-    transform: translateX(-25%);
-  }
-  100% {
-    transform: translateX(25%);
-  }
-}
-
+/* content */
 #content {
   border-box: box-sizing;
   display: flex;
@@ -67,8 +37,8 @@ body {
 }
 
 #top-icons-left img:hover {
-  width: 5.5vw;
   cursor: url("/images/mouse-1-pointer.png"), auto;
+  width: 5.5vw;
 }
 
 #top-icons-left {
@@ -104,8 +74,9 @@ body {
 #battery-percentage {
   font-size: 2.5rem;
   font-weight: bold;
+  color: rgb(255, 255, 255);
   padding: 0px 15px 0px 0px;
-  color: #ffffff;
+  text-shadow: -2px -2px 1px rgba(0, 0, 0, 0.6), 3px 3px 3px rgba(0, 0, 0, 0.4);
 }
 
 #battery-img img {
@@ -119,11 +90,15 @@ body {
 /* content of the page */
 #container {
   height: 80vh;
+  margin-bottom: 10vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  gap: 2rem;
+  font-size: 4rem;
 }
+
 
 #container #logo {
   display: flex;
@@ -134,10 +109,12 @@ body {
 
 #container #logo img {
   height: 60vh;
-  display: flex;
+  display: fixed;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-top: 15%;
+  margin-bottom: 5%;
 }
 
 #logo {
