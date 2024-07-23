@@ -137,7 +137,7 @@
 
         setTimeout(() => {
             window.location.href = "/pages/menu.html";
-        }, 60000);
+        }, 40000);
 
         connection.onmessage = function (event) {
             event.data.text().then(text => {
@@ -210,10 +210,26 @@
 
         // if body temperature is between 25 and 30, show good condition
         setInterval(() => {
-            if (tempValue >= 25 && tempValue <= 35) {
+            if (tempValue >= 27 && tempValue <= 35) {
                 document.getElementById('temp-no-input').classList.add('hidden');
                 document.getElementById('temp-good').classList.remove('hidden');
                 document.getElementById('temp-bad').classList.add('hidden');
+            }
+            if ((tempValue < 27 && tempValue >= 20) || (tempValue > 35 && tempValue <= 40)) {
+                document.getElementById('temp-no-input').classList.add('hidden');
+                document.getElementById('temp-good').classList.add('hidden');
+                document.getElementById('temp-bad').classList.remove('hidden');
+            }
+
+            if (heartValue >= 60 && heartValue <= 100) {
+                document.getElementById('heart-no-input').classList.add('hidden');
+                document.getElementById('heart-good').classList.remove('hidden');
+                document.getElementById('heart-bad').classList.add('hidden');
+            }
+            if ((heartValue < 60 && heartValue >= 40) || (heartValue > 100 && heartValue <= 120)) {
+                document.getElementById('heart-no-input').classList.add('hidden');
+                document.getElementById('heart-good').classList.add('hidden');
+                document.getElementById('heart-bad').classList.remove('hidden');
             }
         }, 100);
 
