@@ -46,9 +46,6 @@ window.onclick = function (event) {
   }
 };
 
-// play music when page is loaded
-audio.play();
-
 const savedVolume = localStorage.getItem("volume");
 if (savedVolume) {
   audio.volume = savedVolume / 100;
@@ -68,6 +65,7 @@ soundOn.addEventListener("click", () => {
   soundOn.classList.add("hidden");
   soundOff.classList.remove("hidden");
   audio.pause();
+  localStorage.setItem("isMuted", "true");
 });
 
 // stop music when sound is off
@@ -75,7 +73,23 @@ soundOff.addEventListener("click", () => {
   soundOff.classList.add("hidden");
   soundOn.classList.remove("hidden");
   audio.play();
+  localStorage.setItem("isMuted", "false");
 });
+
+// Load saved track
+const savedTrack = localStorage.getItem("musicTrack");
+if (savedTrack) {
+  if (savedTrack === "track1") {
+    audio.src = "/music/background-1.m4a";
+  } else if (savedTrack === "track2") {
+    audio.src = "/music/background-2.m4a";
+  }
+  audio.play();
+} else {
+  audio.src = "/music/background-1.m4a";
+  track1.checked = true;
+  audio.play();
+}
 
 // play a sound when #new-game, #levels and #exit buttons are clicked
 const newGame = document.getElementById("new-game");

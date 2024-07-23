@@ -39,7 +39,6 @@
                     <img src="/images/battery-3.png" alt="battery 3/5 full" class="hidden">
                     <img src="/images/battery-4.png" alt="battery 4/5 full" class="hidden">
                     <img src="/images/battery-5.png" alt="battery 5/5 full" class="hidden">
-
                 </div>
             </div>
         </div>
@@ -62,8 +61,12 @@
             <div id="music">
                 <p>Sound Track</p>
                 <div id="options">
-                    <label for="track1"><input type="radio" name="music-track" id="track1"> Track 1</label>
-                    <label for="track2"><input type="radio" name="music-track" id="track2"> Track 2</label>
+                    <label for="track1"><input type="radio" name="music-track" value="track1" id="track1"
+                            class="custom-radio" checked>
+                        Track 1</label>
+                    <label for="track2"><input type="radio" name="music-track" value="track2" id="track2"
+                            class="custom-radio">
+                        Track 2</label>
                 </div>
             </div>
 
@@ -74,139 +77,172 @@
     </div>
 
     <script>
-        const soundOn = document.getElementById('sound-on');
-        const soundOff = document.getElementById('sound-off');
-        const audio = document.getElementById('background-music');
-        const batteryPercentageElement = document.getElementById("battery-percentage");
-        const volumeRange = document.getElementById('volume-range');
+        document.addEventListener('DOMContentLoaded', () => {
+            const soundOn = document.getElementById('sound-on');
+            const soundOff = document.getElementById('sound-off');
+            const audio = document.getElementById('background-music');
+            const batteryPercentageElement = document.getElementById("battery-percentage");
+            const volumeRange = document.getElementById('volume-range');
+            const track1 = document.getElementById('track1');
+            const track2 = document.getElementById('track2');
 
-        // save volume to local storage
-        volumeRange.addEventListener('input', () => {
-            audio.volume = volumeRange.value / 100;
-            localStorage.setItem('volume', volumeRange.value);
-        });
+            // save volume to local storage
+            volumeRange.addEventListener('input', () => {
+                audio.volume = volumeRange.value / 100;
+                localStorage.setItem('volume', volumeRange.value);
+            });
 
-        var connection = new WebSocket("ws://" + location.hostname + ":8080/");
+            var connection = new WebSocket("ws://" + location.hostname + ":8080/");
 
-        // play music when page is loaded
-        audio.play();
+            const savedVolume = localStorage.getItem('volume');
+            if (savedVolume) {
+                volumeRange.value = savedVolume;
+                audio.volume = savedVolume / 100;
+            } else {
+                audio.volume = 0.5;
+                volumeRange.value = 50;
+            }
 
-        const savedVolume = localStorage.getItem('volume');
-        if (savedVolume) {
-            volumeRange.value = savedVolume;
-            audio.volume = savedVolume / 100;
-        } else {
-            audio.volume = 0.5;
-            volumeRange.value = 50;
-        }
+            const isMuted = localStorage.getItem("isMuted") === "true";
+            if (isMuted) {
+                soundOn.classList.add('hidden');
+                soundOff.classList.remove('hidden');
+                audio.pause();
+            } else {
+                soundOff.classList.add('hidden');
+                soundOn.classList.remove('hidden');
+                audio.play();
+            }
 
-        const isMuted = localStorage.getItem("isMuted") === "true";
-        if (isMuted) {
-            soundOn.classList.add('hidden');
-            soundOff.classList.remove('hidden');
-            audio.pause();
-        } else {
-            soundOff.classList.add('hidden');
-            soundOn.classList.remove('hidden');
-            audio.play();
-        }
+            // play music when sound is on
+            soundOn.addEventListener('click', () => {
+                soundOn.classList.add('hidden');
+                soundOff.classList.remove('hidden');
+                audio.pause();
+                localStorage.setItem("isMuted", "true");
+            });
 
-        // play music when sound is on
-        soundOn.addEventListener('click', () => {
-            soundOn.classList.add('hidden');
-            soundOff.classList.remove('hidden');
-            audio.pause();
-            localStorage.setItem("isMuted", "true");
-        });
+            // stop music when sound is off
+            soundOff.addEventListener('click', () => {
+                soundOff.classList.add('hidden');
+                soundOn.classList.remove('hidden');
+                audio.play();
+                localStorage.setItem("isMuted", "false");
+            });
 
-        // stop music when sound is off
-        soundOff.addEventListener('click', () => {
-            soundOff.classList.add('hidden');
-            soundOn.classList.remove('hidden');
-            audio.play();
-            localStorage.setItem("isMuted", "false");
-        });
+            // Load saved track
+            const savedTrack = localStorage.getItem('musicTrack');
+            if (savedTrack) {
+                if (savedTrack === 'track1') {
+                    track1.checked = true;
+                    audio.src = "/music/background-1.m4a";
+                } else if (savedTrack === 'track2') {
+                    track2.checked = true;
+                    audio.src = "/music/background-2.m4a";
+                }
+                audio.play();
+            } else {
+                audio.src = "/music/background-1.m4a";
+                track1.checked = true;
+                audio.play();
+            }
 
-        // when the page is loaded send a message to the server
-        window.addEventListener("load", () => {
-            connection.send(
-                JSON.stringify({
-                    type: "redirect",
-                    message: "settings",
-                })
-            );
-        });
+            // when the page is loaded send a message to the server
+            window.addEventListener("load", () => {
+                connection.send(
+                    JSON.stringify({
+                        type: "redirect",
+                        message: "settings",
+                    })
+                );
+            });
 
-        connection.onmessage = function (event) {
-            event.data.text().then((text) => {
-                var data = JSON.parse(text);
-                console.log(data);
+            connection.onmessage = function (event) {
+                event.data.text().then((text) => {
+                    var data = JSON.parse(text);
+                    console.log(data);
 
-                // Update the battery percentage element
-                if (data.batteryPercentage !== undefined) {
-                    // round the battery percentage to 0 decimal places
-                    batteryPercentageElement.textContent =
-                        data.batteryPercentage.toFixed(0) + "%";
+                    // Update the battery percentage element
+                    if (data.batteryPercentage !== undefined) {
+                        // round the battery percentage to 0 decimal places
+                        batteryPercentageElement.textContent =
+                            data.batteryPercentage.toFixed(0) + "%";
+                    }
+                });
+            };
+
+            // change battery image based on battery percentage
+            setInterval(() => {
+                var batteryPercentage = parseFloat(batteryPercentageElement.textContent);
+                var batteryImg = document.getElementById("battery-img").children;
+
+                if (batteryPercentage <= 20) {
+                    batteryImg[0].classList.add("hidden");
+                    batteryImg[1].classList.remove("hidden");
+                    batteryImg[2].classList.add("hidden");
+                    batteryImg[3].classList.add("hidden");
+                    batteryImg[4].classList.add("hidden");
+                    batteryImg[5].classList.add("hidden");
+                } else if (batteryPercentage <= 40) {
+                    batteryImg[0].classList.add("hidden");
+                    batteryImg[1].classList.add("hidden");
+                    batteryImg[2].classList.remove("hidden");
+                    batteryImg[3].classList.add("hidden");
+                    batteryImg[4].classList.add("hidden");
+                    batteryImg[5].classList.add("hidden");
+                } else if (batteryPercentage <= 60) {
+                    batteryImg[0].classList.add("hidden");
+                    batteryImg[1].classList.add("hidden");
+                    batteryImg[2].classList.add("hidden");
+                    batteryImg[3].classList.remove("hidden");
+                    batteryImg[4].classList.add("hidden");
+                    batteryImg[5].classList.add("hidden");
+                } else if (batteryPercentage <= 80) {
+                    batteryImg[0].classList.add("hidden");
+                    batteryImg[1].classList.add("hidden");
+                    batteryImg[2].classList.add("hidden");
+                    batteryImg[3].classList.add("hidden");
+                    batteryImg[4].classList.remove("hidden");
+                    batteryImg[5].classList.add("hidden");
+                } else if (batteryPercentage <= 100) {
+                    batteryImg[0].classList.add("hidden");
+                    batteryImg[1].classList.add("hidden");
+                    batteryImg[2].classList.add("hidden");
+                    batteryImg[3].classList.add("hidden");
+                    batteryImg[4].classList.add("hidden");
+                    batteryImg[5].classList.remove("hidden");
+                } else {
+                    batteryImg[0].classList.remove("hidden");
+                    batteryImg[1].classList.add("hidden");
+                    batteryImg[2].classList.add("hidden");
+                    batteryImg[3].classList.add("hidden");
+                    batteryImg[4].classList.add("hidden");
+                    batteryImg[5].classList.add("hidden");
+                }
+            }, 500);
+
+            // Update the volume based on the range input
+            volumeRange.addEventListener('input', () => {
+                audio.volume = volumeRange.value / 100;
+            });
+
+            // Change background music
+            track1.addEventListener('change', () => {
+                if (track1.checked) {
+                    audio.src = "/music/background-1.m4a";
+                    audio.play();
+                    localStorage.setItem('musicTrack', 'track1');
                 }
             });
-        };
 
-        // change battery image based on battery percentage
-        setInterval(() => {
-            var batteryPercentage = parseFloat(batteryPercentageElement.textContent);
-            var batteryImg = document.getElementById("battery-img").children;
-
-            if (batteryPercentage <= 20) {
-                batteryImg[0].classList.add("hidden");
-                batteryImg[1].classList.remove("hidden");
-                batteryImg[2].classList.add("hidden");
-                batteryImg[3].classList.add("hidden");
-                batteryImg[4].classList.add("hidden");
-                batteryImg[5].classList.add("hidden");
-            } else if (batteryPercentage <= 40) {
-                batteryImg[0].classList.add("hidden");
-                batteryImg[1].classList.add("hidden");
-                batteryImg[2].classList.remove("hidden");
-                batteryImg[3].classList.add("hidden");
-                batteryImg[4].classList.add("hidden");
-                batteryImg[5].classList.add("hidden");
-            } else if (batteryPercentage <= 60) {
-                batteryImg[0].classList.add("hidden");
-                batteryImg[1].classList.add("hidden");
-                batteryImg[2].classList.add("hidden");
-                batteryImg[3].classList.remove("hidden");
-                batteryImg[4].classList.add("hidden");
-                batteryImg[5].classList.add("hidden");
-            } else if (batteryPercentage <= 80) {
-                batteryImg[0].classList.add("hidden");
-                batteryImg[1].classList.add("hidden");
-                batteryImg[2].classList.add("hidden");
-                batteryImg[3].classList.add("hidden");
-                batteryImg[4].classList.remove("hidden");
-                batteryImg[5].classList.add("hidden");
-            } else if (batteryPercentage <= 100) {
-                batteryImg[0].classList.add("hidden");
-                batteryImg[1].classList.add("hidden");
-                batteryImg[2].classList.add("hidden");
-                batteryImg[3].classList.add("hidden");
-                batteryImg[4].classList.add("hidden");
-                batteryImg[5].classList.remove("hidden");
-            } else {
-                batteryImg[0].classList.remove("hidden");
-                batteryImg[1].classList.add("hidden");
-                batteryImg[2].classList.add("hidden");
-                batteryImg[3].classList.add("hidden");
-                batteryImg[4].classList.add("hidden");
-                batteryImg[5].classList.add("hidden");
-            }
-        }, 500);
-
-        // Update the volume based on the range input
-        volumeRange.addEventListener('input', () => {
-            audio.volume = volumeRange.value / 100;
+            track2.addEventListener('change', () => {
+                if (track2.checked) {
+                    audio.src = "/music/background-2.m4a";
+                    audio.play();
+                    localStorage.setItem('musicTrack', 'track2');
+                }
+            });
         });
-
-
     </script>
 </body>
 

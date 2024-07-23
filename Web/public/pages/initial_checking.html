@@ -105,7 +105,6 @@
 
         var connection = new WebSocket("ws://" + location.hostname + ":8080/");
 
-        audio.play();
         const savedVolume = localStorage.getItem("volume");
         if (savedVolume) {
             audio.volume = savedVolume / 100;
@@ -123,6 +122,22 @@
             soundOn.classList.remove('hidden');
             audio.play();
         }
+
+        // Load saved track
+        const savedTrack = localStorage.getItem('musicTrack');
+        if (savedTrack) {
+            if (savedTrack === 'track1') {
+                audio.src = "/music/background-1.m4a";
+            } else if (savedTrack === 'track2') {
+                audio.src = "/music/background-2.m4a";
+            }
+            audio.play();
+        } else {
+            audio.src = "/music/background-1.m4a";
+            track1.checked = true;
+            audio.play();
+        }
+
 
         // when page is loaded send a message to the server
         window.addEventListener("load", () => {

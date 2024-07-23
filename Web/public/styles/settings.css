@@ -91,7 +91,6 @@ html {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  /* gap: 1rem; */
   padding: 1rem;
   background-color: #a1ff49a7;
   border: 1rem solid #a1ff49;
@@ -145,6 +144,43 @@ input[type="range"] {
   justify-content: space-evenly;
   align-items: center;
   margin: 0 5% 0;
+}
+#music label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.custom-radio[type="radio"] {
+  appearance: none;
+  border: 1px solid #d3d3d3;
+  width: 27px;
+  height: 27px;
+  content: none;
+  outline: none;
+  border-radius: 100%;
+  margin: 0;
+}
+
+.custom-radio[type="radio"]:checked {
+  appearance: none;
+  border-radius: 100%;
+  outline: none;
+  padding: 0;
+  content: none;
+  border: none;
+}
+
+.custom-radio[type="radio"]:checked::before {
+  position: absolute;
+  background: #0c1332;
+  accent-color: blue;
+  border-radius: 100%;
+  color: white !important;
+  content: "\00A0\2713\00A0" !important;
+  border: 1px solid #d3d3d3;
+  font-weight: bolder;
+  font-size: 19px;
 }
 
 #stats {
