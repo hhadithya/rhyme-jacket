@@ -53,13 +53,6 @@ if (savedVolume) {
   audio.volume = 0.5;
 }
 
-const isMuted = localStorage.getItem("isMuted") === "true";
-if (isMuted) {
-  soundOn.classList.add("hidden");
-  soundOff.classList.remove("hidden");
-  audio.pause();
-}
-
 // play music when sound is on
 soundOn.addEventListener("click", () => {
   soundOn.classList.add("hidden");
@@ -84,10 +77,19 @@ if (savedTrack) {
   } else if (savedTrack === "track2") {
     audio.src = "/music/background-2.m4a";
   }
-  audio.play();
 } else {
   audio.src = "/music/background-1.m4a";
   track1.checked = true;
+}
+
+const isMuted = localStorage.getItem("isMuted") === "true";
+if (isMuted) {
+  soundOn.classList.add("hidden");
+  soundOff.classList.remove("hidden");
+  audio.pause();
+} else {
+  soundOff.classList.add("hidden");
+  soundOn.classList.remove("hidden");
   audio.play();
 }
 
