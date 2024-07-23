@@ -107,6 +107,33 @@
             audio.volume = 0.5;
         }
 
+        const isMuted = localStorage.getItem("isMuted") === "true";
+        if (isMuted) {
+            soundOn.classList.add('hidden');
+            soundOff.classList.remove('hidden');
+            audio.pause();
+        } else {
+            soundOff.classList.add('hidden');
+            soundOn.classList.remove('hidden');
+            audio.play();
+        }
+
+        // play music when sound is on
+        soundOn.addEventListener("click", () => {
+            soundOn.classList.add("hidden");
+            soundOff.classList.remove("hidden");
+            audio.pause();
+            localStorage.setItem("isMuted", "true");
+        });
+
+        // stop music when sound is off
+        soundOff.addEventListener("click", () => {
+            soundOff.classList.add("hidden");
+            soundOn.classList.remove("hidden");
+            audio.play();
+            localStorage.setItem("isMuted", "false");
+        });
+
         // send a message when the page is loaded
         window.addEventListener("load", () => {
             connection.send(
@@ -115,20 +142,6 @@
                     message: "L2_unlocked",
                 })
             );
-        });
-
-        // play music when sound is on
-        soundOn.addEventListener("click", () => {
-            soundOn.classList.add("hidden");
-            soundOff.classList.remove("hidden");
-            audio.pause();
-        });
-
-        // stop music when sound is off
-        soundOff.addEventListener("click", () => {
-            soundOff.classList.add("hidden");
-            soundOn.classList.remove("hidden");
-            audio.play();
         });
 
         // when mouse hovers items with hover class plays a sound

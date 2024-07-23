@@ -113,6 +113,17 @@
             audio.volume = 0.5;
         }
 
+        const isMuted = localStorage.getItem("isMuted") === "true";
+        if (isMuted) {
+            soundOn.classList.add('hidden');
+            soundOff.classList.remove('hidden');
+            audio.pause();
+        } else {
+            soundOff.classList.add('hidden');
+            soundOn.classList.remove('hidden');
+            audio.play();
+        }
+
         // when page is loaded send a message to the server
         window.addEventListener("load", () => {
             connection.send(JSON.stringify({
@@ -126,6 +137,8 @@
             soundOn.classList.add("hidden");
             soundOff.classList.remove("hidden");
             audio.pause();
+            localStorage.setItem("isMuted", "true");
+
         });
 
         // stop music when sound is off
@@ -133,6 +146,7 @@
             soundOff.classList.add("hidden");
             soundOn.classList.remove("hidden");
             audio.play();
+            localStorage.setItem("isMuted", "false");
         });
 
         setTimeout(() => {

@@ -56,6 +56,13 @@ if (savedVolume) {
   audio.volume = 0.5;
 }
 
+const isMuted = localStorage.getItem("isMuted") === "true";
+if (isMuted) {
+  soundOn.classList.add("hidden");
+  soundOff.classList.remove("hidden");
+  audio.pause();
+}
+
 // play music when sound is on
 soundOn.addEventListener("click", () => {
   soundOn.classList.add("hidden");

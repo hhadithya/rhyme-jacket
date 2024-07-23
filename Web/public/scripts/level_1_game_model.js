@@ -8,7 +8,7 @@ let rightArm, leftArm, model, rightArm2, leftArm2, model2;
 let audioBuffer, audioContext, audioSource;
 let partDuration;
 let currentPart = 0;
-let isRaised = true;
+let isRaised = false;
 let previousIsRaised = isRaised;
 let targetAngle = 0;
 const music1_url = "../music/level_1_music.mp3"; // Adjust the path as necessary
@@ -29,7 +29,7 @@ let left_flex = 0;
 connection.onmessage = function (event) {
   event.data.text().then((text) => {
     const data = JSON.parse(text);
-    console.log(data);
+    // console.log(data);
 
     if (data.flex1Angle !== undefined) {
       left_flex = data.flex1Angle;
@@ -140,6 +140,9 @@ function init() {
 
       rightArm = model.getObjectByName("mixamorigRightArm");
       leftArm = model.getObjectByName("mixamorigLeftArm");
+
+      rightArm.rotation.x = -0.95;
+      leftArm.rotation.x = -0.95;
 
       model.scale.set(12, 12, 12);
       model.position.y = 0;
@@ -262,22 +265,23 @@ function init() {
 
   function checkAndPlayNextPart(newIsRaised) {
     if (newIsRaised !== previousIsRaised) {
+      console.log("State changed");
       playNextPart();
       previousIsRaised = newIsRaised; // Update previousIsRaised to the new value
     }
   }
 
   setInterval(() => {
-    if (right_gyro_p > 50 && left_gyro_p > 50) {
+    if (right_gyro_p > 45 && left_gyro_p > 45) {
       isRaised = true; // Toggle the state
       checkAndPlayNextPart(isRaised);
-      targetAngle = 0.95; // Set the target angle based on the state
+      targetAngle = -0.95; // Set the target angle based on the state
     }
 
-    if (right_gyro_p < -50 && left_gyro_p < -50) {
+    if (right_gyro_p < -45 && left_gyro_p < -45) {
       isRaised = false; // Toggle the state
       checkAndPlayNextPart(isRaised);
-      targetAngle = -0.95; // Set the target angle based on the state
+      targetAngle = 0.95; // Set the target angle based on the state
     }
   }, 100);
 

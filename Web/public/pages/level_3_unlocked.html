@@ -118,11 +118,23 @@
             audio.volume = 0.5;
         }
 
+        const isMuted = localStorage.getItem("isMuted") === "true";
+        if (isMuted) {
+            soundOn.classList.add('hidden');
+            soundOff.classList.remove('hidden');
+            audio.pause();
+        } else {
+            soundOff.classList.add('hidden');
+            soundOn.classList.remove('hidden');
+            audio.play();
+        }
+
         // play music when sound is on
         soundOn.addEventListener("click", () => {
             soundOn.classList.add("hidden");
             soundOff.classList.remove("hidden");
             audio.pause();
+            localStorage.setItem("isMuted", "true");
         });
 
         // stop music when sound is off
@@ -130,6 +142,7 @@
             soundOff.classList.add("hidden");
             soundOn.classList.remove("hidden");
             audio.play();
+            localStorage.setItem("isMuted", "false");
         });
 
         // when mouse hovers items with hover class plays a sound

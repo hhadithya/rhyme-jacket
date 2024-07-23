@@ -7,14 +7,14 @@
     <title>Home Page</title>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../styles/home.css">
-    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-16x16.png">
 </head>
 
 <body>
     <!-- Background Music -->
     <audio id="background-music" src="/music/background-1.m4a" loop autoplay></audio>
 
-    
+
     <div class="content">
         <div id="top-icons">
             <div id="top-icons-left">
@@ -42,7 +42,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div id="index-content">
             <div class="logo-area">
                 <img src="/images/Rhyme_Fit.png" alt="logo" id="logo">
@@ -75,11 +75,23 @@
             audio.volume = 0.5;
         }
 
+        const isMuted = localStorage.getItem("isMuted") === "true";
+        if (isMuted) {
+            soundOn.classList.add('hidden');
+            soundOff.classList.remove('hidden');
+            audio.pause();
+        } else {
+            soundOff.classList.add('hidden');
+            soundOn.classList.remove('hidden');
+            audio.play();
+        }
+
         // play music when sound is on
         soundOn.addEventListener('click', () => {
             soundOn.classList.add('hidden');
             soundOff.classList.remove('hidden');
             audio.pause();
+            localStorage.setItem("isMuted", "true");
         });
 
         // stop music when sound is off
@@ -87,6 +99,7 @@
             soundOff.classList.add('hidden');
             soundOn.classList.remove('hidden');
             audio.play();
+            localStorage.setItem("isMuted", "false");
         });
 
         connection.onmessage = function (event) {
