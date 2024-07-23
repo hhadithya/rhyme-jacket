@@ -45,16 +45,25 @@
         </div>
 
         <div id="container">
-            <h1>Settings</h1>
+            <h1 id="container-topic">Settings</h1>
 
             <div class="volume">
                 <div id="volume-text">
                     Volume:
                 </div>
+
                 <div id="volume-data">
                     <i class="fa fa-volume-down icon-size" aria-hidden="true"></i>
                     <input id="volume-range" type="range" min="0" max="100" value="50" class="volume-range">
                     <i class="fa fa-volume-up icon-size" aria-hidden="true"></i>
+                </div>
+            </div>
+
+            <div id="music">
+                <p>Sound Track</p>
+                <div id="options">
+                    <label for="track1"><input type="radio" name="music-track" id="track1"> Track 1</label>
+                    <label for="track2"><input type="radio" name="music-track" id="track2"> Track 2</label>
                 </div>
             </div>
 
