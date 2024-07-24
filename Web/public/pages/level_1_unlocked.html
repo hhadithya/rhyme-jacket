@@ -136,6 +136,10 @@
             soundOn.classList.add('hidden');
             soundOff.classList.remove('hidden');
             audio.pause();
+        } else {
+            soundOff.classList.add('hidden');
+            soundOn.classList.remove('hidden');
+            audio.play();
         }
 
         // when page is loaded send a message to server 

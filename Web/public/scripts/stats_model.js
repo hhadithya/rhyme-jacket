@@ -4,7 +4,21 @@ import { OrbitControls } from "jsm/controls/OrbitControls.js";
 
 const canvas = document.getElementById("stat_model_canvas");
 
-let model, rightArm, leftArm;
+var connection = new WebSocket("ws://" + location.hostname + ":8080/");
+
+let model, rightArm, leftArm, rightForeArm, leftForeArm;
+let flex1Angle, flex2Angle;
+
+connection.onmessage = function (e) {
+  e.data.text().then((text) => {
+    var data = JSON.parse(text);
+
+    flex1Angle = data.flex1Angle;
+    flex2Angle = data.flex2Angle;
+
+    // console.log(flex1Angle, flex2Angle);
+  });
+};
 
 function init() {
   const scene = new THREE.Scene();
@@ -31,16 +45,39 @@ function init() {
 
       rightArm = model.getObjectByName("mixamorigRightArm");
       leftArm = model.getObjectByName("mixamorigLeftArm");
+      rightForeArm = model.getObjectByName("mixamorigRightForeArm");
+      leftForeArm = model.getObjectByName("mixamorigLeftForeArm");
 
       rightArm.rotation.x = leftArm.rotation.x = 0.95;
 
       model.scale.set(12, 12, 12);
       model.position.y = 3;
 
+      // console log the names of the bones
+      // model.traverse((o) => {
+      //   if (o.isBone) {
+      //     console.log(o.name);
+      //   }
+      // });
+
       scene.add(model);
 
       function animate() {
         requestAnimationFrame(animate);
+
+        const delta = clock.getDelta(); // Get time passed since last frame
+
+        if (flex2Angle > 0 && flex2Angle <= 36) {
+          rightForeArm.rotation.z = -0.2;
+        } else if (flex2Angle > 36 && flex2Angle <= 72) {
+          rightForeArm.rotation.z = -0.4;
+        } else if (flex2Angle > 72 && flex2Angle <= 108) {
+          rightForeArm.rotation.z = -0.6;
+        } else if (flex2Angle > 108 && flex2Angle <= 144) {
+          rightForeArm.rotation.z = -0.8;
+        } else if (flex2Angle > 144 && flex2Angle <= 180) {
+          rightForeArm.rotation.z = -1;
+        }
 
         // controls.update();
 
@@ -54,7 +91,7 @@ function init() {
   const renderer = new THREE.WebGLRenderer({ canvas });
   renderer.setPixelRatio(window.devicePixelRatio);
 
-  //   const controls = new OrbitControls(camera, renderer.domElement);
+  // const controls = new OrbitControls(camera, renderer.domElement);
 }
 
 init();

@@ -7,7 +7,7 @@ let rightArm, leftArm, model;
 let audioBuffer, audioContext, audioSource;
 let partDuration;
 let currentPart = 0;
-const music1_url = "../music/level_1_music.mp3"; // Adjust the path as necessary
+const music1_url = "../music/Twinkle Twinkle-1.mp3"; // Adjust the path as necessary
 let isRaised = true;
 
 async function loadAudio() {
@@ -24,7 +24,7 @@ async function loadAudio() {
       arrayBuffer,
       (buffer) => {
         audioBuffer = buffer;
-        partDuration = audioBuffer.duration / 21;
+        partDuration = audioBuffer.duration / 16;
       },
       (error) => {
         console.error("decodeAudioData error:", error);
@@ -90,7 +90,7 @@ function init() {
         requestAnimationFrame(animate);
 
         const t = clock.getElapsedTime();
-        const angle = Math.sin(t) * 1;
+        const angle = Math.sin(1.15 * t) * 1;
 
         if (rightArm) {
           if (angle > -0.95 && angle < 0.95) {

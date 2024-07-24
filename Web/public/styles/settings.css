@@ -132,6 +132,7 @@ input[type="range"] {
   display: flex;
   flex-direction: column;
   font-size: 2.5rem;
+  gap: 1rem;
   width: 100%;
 }
 

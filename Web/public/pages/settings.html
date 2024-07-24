@@ -94,6 +94,32 @@
 
             var connection = new WebSocket("ws://" + location.hostname + ":8080/");
 
+            // Load saved track
+            const savedTrack = localStorage.getItem('musicTrack');
+            if (savedTrack) {
+                if (savedTrack === 'track1') {
+                    track1.checked = true;
+                    audio.src = "/music/background-1.m4a";
+                } else if (savedTrack === 'track2') {
+                    track2.checked = true;
+                    audio.src = "/music/background-2.m4a";
+                }
+            } else {
+                audio.src = "/music/background-1.m4a";
+                track1.checked = true;
+            }
+
+            const isMuted = localStorage.getItem("isMuted") === "true";
+            if (isMuted) {
+                soundOn.classList.add('hidden');
+                soundOff.classList.remove('hidden');
+                audio.pause();
+            } //else {
+            //     soundOff.classList.add('hidden');
+            //     soundOn.classList.remove('hidden');
+            //     audio.play();
+            // }
+
             const savedVolume = localStorage.getItem('volume');
             if (savedVolume) {
                 volumeRange.value = savedVolume;
@@ -118,32 +144,6 @@
                 audio.play();
                 localStorage.setItem("isMuted", "false");
             });
-
-            // Load saved track
-            const savedTrack = localStorage.getItem('musicTrack');
-            if (savedTrack) {
-                if (savedTrack === 'track1') {
-                    track1.checked = true;
-                    audio.src = "/music/background-1.m4a";
-                } else if (savedTrack === 'track2') {
-                    track2.checked = true;
-                    audio.src = "/music/background-2.m4a";
-                }
-            } else {
-                audio.src = "/music/background-1.m4a";
-                track1.checked = true;
-            }
-
-            const isMuted = localStorage.getItem("isMuted") === "true";
-            if (isMuted) {
-                soundOn.classList.add('hidden');
-                soundOff.classList.remove('hidden');
-                audio.pause();
-            } else {
-                soundOff.classList.add('hidden');
-                soundOn.classList.remove('hidden');
-                audio.play();
-            }
 
             // when the page is loaded send a message to the server
             window.addEventListener("load", () => {
