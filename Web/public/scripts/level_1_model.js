@@ -7,7 +7,7 @@ let rightArm, leftArm, model;
 let audioBuffer, audioContext, audioSource;
 let partDuration;
 let currentPart = 0;
-const music1_url = "../music/Twinkle Twinkle-1.mp3"; // Adjust the path as necessary
+const music1_url = "../music/Twinkle Twinkle-2.mp3"; // Adjust the path as necessary
 let isRaised = true;
 
 async function loadAudio() {
@@ -51,7 +51,7 @@ function playNextPart() {
 
   audioSource.start(0, startTime, endTime);
 
-  currentPart = (currentPart + 1) % 21;
+  currentPart = (currentPart + 1) % 16;
 }
 
 function init() {

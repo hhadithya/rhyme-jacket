@@ -65,8 +65,6 @@ function init() {
       function animate() {
         requestAnimationFrame(animate);
 
-        const delta = clock.getDelta(); // Get time passed since last frame
-
         if (flex2Angle > 0 && flex2Angle <= 36) {
           rightForeArm.rotation.z = -0.2;
         } else if (flex2Angle > 36 && flex2Angle <= 72) {
