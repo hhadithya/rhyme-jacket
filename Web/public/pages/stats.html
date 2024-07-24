@@ -135,7 +135,6 @@
 
         var connection = new WebSocket("ws://" + location.hostname + ":8080/");
 
-
         // when page is loaded send a message to server
         window.addEventListener("load", () => {
             connection.send(
@@ -146,13 +145,24 @@
             );
         });
 
-        audio.play();
-
         const savedVolume = localStorage.getItem("volume");
         if (savedVolume) {
             audio.volume = savedVolume / 100;
         } else {
             audio.volume = 0.5;
+        }
+
+        // Load saved track
+        const savedTrack = localStorage.getItem('musicTrack');
+        if (savedTrack) {
+            if (savedTrack === 'track1') {
+                audio.src = "/music/background-1.m4a";
+            } else if (savedTrack === 'track2') {
+                audio.src = "/music/background-2.m4a";
+            }
+        } else {
+            audio.src = "/music/background-1.m4a";
+            track1.checked = true;
         }
 
         const isMuted = localStorage.getItem("isMuted") === "true";
@@ -185,7 +195,7 @@
         connection.onmessage = function (event) {
             event.data.text().then((text) => {
                 var data = JSON.parse(text);
-                console.log(data);
+                // console.log(data);
 
                 // Update the battery percentage element
                 if (data.batteryPercentage !== undefined) {
