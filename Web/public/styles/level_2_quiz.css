@@ -6,7 +6,7 @@ html {
   background-size: cover;
   font-family: "Fredoka One", cursive;
   box-sizing: border-box;
-  cursor: url("/images/mouse-2.png"), auto;
+  cursor: url("/images/cursor.png"), auto;
 }
 
 #content {
@@ -37,7 +37,7 @@ html {
 
 #top-icons-left img:hover {
   width: 5.5vw;
-  cursor: url("/images/mouse-2-pointer.png"), auto;
+  cursor: url("/images/cursor.png"), auto;
 }
 
 #top-icons-left {
@@ -54,7 +54,7 @@ html {
 
 #top-icons-left img:hover {
   width: 5.5vw;
-  cursor: url("/images/mouse-2-pointer.png"), auto;
+  cursor: url("/images/cursor.png"), auto;
 }
 
 #top-icons-left div {
@@ -149,7 +149,7 @@ html {
 
 #option-button:hover {
   background-color: rgb(178, 240, 178);
-  cursor: url("/images/mouse-2.png"), auto;
+  cursor: url("/images/cursor.png"), auto;
 }
 
 #option-button a {
@@ -163,7 +163,7 @@ html {
 }
 
 #option-button a:hover{
-  cursor: url("/images/mouse-2-pointer.png"), auto;
+  cursor: url("/images/cursor.png"), auto;
 }
 
 .answer img {
@@ -175,5 +175,5 @@ html {
 }
 
 #listen1-off, #listen1-on, #listen2-off, #listen2-on, #listen3-off, #listen3-on:hover{
-  cursor: url("/images/mouse-2-pointer.png"), auto;
+  cursor: url("/images/cursor.png"), auto;
 }

@@ -6,7 +6,7 @@ html {
   background-size: cover;
   font-family: "Fredoka One", cursive;
   box-sizing: border-box;
-  cursor: url("/images/mouse-2.png"), auto;
+  cursor: url("/images/cursor.png"), auto;
 }
 
 #content {
@@ -37,7 +37,7 @@ html {
 
 #top-icons-left img:hover {
   width: 5.5vw;
-  cursor: url("/images/mouse-2-pointer.png"), auto;
+  cursor: url("/images/cursor.png"), auto;
 }
 
 #top-icons-left {
@@ -54,7 +54,7 @@ html {
 
 #top-icons-left img:hover {
   width: 5.5vw;
-  cursor: url("/images/mouse-2-pointer.png"), auto;
+  cursor: url("/images/cursor.png"), auto;
 }
 
 #top-icons-left div {
@@ -125,7 +125,7 @@ html {
 
 input[type="range"] {
   width: 70%;
-  cursor: url("/images/mouse-2-pointer.png"), auto;
+  cursor: url("/images/cursor.png"), auto;
 }
 
 #music {
@@ -151,6 +151,7 @@ input[type="range"] {
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  cursor: url("/images/cursor.png"), auto;
 }
 .custom-radio[type="radio"] {
   appearance: none;
@@ -161,6 +162,7 @@ input[type="range"] {
   outline: none;
   border-radius: 100%;
   margin: 0;
+  cursor: url("/images/cursor.png"), auto;
 }
 
 .custom-radio[type="radio"]:checked {
@@ -205,11 +207,11 @@ input[type="range"] {
   width: 100%;
   align-items: center;
   justify-content: center;
-  cursor: url("/images/mouse-2-pointer.png"), auto;
+  cursor: url("/images/cursor.png"), auto;
 }
 
 #stat-text {
-  cursor: url("/images/mouse-2-pointer.png"), auto;
+  cursor: url("/images/cursor.png"), auto;
   text-decoration: none;
   color: #000;
 }

@@ -6,7 +6,7 @@ html {
   background-size: cover;
   font-family: "Fredoka One", cursive;
   box-sizing: border-box;
-  cursor: url("/images/mouse-1.png"), auto;
+  cursor: url("/images/cursor.png"), auto;
 }
 
 /* content */
@@ -37,7 +37,7 @@ html {
 }
 
 #top-icons-left img:hover {
-  cursor: url("/images/mouse-1-pointer.png"), auto;
+  cursor: url("/images/cursor.png"), auto;
   width: 5.5vw;
 }
 
@@ -55,7 +55,7 @@ html {
 
 #top-icons-left img:hover {
   width: 5.5vw;
-  cursor: url("/images/mouse-1-pointer.png"), auto;
+  cursor: url("/images/cursor.png"), auto;
 }
 
 #top-icons-left div {
@@ -153,11 +153,11 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: url("/images/mouse-1.png"), auto;
+  cursor: url("/images/cursor.png"), auto;
 }
 
 #menu-items a button:hover {
-  cursor: url("/images/mouse-1-pointer.png"), auto;
+  cursor: url("/images/cursor.png"), auto;
 }
 
 #menu-items button {
@@ -169,7 +169,7 @@ html {
 }
 
 #exit-btn:hover {
-  cursor: url("/images/mouse-1-pointer.png"), auto;
+  cursor: url("/images/cursor.png"), auto;
 }
 
 /* modal */
@@ -227,7 +227,7 @@ html {
   color: #000;
   text-decoration: none;
   /* cursor: pointer; */
-  cursor: url("/images/mouse-1-pointer.png"), auto;
+  cursor: url("/images/cursor.png"), auto;
 }
 
 .modal-content div {
@@ -265,12 +265,12 @@ html {
 }
 #yes:hover {
   background-color: #e72700;
-  cursor: url("/images/mouse-1-pointer.png"), auto;
+  cursor: url("/images/cursor.png"), auto;
 }
 
 #no:hover {
   background-color: #46be01;
-  cursor: url("/images/mouse-1-pointer.png"), auto;
+  cursor: url("/images/cursor.png"), auto;
 }
 
 /*
@@ -359,7 +359,7 @@ html {
   right: 0;
   top: 0;
   transition-timing-function: ease-in;
-  cursor: url("/images/mouse-1-pointer.png"), auto;
+  cursor: url("/images/cursor.png"), auto;
 }
 
 .menu-btn:active:not(:disabled) {
