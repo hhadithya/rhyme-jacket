@@ -111,7 +111,7 @@ function playNextPart() {
 
   audioSource.start(0, startTime, endTime);
 
-  currentPart = (currentPart + 1) % 21;
+  currentPart = (currentPart + 1) % 16;
 }
 
 function init() {
@@ -141,8 +141,8 @@ function init() {
       rightArm = model.getObjectByName("mixamorigRightArm");
       leftArm = model.getObjectByName("mixamorigLeftArm");
 
-      rightArm.rotation.x = -0.95;
-      leftArm.rotation.x = -0.95;
+      // rightArm.rotation.x = -0.95;
+      // leftArm.rotation.x = -0.95;
 
       model.scale.set(12, 12, 12);
       model.position.y = 0;
