@@ -90,7 +90,8 @@ function init() {
         requestAnimationFrame(animate);
 
         const t = clock.getElapsedTime();
-        const angle = Math.sin(1.15 * t) * 1;
+        const angle = Math.sin(1.5 * t) * 1;
+        console.log(angle);
 
         if (rightArm) {
           if (angle > -0.95 && angle < 0.95) {
@@ -120,7 +121,7 @@ function init() {
   floor.position.y = -11;
   scene.add(floor);
 
-  setInterval(playNextPart, 3450);
+  setInterval(playNextPart, 2250);
 }
 
 init();

@@ -114,11 +114,11 @@
                 soundOn.classList.add('hidden');
                 soundOff.classList.remove('hidden');
                 audio.pause();
-            } //else {
-            //     soundOff.classList.add('hidden');
-            //     soundOn.classList.remove('hidden');
-            //     audio.play();
-            // }
+            } else {
+                soundOff.classList.add('hidden');
+                soundOn.classList.remove('hidden');
+                audio.play();
+            }
 
             const savedVolume = localStorage.getItem('volume');
             if (savedVolume) {

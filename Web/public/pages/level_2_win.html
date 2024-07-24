@@ -12,6 +12,8 @@
 </head>
 
 <body>
+    <audio src="/music/win_music.mp3" autoplay></audio>
+
     <div class="container">
         <div id="top-icons">
             <div id="top-icons-left">
@@ -75,8 +77,8 @@
             });
         };
 
-            // change battery image based on battery percentage
-            setInterval(() => {
+        // change battery image based on battery percentage
+        setInterval(() => {
             var batteryPercentage = parseFloat(batteryPercentageElement.textContent);
             var batteryImg = document.getElementById('battery-img').children;
 
