@@ -185,10 +185,12 @@ function init() {
         //   targetAngle = 0.85; // Set the target angle based on the state
         // }
 
-        // if () {
+        // if (left_flex > 0 && left_flex <= 30 && right_flex > 0 && right_flex <= 30) {
         //   document.getElementById("correctMove").style.display = "block";
         //   document.getElementById("wrongMove").style.display = "none";
-        // } else {
+        // }
+
+        // if (left_flex > 30 && left_flex <= 100 && right_flex > 30 && right_flex <= 100) {
         //   document.getElementById("correctMove").style.display = "none";
         //   document.getElementById("wrongMove").style.display = "block";
         // }

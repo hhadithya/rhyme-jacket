@@ -65,25 +65,17 @@ function init() {
       function animate() {
         requestAnimationFrame(animate);
 
-        if (flex2Angle > 0 && flex2Angle <= 18) {
-          rightForeArm.rotation.z = -0.1;
-        } else if (flex2Angle > 18 && flex2Angle <= 36) {
+        const delta = clock.getDelta(); // Get time passed since last frame
+
+        if (flex2Angle > 0 && flex2Angle <= 36) {
           rightForeArm.rotation.z = -0.2;
-        } else if (flex2Angle > 36 && flex2Angle <= 54) {
-          rightForeArm.rotation.z = -0.3;
-        } else if (flex2Angle > 54 && flex2Angle <= 72) {
+        } else if (flex2Angle > 36 && flex2Angle <= 72) {
           rightForeArm.rotation.z = -0.4;
-        } else if (flex2Angle > 72 && flex2Angle <= 90) {
-          rightForeArm.rotation.z = -0.5;
-        } else if (flex2Angle > 90 && flex2Angle <= 108) {
+        } else if (flex2Angle > 72 && flex2Angle <= 108) {
           rightForeArm.rotation.z = -0.6;
-        } else if (flex2Angle > 108 && flex2Angle <= 126) {
-          rightForeArm.rotation.z = -0.7;
-        } else if (flex2Angle > 126 && flex2Angle <= 144) {
+        } else if (flex2Angle > 108 && flex2Angle <= 144) {
           rightForeArm.rotation.z = -0.8;
-        } else if (flex2Angle > 144 && flex2Angle <= 162) {
-          rightForeArm.rotation.z = -0.9;
-        } else if (flex2Angle > 162 && flex2Angle <= 180) {
+        } else if (flex2Angle > 144 && flex2Angle <= 180) {
           rightForeArm.rotation.z = -1;
         }
 

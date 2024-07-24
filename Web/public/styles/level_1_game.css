@@ -91,10 +91,12 @@ html {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 85%;
+  height: 90%;
+  width: 80%;
 }
 
 #topic {
+  height: 10%;
   font-size: 4rem;
   font-weight: bold;
   margin: 0 0 1rem;
@@ -116,15 +118,15 @@ html {
 }
 
 #quiz {
-  position: relative;
-  top: -4rem;
+  position: absolute;
+  bottom: 5rem;
   background-color: lightgreen;
   border: 5px solid lightgreen;
   border-radius: 0 0 30px 30px;
   box-shadow: 0 6px 10px lightgreen;
   transition: background-color 0.3s, box-shadow 0.3s;
   font-size: 3.5em;
-  width: 80%;
+  width: 64%;
   cursor: url("/images/mouse-3-pointer.png"), auto;
 }
 
@@ -139,4 +141,14 @@ html {
   font-size: 3rem;
   background-color: transparent;
   border: none;
-  cursor: url("/images/mouse-3-pointer.png"), auto;}
+  cursor: url("/images/mouse-3-pointer.png"), auto;
+}
+
+#move-suggestion {
+  height: 5%;
+  font-size: 2rem;
+}
+
+#move-suggestion p {
+  margin: 0;
+}
