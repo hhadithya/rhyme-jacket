@@ -6,7 +6,7 @@ html {
   background-size: cover;
   font-family: "Fredoka One", cursive;
   box-sizing: border-box;
-  cursor: url("/images/mouse-3.png"), auto;
+  cursor: url("/images/cursor.png"), auto;
 }
 
 #content {
@@ -37,7 +37,7 @@ html {
 
 #top-icons-left img:hover {
   width: 5.5vw;
-  cursor: url("/images/mouse-3-pointer.png"), auto;
+  cursor: url("/images/cursor.png"), auto;
 }
 
 #top-icons-left {
@@ -54,7 +54,7 @@ html {
 
 #top-icons-left img:hover {
   width: 5.5vw;
-  cursor: url("/images/mouse-3-pointer.png"), auto;
+  cursor: url("/images/cursor.png"), auto;
 }
 
 #top-icons-left div {
@@ -127,12 +127,12 @@ html {
   transition: background-color 0.3s, box-shadow 0.3s;
   font-size: 3.5em;
   width: 64%;
-  cursor: url("/images/mouse-3-pointer.png"), auto;
+  cursor: url("/images/cursor.png"), auto;
 }
 
 #quiz:hover {
   background-color: #4caf50;
-  cursor: url("/images/mouse-3-pointer.png"), auto;
+  cursor: url("/images/cursor.png"), auto;
 }
 
 #button-text {
@@ -141,7 +141,7 @@ html {
   font-size: 3rem;
   background-color: transparent;
   border: none;
-  cursor: url("/images/mouse-3-pointer.png"), auto;
+  cursor: url("/images/cursor.png"), auto;
 }
 
 #move-suggestion {

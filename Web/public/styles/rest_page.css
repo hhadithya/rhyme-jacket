@@ -2,7 +2,7 @@ body {
   background: linear-gradient(to bottom right, #ebff7d, #7bd4fd);
   background-size: cover;
   height: 100vh;
-  cursor: url("/images/mouse-1.png"), auto;
+  cursor: url("/images/cursor.png"), auto;
 }
 
 #rest_page_container {

@@ -11,7 +11,7 @@ html {
   justify-content: center;
   align-items: center;
   font-family: "Fredoka One", cursive;
-  cursor: url("/images/mouse-1.png"), auto;
+  cursor: url("/images/cursor.png"), auto;
 }
 
 /* icons on top of the page */
@@ -33,7 +33,7 @@ html {
 
 #top-icons-left img:hover {
   width: 5.5vw;
-  cursor: url("/images/mouse-1-pointer.png"), auto;
+  cursor: url("/images/cursor.png"), auto;
 }
 
 #top-icons-left {
@@ -50,7 +50,7 @@ html {
 
 #top-icons-left img:hover {
   width: 5.5vw;
-  cursor: url("/images/mouse-1-pointer.png"), auto;
+  cursor: url("/images/cursor.png"), auto;
 }
 
 #top-icons-left div {
@@ -126,11 +126,11 @@ h1 {
 
 #nextLevelButton:hover {
   background-color:rgb(248, 255, 116);
-  cursor: url("/images/mouse-1.png"), auto;
+  cursor: url("/images/cursor.png"), auto;
 }
 
 #nextLevelButton a:hover{
-  cursor: url("/images/mouse-1-pointer.png"), auto;
+  cursor: url("/images/cursor.png"), auto;
 }
 
 #fireworksCanvas {
