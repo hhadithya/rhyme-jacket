@@ -91,10 +91,12 @@ html {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 85%;
+  height: 90%;
+  height: 80%;
 }
 
 #topic {
+  height: 10%;
   font-size: 4rem;
   font-weight: bold;
   margin: 0 0 1rem;
@@ -116,15 +118,16 @@ html {
 }
 
 #quiz {
-  position: relative;
-  top: -4rem;
+  position: absolute;
+  top: 5rem;
   background-color: lightgreen;
   border: 5px solid lightgreen;
   border-radius: 0 0 30px 30px;
   box-shadow: 0 6px 10px lightgreen;
   transition: background-color 0.3s, box-shadow 0.3s;
   font-size: 3.5em;
-  width: 80%;
+  width: 64%;
+  cursor: url("/images/mouse-3-pointer.png"), auto;
 }
 
 #quiz:hover {
@@ -139,4 +142,55 @@ html {
   background-color: transparent;
   border: none;
   cursor: url("/images/mouse-3-pointer.png"), auto;
+}
+
+#move-suggestion {
+  position: absolute;
+  top: 9rem;
+  height: 5%;
+  width: 60%;
+  font-size: 2rem;
+  border: 5px solid lightgreen;
+  border-radius: 30px 30px 10px 10px;
+  padding: 0.7rem 1.9rem;
+  background-color: lightgreen;
+}
+#move-suggestion p {
+  margin: 0;
+}
+
+#correctMove {
+  color: #fff;
+  text-align: center;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes glow {
+  from {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #5dff5d, 0 0 20px #5dff5d,
+      0 0 25px #5dff5d, 0 0 30px #5dff5d, 0 0 35px #5dff5d;
+  }
+
+  to {
+    text-shadow: 0 0 10px #fff, 0 0 20px #7a7aff, 0 0 25px #7a7aff,
+      0 0 30px #7a7aff, 0 0 35px #7a7aff, 0 0 40px #7a7aff, 0 0 40px #7a7aff;
+  }
+}
+
+#wrongMove {
+  color: #fff;
+  text-align: center;
+  animation: glow1 1s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes glow1 {
+  from {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #ff0000, 0 0 20px #ff0000,
+      0 0 25px #ff0000, 0 0 30px #ff0000, 0 0 35px #ff0000;
+  }
+
+  to {
+    text-shadow: 0 0 10px #fff, 0 0 20px #f95050, 0 0 25px #f95050,
+      0 0 30px #f95050, 0 0 35px #f95050, 0 0 40px #f95050, 0 0 40px #f95050;
+  }
 }
