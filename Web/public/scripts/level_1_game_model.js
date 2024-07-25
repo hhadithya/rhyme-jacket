@@ -268,7 +268,7 @@ function init() {
     shininess: 0,
   });
   let floor = new THREE.Mesh(floorGeometry, floorMaterial);
-  floor.rotation.x = -0.5 * Math.PI; // This is 90 degrees by the way
+  floor.rotation.x = -0.55 * Math.PI; // This is 90 degrees by the way
   floor.receiveShadow = true;
   floor.position.y = -11;
   scene.add(floor);

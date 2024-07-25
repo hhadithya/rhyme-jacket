@@ -13,6 +13,63 @@ document.addEventListener("DOMContentLoaded", function () {
   let currentPart = 0;
   const music2Url = "../music/level_2_music.mp3"; // Replace with the actual path to your audio file
 
+  // sensor data
+  let left_gyro_y = 0;
+  let left_gyro_p = 0;
+  let left_gyro_r = 0;
+  let right_gyro_y = 0;
+  let right_gyro_p = 0;
+  let right_gyro_r = 0;
+  let middle_gyro_y = 0;
+  let middle_gyro_p = 0;
+  let middle_gyro_r = 0;
+  let right_flex = 0;
+  let left_flex = 0;
+
+  connection.onmessage = function (event) {
+    event.data.text().then((text) => {
+      const data = JSON.parse(text);
+      // console.log(data);
+
+      if (data.flex1Angle !== undefined) {
+        left_flex = data.flex1Angle;
+      }
+      if (data.flex2Angle !== undefined) {
+        right_flex = data.flex2Angle;
+      }
+
+      if (data.yawRight !== undefined) {
+        right_gyro_y = data.yawRight;
+      }
+      if (data.pitchRight !== undefined) {
+        right_gyro_p = data.pitchRight;
+      }
+      if (data.rollRight !== undefined) {
+        right_gyro_r = data.rollRight;
+      }
+
+      if (data.yawLeft !== undefined) {
+        left_gyro_y = data.yawLeft;
+      }
+      if (data.pitchLeft !== undefined) {
+        left_gyro_p = data.pitchLeft;
+      }
+      if (data.rollLeft !== undefined) {
+        left_gyro_r = data.rollLeft;
+      }
+
+      if (data.yawCenter !== undefined) {
+        middle_gyro_y = data.yawCenter;
+      }
+      if (data.pitchCenter !== undefined) {
+        middle_gyro_p = data.pitchCenter;
+      }
+      if (data.rollCenter !== undefined) {
+        middle_gyro_r = data.rollCenter;
+      }
+    });
+  };
+
   async function loadAudio() {
     try {
       const response = await fetch(music2Url);
@@ -64,9 +121,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const w = window.innerWidth;
   const h = window.innerHeight;
   const camera = new THREE.PerspectiveCamera(75, w / h, 0.1, 1000);
-  camera.position.z = 15;
+  camera.position.z = 18;
   camera.position.x = 0;
-  camera.position.y = 6;
+  camera.position.y = 11;
 
   const light = new THREE.HemisphereLight(0xffffff, 0xffffff, 6);
   light.position.set(0, 1, 0);
@@ -79,8 +136,8 @@ document.addEventListener("DOMContentLoaded", function () {
       model = gltf.scene;
       spine = model.getObjectByName("mixamorigSpine");
 
-      model.scale.set(11, 11, 11);
-      model.position.y = -8;
+      model.scale.set(12, 12, 12);
+      model.position.y = 0;
       scene.add(model);
 
       function animate() {
@@ -88,6 +145,28 @@ document.addEventListener("DOMContentLoaded", function () {
         if (spine) {
           spine.rotation.z += (targetAngle - spine.rotation.z) * delta * 1.5;
         }
+
+        // -----------------------------------------------------------
+        if (
+          left_flex > 0 &&
+          left_flex <= 30 &&
+          right_flex > 0 &&
+          right_flex <= 30
+        ) {
+          document.getElementById("correctMove").style.display = "block";
+          document.getElementById("wrongMove").style.display = "none";
+        }
+
+        if (
+          left_flex > 30 &&
+          left_flex <= 100 &&
+          right_flex > 30 &&
+          right_flex <= 100
+        ) {
+          document.getElementById("correctMove").style.display = "none";
+          document.getElementById("wrongMove").style.display = "block";
+        }
+        // -----------------------------------------------------------
 
         requestAnimationFrame(animate);
         renderer.render(scene, camera);
@@ -103,8 +182,8 @@ document.addEventListener("DOMContentLoaded", function () {
       model1 = gltf.scene;
       spine_1 = model1.getObjectByName("mixamorigSpine");
 
-      model1.scale.set(11, 11, 11);
-      model1.position.y = -8;
+      model1.scale.set(12, 12, 12);
+      model1.position.y = 0;
 
       // Set model2 and its children to be transparent
       model1.traverse(function (child) {
@@ -136,9 +215,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const renderer = new THREE.WebGLRenderer({ canvas: canvas });
   renderer.setPixelRatio(window.devicePixelRatio);
 
-  const controls = new OrbitControls(camera, renderer.domElement);
-  controls.target.set(0, 1, 0);
-  controls.update();
+  // const controls = new OrbitControls(camera, renderer.domElement);
+  // controls.target.set(0, 1, 0);
+  // controls.update();
 
   const floorGeometry = new THREE.PlaneGeometry(5000, 5000, 1, 1);
   const floorMaterial = new THREE.MeshPhongMaterial({
@@ -146,7 +225,7 @@ document.addEventListener("DOMContentLoaded", function () {
     shininess: 0,
   });
   const floor = new THREE.Mesh(floorGeometry, floorMaterial);
-  floor.rotation.x = -0.6 * Math.PI;
+  floor.rotation.x = -0.55 * Math.PI;
   floor.receiveShadow = true;
   floor.position.y = -11;
   scene.add(floor);
