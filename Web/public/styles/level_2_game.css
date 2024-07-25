@@ -92,7 +92,7 @@ html {
   align-items: center;
   justify-content: center;
   height: 90%;
-  height: 80%;
+  width: 80%;
 }
 
 #topic {
@@ -119,7 +119,7 @@ html {
 
 #quiz {
   position: absolute;
-  top: 5rem;
+  bottom: 5rem;
   background-color: lightgreen;
   border: 5px solid lightgreen;
   border-radius: 0 0 30px 30px;
@@ -127,7 +127,7 @@ html {
   transition: background-color 0.3s, box-shadow 0.3s;
   font-size: 3.5em;
   width: 64%;
-  cursor: url("/images/mouse-3-pointer.png"), auto;
+  cursor: url("/images/cursor.png"), auto;
 }
 
 #quiz:hover {
