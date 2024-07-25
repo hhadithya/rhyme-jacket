@@ -105,10 +105,10 @@
             document.getElementById('good-to-go').style.display = 'flex';
 
             // Send a message to the server before redirecting
-            connection.send(JSON.stringify({
-                type: 'redirect',
-                message: 'true'
-            }));
+            // connection.send(JSON.stringify({
+            //     type: 'redirect',
+            //     message: 'true'
+            // }));
 
             // Redirect to another page after displaying #good-to-go for 3 seconds
             setTimeout(() => {

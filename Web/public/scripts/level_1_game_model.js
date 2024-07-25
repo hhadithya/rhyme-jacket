@@ -161,8 +161,6 @@ function init() {
           leftArm.rotation.x = rightArm.rotation.x; // Mirror right arm movement to left arm
         }
 
-        // define the correct conditions for the following if statements
-
         // if (left_gyro_p, right_gyro_p) {
         //   if (isRaised && rightArm.rotation.x < 0.9) {
         //     targetAngle += gyro_value - targetAngle;

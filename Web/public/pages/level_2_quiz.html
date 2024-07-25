@@ -101,8 +101,14 @@
 
         listen1Off.addEventListener("click", () => {
             audio1.play();
+            audio2.pause();
+            audio3.pause();
             listen1Off.classList.add("hidden");
             listen1On.classList.remove("hidden");
+            listen2Off.classList.remove("hidden");
+            listen2On.classList.add("hidden");
+            listen3Off.classList.remove("hidden");
+            listen3On.classList.add("hidden");
         });
 
         listen1On.addEventListener("click", () => {
@@ -113,8 +119,14 @@
 
         listen2Off.addEventListener("click", () => {
             audio2.play();
+            audio1.pause();
+            audio3.pause();
+            listen1Off.classList.remove("hidden");
+            listen1On.classList.add("hidden");
             listen2Off.classList.add("hidden");
             listen2On.classList.remove("hidden");
+            listen3Off.classList.remove("hidden");
+            listen3On.classList.add("hidden");
         });
 
         listen2On.addEventListener("click", () => {
@@ -125,6 +137,12 @@
 
         listen3Off.addEventListener("click", () => {
             audio3.play();
+            audio1.pause();
+            audio2.pause();
+            listen1Off.classList.remove("hidden");
+            listen1On.classList.add("hidden");
+            listen2Off.classList.remove("hidden");
+            listen2On.classList.add("hidden");
             listen3Off.classList.add("hidden");
             listen3On.classList.remove("hidden");
         });
@@ -149,8 +167,8 @@
             });
         };
 
-           // change battery image based on battery percentage
-           setInterval(() => {
+        // change battery image based on battery percentage
+        setInterval(() => {
             var batteryPercentage = parseFloat(batteryPercentageElement.textContent);
             var batteryImg = document.getElementById('battery-img').children;
 
