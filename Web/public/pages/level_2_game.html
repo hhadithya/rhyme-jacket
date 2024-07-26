@@ -63,12 +63,13 @@
                         QUIZ
                     </button>
                 </a>
+
+                <div id="move-suggestion">
+                    <p id="correctMove" style="color: blue; display: none;">Your Movements Are Correct</p>
+                    <p id="wrongMove" style="color: red; display: none;">Your Movements Are Wrong</p>
+                </div>
             </div>
 
-            <div id="move-suggestion">
-                <p id="correctMove" style="color: blue; display: none;">Your Movements Are Correct</p>
-                <p id="wrongMove" style="color: red; display: none;">Your Movements Are Wrong</p>
-            </div>
         </div>
     </div>
 
@@ -90,9 +91,19 @@
             );
         });
 
+        // deactivate the cursor when the page is loaded
+        document.body.style.cursor = "none";
+        document.querySelectorAll("#top-icons-left img").forEach((img) => {
+            img.style.cursor = "none";
+        });
+
         document.addEventListener("DOMContentLoaded", function () {
             setTimeout(function () {
                 document.getElementById('quiz').style.display = 'block';
+                document.body.style.cursor = "url('/images/cursor.png'), auto";
+                document.querySelectorAll("#top-icons-left img").forEach((img) => {
+                    img.style.cursor = "url('/images/cursor.png'), auto";
+                });
             }, 10000); // 60 seconds (1 minute)
         });
 

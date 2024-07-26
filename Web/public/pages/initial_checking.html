@@ -162,9 +162,9 @@
             localStorage.setItem("isMuted", "false");
         });
 
-        setTimeout(() => {
-            window.location.href = "/pages/menu.html";
-        }, 40000);
+        // setTimeout(() => {
+        //     window.location.href = "/pages/menu.html";
+        // }, 40000);
 
         connection.onmessage = function (event) {
             event.data.text().then(text => {
@@ -257,6 +257,24 @@
                 document.getElementById('heart-no-input').classList.add('hidden');
                 document.getElementById('heart-good').classList.add('hidden');
                 document.getElementById('heart-bad').classList.remove('hidden');
+            }
+        }, 100);
+
+        // if both heart rate and temperature are good, redirect to the game
+        setInterval(() => {
+            if (tempValue >= 27 && tempValue <= 35 && heartValue >= 60 && heartValue <= 100) {
+                document.getElementById('checking').classList.add('hidden');
+                document.getElementById('good-to-go').classList.remove('hidden');
+                setTimeout(() => {
+                    window.location.href = "/pages/menu.html";
+                }, 5000);
+            }
+            if (((tempValue < 27 && tempValue >= 20) || (tempValue > 35 && tempValue <= 40)) && ((heartValue < 60 && heartValue >= 40) || (heartValue > 100 && heartValue <= 120))) {
+                document.getElementById('checking').classList.add('hidden');
+                document.getElementById('bad-to-go').classList.remove('hidden');
+                setTimeout(() => {
+                    window.location.href = "/pages/menu.html";
+                }, 5000);
             }
         }, 100);
 

@@ -282,16 +282,25 @@ function init() {
   }
 
   setInterval(() => {
-    if (right_gyro_p > 45 && left_gyro_p > 45) {
-      isRaised = true; // Toggle the state
-      checkAndPlayNextPart(isRaised);
-      targetAngle = -0.95; // Set the target angle based on the state
-    }
+    if (
+      right_flex > 0 &&
+      right_flex <= 30 &&
+      left_flex > 0 &&
+      left_flex <= 30
+      // middle_gyro_y > -45 &&
+      // middle_gyro_y < 45 &&
+    ) {
+      if (right_gyro_p > 45 && left_gyro_p > 45) {
+        isRaised = true; // Toggle the state
+        checkAndPlayNextPart(isRaised);
+        targetAngle = -0.95; // Set the target angle based on the state
+      }
 
-    if (right_gyro_p < -45 && left_gyro_p < -45) {
-      isRaised = false; // Toggle the state
-      checkAndPlayNextPart(isRaised);
-      targetAngle = 0.95; // Set the target angle based on the state
+      if (right_gyro_p < -45 && left_gyro_p < -45) {
+        isRaised = false; // Toggle the state
+        checkAndPlayNextPart(isRaised);
+        targetAngle = 0.95; // Set the target angle based on the state
+      }
     }
   }, 100);
 
