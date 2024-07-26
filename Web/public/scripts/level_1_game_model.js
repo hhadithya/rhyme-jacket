@@ -187,7 +187,15 @@ function init() {
           left_flex > 0 &&
           left_flex <= 30 &&
           right_flex > 0 &&
-          right_flex <= 30
+          right_flex <= 30 &&
+          middle_gyro_y > -30 &&
+          middle_gyro_y < 30 &&
+          middle_gyro_p > -30 &&
+          middle_gyro_p < 30 &&
+          right_gyro_y > -30 &&
+          right_gyro_y < 30 &&
+          left_gyro_y > -30 &&
+          left_gyro_y < 30
         ) {
           document.getElementById("correctMove").style.display = "block";
           document.getElementById("wrongMove").style.display = "none";
@@ -197,7 +205,15 @@ function init() {
           left_flex > 30 &&
           left_flex <= 100 &&
           right_flex > 30 &&
-          right_flex <= 100
+          right_flex <= 100 &&
+          middle_gyro_y < -30 &&
+          middle_gyro_y > 30 &&
+          middle_gyro_p < -30 &&
+          middle_gyro_p > 30 &&
+          right_gyro_y < -30 &&
+          right_gyro_y > 30 &&
+          left_gyro_y < -30 &&
+          left_gyro_y > 30
         ) {
           document.getElementById("correctMove").style.display = "none";
           document.getElementById("wrongMove").style.display = "block";
@@ -286,9 +302,15 @@ function init() {
       right_flex > 0 &&
       right_flex <= 30 &&
       left_flex > 0 &&
-      left_flex <= 30
-      // middle_gyro_y > -45 &&
-      // middle_gyro_y < 45 &&
+      left_flex <= 30 &&
+      middle_gyro_y > -30 &&
+      middle_gyro_y < 30 &&
+      middle_gyro_p > -30 &&
+      middle_gyro_p < 30 &&
+      right_gyro_y > -30 &&
+      right_gyro_y < 30 &&
+      left_gyro_y > -30 &&
+      left_gyro_y < 30
     ) {
       if (right_gyro_p > 45 && left_gyro_p > 45) {
         isRaised = true; // Toggle the state
