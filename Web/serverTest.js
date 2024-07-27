@@ -11,8 +11,8 @@ app.use(express.static(path.join(__dirname, "public")));
 const server = http.createServer(app);
 const wss = new WebSocket.Server({ server });
 
-const STABILITY_THRESHOLD = 20;
-const VARIATION_LIMIT = 5; // Adjust based on your needs
+const STABILITY_THRESHOLD = 10;
+const VARIATION_LIMIT = 2; // Adjust based on your needs
 let bpmValues = [];
 
 wss.on("connection", (ws) => {
@@ -57,7 +57,10 @@ wss.on("connection", (ws) => {
 
         console.log(`Received BPM: ${bpmInt}, Stability: ${isStable}`);
         if (isStable) {
-            ws.send("stop");
+            ws.send(JSON.stringify({
+                type: "redirect",
+                message: "stop",
+              }));
             isStable = false;
         }
       }else {
