@@ -141,7 +141,7 @@
         window.addEventListener("load", () => {
             connection.send(JSON.stringify({
                 type: "redirect",
-                message: "body-checking"
+                message: "body_checking"
             }));
         });
 
@@ -237,12 +237,12 @@
 
         // if body temperature is between 25 and 30, show good condition
         setInterval(() => {
-            if (tempValue >= 27 && tempValue <= 35) {
+            if (tempValue >= 27 && tempValue <= 38) {
                 document.getElementById('temp-no-input').classList.add('hidden');
                 document.getElementById('temp-good').classList.remove('hidden');
                 document.getElementById('temp-bad').classList.add('hidden');
             }
-            if ((tempValue < 27 && tempValue >= 20) || (tempValue > 35 && tempValue <= 40)) {
+            if ((tempValue < 27 && tempValue >= 20) || (tempValue > 38 && tempValue <= 40)) {
                 document.getElementById('temp-no-input').classList.add('hidden');
                 document.getElementById('temp-good').classList.add('hidden');
                 document.getElementById('temp-bad').classList.remove('hidden');
@@ -262,14 +262,14 @@
 
         // if both heart rate and temperature are good, redirect to the game
         setInterval(() => {
-            if (tempValue >= 27 && tempValue <= 35 && heartValue >= 60 && heartValue <= 100) {
+            if (tempValue >= 27 && tempValue <= 38 && heartValue >= 60 && heartValue <= 100) {
                 document.getElementById('checking').classList.add('hidden');
                 document.getElementById('good-to-go').classList.remove('hidden');
                 setTimeout(() => {
                     window.location.href = "/pages/menu.html";
                 }, 5000);
             }
-            if (((tempValue < 27 && tempValue >= 20) || (tempValue > 35 && tempValue <= 40)) && ((heartValue < 60 && heartValue >= 40) || (heartValue > 100 && heartValue <= 120))) {
+            if (((tempValue < 27 && tempValue >= 20) || (tempValue > 38 && tempValue <= 40)) && ((heartValue < 60 && heartValue >= 40) || (heartValue > 100 && heartValue <= 120))) {
                 document.getElementById('checking').classList.add('hidden');
                 document.getElementById('bad-to-go').classList.remove('hidden');
                 setTimeout(() => {

@@ -11,6 +11,10 @@ app.use(express.static(path.join(__dirname, "public")));
 const server = http.createServer(app);
 const wss = new WebSocket.Server({ server });
 
+const STABILITY_THRESHOLD = 20;
+const VARIATION_LIMIT = 5; // Adjust based on your needs
+let bpmValues = [];
+
 wss.on("connection", (ws) => {
   console.log("Client connected");
 
@@ -18,6 +22,9 @@ wss.on("connection", (ws) => {
     try {
       const data = JSON.parse(message);
       console.log("Received message:", data);
+      // const { bpm } = JSON.parse(message);
+      // const bpmInt = Math.round(bpm); // Ensure BPM is an integer
+      // bpmValues.push(bpmInt);
 
       if (data.type === "redirect") {
         // Broadcast the redirect message to all clients
@@ -39,6 +46,25 @@ wss.on("connection", (ws) => {
           }
         });
       }
+
+      // // Keep only the latest STABILITY_THRESHOLD values
+      // if (bpmValues.length > STABILITY_THRESHOLD) {
+      //   bpmValues.shift();
+      // }
+
+      // // Check for stability
+      // let isStable = false;
+      // if (bpmValues.length === STABILITY_THRESHOLD) {
+      //   const maxBPM = Math.max(...bpmValues);
+      //   const minBPM = Math.min(...bpmValues);
+      //   isStable = maxBPM - minBPM <= VARIATION_LIMIT;
+      // }
+
+      // console.log(`Received BPM: ${bpmInt}, Stability: ${isStable}`);
+      // if (isStable) {
+      //   ws.send("stop");
+      //   isStable = false;
+      // }
     } catch (error) {
       console.error("Error parsing message:", error);
     }

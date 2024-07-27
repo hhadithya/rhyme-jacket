@@ -54,7 +54,7 @@
             connection.send(
                 JSON.stringify({
                     type: "redirect",
-                    message: "L1_calibration",
+                    message: "l1_calibration",
                 })
             );
         });
@@ -87,10 +87,18 @@
             document.getElementById('msg-2').classList.toggle('hidden');
         }, 3000);
 
-        // after 7 seconds move to another page
-        setTimeout(() => {
-            window.location.href = "/pages/level_1_game.html";
-        }, 7000);
+        connection.onmessage = function (event) {
+            event.data.text().then((text) => {
+                var data = JSON.parse(text);
+                console.log(data);
+
+                if (data.calibration_status === "calibration_done") {
+                    setTimeout(() => {
+                        window.location.href = "/pages/level_1_game.html";
+                    }, 5000);
+                }
+            })
+        }
     </script>
 
 </body>

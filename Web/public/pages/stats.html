@@ -140,7 +140,7 @@
             connection.send(
                 JSON.stringify({
                     type: "redirect",
-                    message: "Sensor-readings",
+                    message: "sensor_readings",
                 })
             );
         });
@@ -195,7 +195,7 @@
         connection.onmessage = function (event) {
             event.data.text().then((text) => {
                 var data = JSON.parse(text);
-                // console.log(data);
+                console.log(data);
 
                 // Update the battery percentage element
                 if (data.batteryPercentage !== undefined) {

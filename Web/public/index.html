@@ -38,9 +38,17 @@
     <script>
         var connection = new WebSocket("ws://" + location.hostname + ":8080/");
         var connectionEstablished = false;
+        var intervalId;
 
         connection.onopen = function () {
             console.log("WebSocket connection established.");
+            // Start sending 'false' messages every 2 seconds
+            // intervalId = setInterval(() => {
+            //     connection.send(JSON.stringify({
+            //         type: 'redirect',
+            //         message: 'false'
+            //     }));
+            // }, 2000);
         };
 
         connection.onerror = function (error) {
@@ -88,17 +96,23 @@
                 var data = JSON.parse(text);
                 console.log("Received message:", data);
 
-                if (data.ConnectionStatus === true && !connectionEstablished) {
+                if (data.connection_status === true && !connectionEstablished) {
                     connectionEstablished = true;
+                    // clearInterval(intervalId); // Stop sending 'false' messages
                     handleUIUpdateAndRedirect();
-                } else {
-                    connection.send(JSON.stringify({
-                        type: 'redirect',
-                        message: 'false'
-                    }));
                 }
             });
         };
+
+        // when page is loaded send a message to the server
+        window.addEventListener("load", () => {
+            connection.send(
+                JSON.stringify({
+                    type: "redirect",
+                    message: "connecting",
+                })
+            );
+        });
 
         function handleUIUpdateAndRedirect() {
             document.getElementById('connecting').style.display = 'none';

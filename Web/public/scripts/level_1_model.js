@@ -91,7 +91,7 @@ function init() {
 
         const t = clock.getElapsedTime();
         const angle = Math.sin(1.5 * t) * 1;
-        console.log(angle);
+        // console.log(angle);
 
         if (rightArm) {
           if (angle > -0.95 && angle < 0.95) {
