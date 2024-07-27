@@ -242,7 +242,7 @@
                 document.getElementById('temp-good').classList.remove('hidden');
                 document.getElementById('temp-bad').classList.add('hidden');
             }
-            if ((tempValue < 27 && tempValue >= 20) || (tempValue > 38 && tempValue <= 40)) {
+            if ((tempValue < 27 && tempValue >= 0) || (tempValue > 38 && tempValue <= 50)) {
                 document.getElementById('temp-no-input').classList.add('hidden');
                 document.getElementById('temp-good').classList.add('hidden');
                 document.getElementById('temp-bad').classList.remove('hidden');
@@ -253,7 +253,7 @@
                 document.getElementById('heart-good').classList.remove('hidden');
                 document.getElementById('heart-bad').classList.add('hidden');
             }
-            if ((heartValue < 60 && heartValue >= 40) || (heartValue > 100 && heartValue <= 120)) {
+            if ((heartValue < 60 && heartValue >= 0) || (heartValue > 100 && heartValue <= 120)) {
                 document.getElementById('heart-no-input').classList.add('hidden');
                 document.getElementById('heart-good').classList.add('hidden');
                 document.getElementById('heart-bad').classList.remove('hidden');

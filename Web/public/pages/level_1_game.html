@@ -95,7 +95,7 @@
                 console.log(data);
 
                 // Update the battery percentage element
-                if (data.batteryPercentage !== undefined) {
+                if (data.batteryPercentage != undefined) {
                     // round the battery percentage to 0 decimal places
                     batteryPercentageElement.textContent =
                         data.batteryPercentage.toFixed(0) + "%";

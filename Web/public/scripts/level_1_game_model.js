@@ -29,7 +29,6 @@ let left_flex = 0;
 connection.onmessage = function (event) {
   event.data.text().then((text) => {
     const data = JSON.parse(text);
-    console.log(data);
 
     if (data.flex1Angle !== undefined) {
       left_flex = data.flex1Angle;
@@ -331,7 +330,7 @@ function init() {
       targetAngle = 0.95; // Set the target angle based on the state
     }
 
-    console.log(targetAngle);
+    // console.log(targetAngle);
   }, 100);
 
   // --------------------------------------------------
