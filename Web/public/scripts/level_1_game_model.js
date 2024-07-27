@@ -11,7 +11,7 @@ let currentPart = 0;
 let isRaised = false;
 let previousIsRaised = isRaised;
 let targetAngle = 0;
-const music1_url = "../music/level_1_music.mp3"; // Adjust the path as necessary
+const music1_url = "../music/Twinkle Twinkle-2.mp3.mp3"; // Adjust the path as necessary
 
 // sensor data
 let left_gyro_y = 0;
@@ -29,7 +29,7 @@ let left_flex = 0;
 connection.onmessage = function (event) {
   event.data.text().then((text) => {
     const data = JSON.parse(text);
-    // console.log(data);
+    console.log(data);
 
     if (data.flex1Angle !== undefined) {
       left_flex = data.flex1Angle;
@@ -84,7 +84,7 @@ async function loadAudio() {
       arrayBuffer,
       (buffer) => {
         audioBuffer = buffer;
-        partDuration = audioBuffer.duration / 21;
+        partDuration = audioBuffer.duration / 16;
       },
       (error) => {
         console.error("decodeAudioData error:", error);
@@ -154,7 +154,7 @@ function init() {
         // Smoothly interpolate towards the target angle
         if (rightArm) {
           rightArm.rotation.x +=
-            (targetAngle - rightArm.rotation.x) * delta * 1.2; // Adjust the speed of movement here
+            (targetAngle - rightArm.rotation.x) * delta * 1; // Adjust the speed of movement here
         }
 
         if (leftArm) {
@@ -183,41 +183,26 @@ function init() {
         //   targetAngle = 0.85; // Set the target angle based on the state
         // }
 
-        if (
-          left_flex > 0 &&
-          left_flex <= 30 &&
-          right_flex > 0 &&
-          right_flex <= 30 &&
-          middle_gyro_y > -30 &&
-          middle_gyro_y < 30 &&
-          middle_gyro_p > -30 &&
-          middle_gyro_p < 30 &&
-          right_gyro_y > -30 &&
-          right_gyro_y < 30 &&
-          left_gyro_y > -30 &&
-          left_gyro_y < 30
-        ) {
-          document.getElementById("correctMove").style.display = "block";
-          document.getElementById("wrongMove").style.display = "none";
-        }
-
-        if (
-          left_flex > 30 &&
-          left_flex <= 100 &&
-          right_flex > 30 &&
-          right_flex <= 100 &&
-          middle_gyro_y < -30 &&
-          middle_gyro_y > 30 &&
-          middle_gyro_p < -30 &&
-          middle_gyro_p > 30 &&
-          right_gyro_y < -30 &&
-          right_gyro_y > 30 &&
-          left_gyro_y < -30 &&
-          left_gyro_y > 30
-        ) {
-          document.getElementById("correctMove").style.display = "none";
-          document.getElementById("wrongMove").style.display = "block";
-        }
+        // if (
+        //   left_flex > 0 &&
+        //   left_flex <= 30 &&
+        //   right_flex > 0 &&
+        //   right_flex <= 30
+        //   // middle_gyro_y > -30 &&
+        //   // middle_gyro_y < 30 &&
+        //   // middle_gyro_p > -30 &&
+        //   // middle_gyro_p < 30 &&
+        //   // right_gyro_y > -30 &&
+        //   // right_gyro_y < 30 &&
+        //   // left_gyro_y > -30 &&
+        //   // left_gyro_y < 30
+        // ) {
+        //   document.getElementById("correctMove").style.display = "block";
+        //   document.getElementById("wrongMove").style.display = "none";
+        // } else {
+        //   document.getElementById("correctMove").style.display = "none";
+        //   document.getElementById("wrongMove").style.display = "block";
+        // }
 
         requestAnimationFrame(animate);
         renderer.render(scene, camera);
@@ -298,32 +283,55 @@ function init() {
   }
 
   setInterval(() => {
-    if (
-      right_flex > 0 &&
-      right_flex <= 30 &&
-      left_flex > 0 &&
-      left_flex <= 30 &&
-      middle_gyro_y > -30 &&
-      middle_gyro_y < 30 &&
-      middle_gyro_p > -30 &&
-      middle_gyro_p < 30 &&
-      right_gyro_y > -30 &&
-      right_gyro_y < 30 &&
-      left_gyro_y > -30 &&
-      left_gyro_y < 30
-    ) {
-      if (right_gyro_p > 45 && left_gyro_p > 45) {
-        isRaised = true; // Toggle the state
-        checkAndPlayNextPart(isRaised);
-        targetAngle = -0.95; // Set the target angle based on the state
-      }
-
-      if (right_gyro_p < -45 && left_gyro_p < -45) {
-        isRaised = false; // Toggle the state
-        checkAndPlayNextPart(isRaised);
-        targetAngle = 0.95; // Set the target angle based on the state
-      }
+    if (right_gyro_p > 40 && left_gyro_p > 40) {
+      isRaised = true; // Toggle the state
+      checkAndPlayNextPart(isRaised);
+      targetAngle = -0.95; // Set the target angle based on the state
     }
+
+    if (
+      right_gyro_p < 40 &&
+      right_gyro_p >= 20 &&
+      left_gyro_p < 40 &&
+      left_gyro_p >= 20
+    ) {
+      targetAngle = -0.45;
+    }
+
+    if (
+      right_gyro_p < 20 &&
+      right_gyro_p >= 10 &&
+      left_gyro_p < 20 &&
+      left_gyro_p >= 10
+    ) {
+      targetAngle = -0.2;
+    }
+
+    if (
+      right_gyro_p <= -10 &&
+      right_gyro_p >= -20 &&
+      left_gyro_p < -10 &&
+      left_gyro_p >= -20
+    ) {
+      targetAngle = 0.2;
+    }
+
+    if (
+      right_gyro_p <= -20 &&
+      right_gyro_p >= -40 &&
+      left_gyro_p < -20 &&
+      left_gyro_p >= -40
+    ) {
+      targetAngle = 0.45;
+    }
+
+    if (right_gyro_p < -40 && left_gyro_p < -40) {
+      isRaised = false; // Toggle the state
+      checkAndPlayNextPart(isRaised);
+      targetAngle = 0.95; // Set the target angle based on the state
+    }
+
+    console.log(targetAngle);
   }, 100);
 
   // --------------------------------------------------

@@ -84,7 +84,7 @@
             connection.send(
                 JSON.stringify({
                     type: "redirect",
-                    message: "L1_game",
+                    message: "l1_game",
                 })
             );
         });
@@ -167,7 +167,13 @@
                 document.querySelectorAll("#top-icons-left img").forEach((img) => {
                     img.style.cursor = "url('/images/cursor.png'), auto";
                 });
-            }, 10000); // 60 seconds
+                connection.send(
+                    JSON.stringify({
+                        type: "redirect",
+                        message: "quit",
+                    })
+                );
+            }, 60000); // 60 seconds
         });
 
     </script>
