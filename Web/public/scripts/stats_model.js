@@ -17,8 +17,6 @@ connection.onmessage = function (e) {
     flex2Angle = data.flex2Angle;
     l_gyro_p = data.pitchLeft;
     r_gyro_p = data.pitchRight;
-
-    // console.log(flex1Angle, flex2Angle);
   });
 };
 
