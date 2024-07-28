@@ -7,7 +7,7 @@ const canvas = document.getElementById("stat_model_canvas");
 var connection = new WebSocket("ws://" + location.hostname + ":8080/");
 
 let model, rightArm, leftArm, rightForeArm, leftForeArm;
-let flex1Angle, flex2Angle, l_gyro_p, r_gyro_p;
+let flex1Angle, flex2Angle, l_gyro_p, r_gyro_p, l_gyro_y, r_gyro_y;
 
 connection.onmessage = function (e) {
   e.data.text().then((text) => {
@@ -16,7 +16,9 @@ connection.onmessage = function (e) {
     flex1Angle = data.flex1Angle;
     flex2Angle = data.flex2Angle;
     l_gyro_p = data.pitchLeft;
+    l_gyro_y = data.yawLeft;
     r_gyro_p = data.pitchRight;
+    r_gyro_y = data.yawRight;
   });
 };
 
@@ -91,55 +93,63 @@ function init() {
           leftForeArm.rotation.z = 2;
         }
 
-        // left arm
+        // left arm ------------------------------------------------------------------------------------
+        // pitch
         if (l_gyro_p > -75 && l_gyro_p <= -60) {
-          leftArm.rotation.x = -1.0;
+          leftArm.rotation.x = 1.0;
         } else if (l_gyro_p > -60 && l_gyro_p <= -45) {
-          leftArm.rotation.x = -0.8;
+          leftArm.rotation.x = 0.8;
         } else if (l_gyro_p > -45 && l_gyro_p <= -30) {
-          leftArm.rotation.x = -0.6;
+          leftArm.rotation.x = 0.6;
         } else if (l_gyro_p > -30 && l_gyro_p <= -15) {
-          leftArm.rotation.x = -0.4;
+          leftArm.rotation.x = 0.4;
         } else if (l_gyro_p > -15 && l_gyro_p < 0) {
-          leftArm.rotation.x = -0.2;
+          leftArm.rotation.x = 0.2;
         } else if (l_gyro_p == 0) {
           leftArm.rotation.x = 0.0;
         } else if (l_gyro_p > 0 && l_gyro_p <= 15) {
-          leftArm.rotation.x = 0.2;
+          leftArm.rotation.x = -0.2;
         } else if (l_gyro_p > 15 && l_gyro_p <= 30) {
-          leftArm.rotation.x = 0.4;
+          leftArm.rotation.x = -0.4;
         } else if (l_gyro_p > 30 && l_gyro_p <= 45) {
-          leftArm.rotation.x = 0.6;
+          leftArm.rotation.x = -0.6;
         } else if (l_gyro_p > 45 && l_gyro_p <= 60) {
-          leftArm.rotation.x = 0.8;
+          leftArm.rotation.x = -0.8;
         } else if (l_gyro_p > 60 && l_gyro_p <= 75) {
-          leftArm.rotation.x = 1.0;
+          leftArm.rotation.x = -1.0;
         }
+        // yaw
 
-        // right arm
+        // ---------------------------------------------------------------------------
+
+        // right arm------------------------------------------------------------------
+        // pitch
         if (r_gyro_p > -75 && r_gyro_p <= -60) {
-          rightArm.rotation.x = -1.0;
+          rightArm.rotation.x = 1.0;
         } else if (r_gyro_p > -60 && r_gyro_p <= -45) {
-          rightArm.rotation.x = -0.8;
+          rightArm.rotation.x = 0.8;
         } else if (r_gyro_p > -45 && r_gyro_p <= -30) {
-          rightArm.rotation.x = -0.6;
+          rightArm.rotation.x = 0.6;
         } else if (r_gyro_p > -30 && r_gyro_p <= -15) {
-          rightArm.rotation.x = -0.4;
+          rightArm.rotation.x = 0.4;
         } else if (r_gyro_p > -15 && r_gyro_p < 0) {
-          rightArm.rotation.x = -0.2;
+          rightArm.rotation.x = 0.2;
         } else if (r_gyro_p == 0) {
           rightArm.rotation.x = 0.0;
         } else if (r_gyro_p > 0 && r_gyro_p <= 15) {
-          rightArm.rotation.x = 0.2;
+          rightArm.rotation.x = -0.2;
         } else if (r_gyro_p > 15 && r_gyro_p <= 30) {
-          rightArm.rotation.x = 0.4;
+          rightArm.rotation.x = -0.4;
         } else if (r_gyro_p > 30 && r_gyro_p <= 45) {
-          rightArm.rotation.x = 0.6;
+          rightArm.rotation.x = -0.6;
         } else if (r_gyro_p > 45 && r_gyro_p <= 60) {
-          rightArm.rotation.x = 0.8;
+          rightArm.rotation.x = -0.8;
         } else if (r_gyro_p > 60 && r_gyro_p <= 75) {
-          rightArm.rotation.x = 1.0;
+          rightArm.rotation.x = -1.0;
         }
+        // yaw
+
+        // -------------------------------------------------------------------------------
 
         // controls.update();
 

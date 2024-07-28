@@ -11,7 +11,7 @@ let currentPart = 0;
 let isRaised = false;
 let previousIsRaised = isRaised;
 let targetAngle = 0;
-const music1_url = "../music/Twinkle Twinkle-2.mp3.mp3"; // Adjust the path as necessary
+const music1_url = "../music/Twinkle Twinkle-2.mp3"; // Adjust the path as necessary
 
 // sensor data
 let left_gyro_y = 0;
@@ -153,7 +153,7 @@ function init() {
         // Smoothly interpolate towards the target angle
         if (rightArm) {
           rightArm.rotation.x +=
-            (targetAngle - rightArm.rotation.x) * delta * 1; // Adjust the speed of movement here
+            (targetAngle - rightArm.rotation.x) * delta * 1.5; // Adjust the speed of movement here
         }
 
         if (leftArm) {
@@ -286,45 +286,19 @@ function init() {
       isRaised = true; // Toggle the state
       checkAndPlayNextPart(isRaised);
       targetAngle = -0.95; // Set the target angle based on the state
-    }
-
-    if (
-      right_gyro_p < 40 &&
-      right_gyro_p >= 20 &&
-      left_gyro_p < 40 &&
-      left_gyro_p >= 20
-    ) {
-      targetAngle = -0.45;
-    }
-
-    if (
-      right_gyro_p < 20 &&
-      right_gyro_p >= 10 &&
-      left_gyro_p < 20 &&
-      left_gyro_p >= 10
-    ) {
-      targetAngle = -0.2;
-    }
-
-    if (
-      right_gyro_p <= -10 &&
-      right_gyro_p >= -20 &&
-      left_gyro_p < -10 &&
-      left_gyro_p >= -20
-    ) {
-      targetAngle = 0.2;
-    }
-
-    if (
-      right_gyro_p <= -20 &&
-      right_gyro_p >= -40 &&
-      left_gyro_p < -20 &&
-      left_gyro_p >= -40
-    ) {
-      targetAngle = 0.45;
-    }
-
-    if (right_gyro_p < -40 && left_gyro_p < -40) {
+    } else if (right_gyro_p >= 26 && left_gyro_p >= 26) {
+      targetAngle = -0.71;
+    } else if (right_gyro_p >= 13 && left_gyro_p >= 13) {
+      targetAngle = -0.47;
+    } else if (right_gyro_p >= 0 && left_gyro_p >= 0) {
+      targetAngle = -0.23;
+    } else if (right_gyro_p >= -13 && left_gyro_p >= -13) {
+      targetAngle = 0.23;
+    } else if (right_gyro_p >= -26 && left_gyro_p >= -26) {
+      targetAngle = 0.47;
+    } else if (right_gyro_p >= -40 && left_gyro_p >= -40) {
+      targetAngle = 0.71;
+    } else if (right_gyro_p >= -90 && left_gyro_p >= -90) {
       isRaised = false; // Toggle the state
       checkAndPlayNextPart(isRaised);
       targetAngle = 0.95; // Set the target angle based on the state
