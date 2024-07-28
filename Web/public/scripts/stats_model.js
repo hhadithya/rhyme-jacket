@@ -119,7 +119,25 @@ function init() {
           leftArm.rotation.x = -1.0;
         }
         // yaw
-
+        if (l_gyro_y > 157 && l_gyro_y <= 180) {
+          leftArm.rotation.z = 1.0;
+        } else if (l_gyro_y > 135 && l_gyro_y <= 157) {
+          leftArm.rotation.z = 0.75;
+        } else if (l_gyro_y > 112 && l_gyro_y <= 135) {
+          leftArm.rotation.z = 0.5;
+        } else if (l_gyro_y > 90 && l_gyro_y <= 112) {
+          leftArm.rotation.z = 0.25;
+        } else if (l_gyro_y == 90) {
+          leftArm.rotation.z = 0.0;
+        } else if (l_gyro_y > 68 && l_gyro_y < 90) {
+          leftArm.rotation.z = -0.25;
+        } else if (l_gyro_y > 45 && l_gyro_y <= 68) {
+          leftArm.rotation.z = -0.5;
+        } else if (l_gyro_y > 22 && l_gyro_y <= 45) {
+          leftArm.rotation.z = -0.75;
+        } else if (l_gyro_y >= 0 && l_gyro_y <= 22) {
+          leftArm.rotation.z = -1.0;
+        }
         // ---------------------------------------------------------------------------
 
         // right arm------------------------------------------------------------------
@@ -148,7 +166,25 @@ function init() {
           rightArm.rotation.x = -1.0;
         }
         // yaw
-
+        if (r_gyro_y > 157 && r_gyro_y <= 180) {
+          rightArm.rotation.z = -1.0;
+        } else if (r_gyro_y > 135 && r_gyro_y <= 157) {
+          rightArm.rotation.z = -0.75;
+        } else if (r_gyro_y > 112 && r_gyro_y <= 135) {
+          rightArm.rotation.z = -0.5;
+        } else if (r_gyro_y > 90 && r_gyro_y <= 112) {
+          rightArm.rotation.z = -0.25;
+        } else if (r_gyro_y == 90) {
+          rightArm.rotation.z = 0.0;
+        } else if (r_gyro_y > 68 && r_gyro_y < 90) {
+          rightArm.rotation.z = 0.25;
+        } else if (r_gyro_y > 45 && r_gyro_y <= 68) {
+          rightArm.rotation.z = 0.5;
+        } else if (r_gyro_y > 22 && r_gyro_y <= 45) {
+          rightArm.rotation.z = 0.75;
+        } else if (r_gyro_y >= 0 && r_gyro_y <= 22) {
+          rightArm.rotation.z = 1.0;
+        }
         // -------------------------------------------------------------------------------
 
         // controls.update();

@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let model, spine, model1, spine_1;
   let targetAngle = 0;
   let isTilted = true;
+  let previousIsTilted = isTilted;
   let audioBuffer, audioContext, audioSource;
   let partDuration;
   let currentPart = 0;
@@ -29,7 +30,6 @@ document.addEventListener("DOMContentLoaded", function () {
   connection.onmessage = function (event) {
     event.data.text().then((text) => {
       const data = JSON.parse(text);
-      // console.log(data);
 
       if (data.flex1Angle !== undefined) {
         left_flex = data.flex1Angle;
@@ -147,25 +147,25 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         // -----------------------------------------------------------
-        if (
-          left_flex > 0 &&
-          left_flex <= 30 &&
-          right_flex > 0 &&
-          right_flex <= 30
-        ) {
-          document.getElementById("correctMove").style.display = "block";
-          document.getElementById("wrongMove").style.display = "none";
-        }
+        // if (
+        //   left_flex > 0 &&
+        //   left_flex <= 30 &&
+        //   right_flex > 0 &&
+        //   right_flex <= 30
+        // ) {
+        //   document.getElementById("correctMove").style.display = "block";
+        //   document.getElementById("wrongMove").style.display = "none";
+        // }
 
-        if (
-          left_flex > 30 &&
-          left_flex <= 100 &&
-          right_flex > 30 &&
-          right_flex <= 100
-        ) {
-          document.getElementById("correctMove").style.display = "none";
-          document.getElementById("wrongMove").style.display = "block";
-        }
+        // if (
+        //   left_flex > 30 &&
+        //   left_flex <= 100 &&
+        //   right_flex > 30 &&
+        //   right_flex <= 100
+        // ) {
+        //   document.getElementById("correctMove").style.display = "none";
+        //   document.getElementById("wrongMove").style.display = "block";
+        // }
         // -----------------------------------------------------------
 
         requestAnimationFrame(animate);
@@ -201,9 +201,10 @@ document.addEventListener("DOMContentLoaded", function () {
         const t = clock.getElapsedTime();
         const angle = Math.sin(t) * 0.7;
 
-        if (angle < 0.6 && angle > -0.6) {
-          spine_1.rotation.z = angle;
-        }
+        // if (angle < 0.6 && angle > -0.6) {
+        //   spine_1.rotation.z = angle;
+        // }
+        spine_1.rotation.z = -0.6;
 
         renderer.render(scene, camera);
       }
@@ -230,9 +231,48 @@ document.addEventListener("DOMContentLoaded", function () {
   floor.position.y = -11;
   scene.add(floor);
 
-  actionButton.addEventListener("click", function () {
-    playNextPart();
-    isTilted = !isTilted;
-    targetAngle = isTilted ? 0.6 : -0.6;
-  });
+  // actionButton.addEventListener("click", function () {
+  //   playNextPart();
+  //   isTilted = !isTilted;
+  //   targetAngle = isTilted ? 0.6 : -0.6;
+  // });
+
+  function checkAndPlayNextPart(newIsTilted) {
+    if (newIsTilted !== previousIsTilted) {
+      console.log("state changed");
+      playNextPart();
+      previousIsTilted = newIsTilted;
+    }
+  }
+
+  setInterval(() => {
+    if (
+      // right_gyro_y > 60 &&
+      // right_gyro_y < 120 &&
+      // left_gyro_y > 60 &&
+      // left_gyro_y < 120
+      right_flex < 40 &&
+      left_flex < 40
+    ) {
+      if (middle_gyro_y >= 40) {
+        isTilted = true;
+        checkAndPlayNextPart(isTilted);
+        targetAngle = -0.6;
+      } else if (middle_gyro_y >= 20) {
+        targetAngle = -0.4;
+      } else if (middle_gyro_y > 0) {
+        targetAngle = -0.2;
+      } else if (middle_gyro_y == 0) {
+        targetAngle = 0;
+      } else if (middle_gyro_y > -20) {
+        targetAngle = 0.2;
+      } else if (middle_gyro_y > -40) {
+        targetAngle = 0.4;
+      } else if (middle_gyro_y <= -40) {
+        isTilted = false;
+        checkAndPlayNextPart(isTilted);
+        targetAngle = 0.6;
+      }
+    }
+  }, 50);
 });
