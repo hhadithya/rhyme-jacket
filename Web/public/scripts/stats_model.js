@@ -166,28 +166,28 @@ function init() {
           rightArm.rotation.x = -1.0;
         }
         // yaw
-        if (r_gyro_y > 157 && r_gyro_y <= 180) {
+        if (r_gyro_y > 68 && r_gyro_y <= 90) {
           rightArm.rotation.z = -1.0;
-        } else if (r_gyro_y > 135 && r_gyro_y <= 157) {
-          rightArm.rotation.z = -0.75;
-        } else if (r_gyro_y > 112 && r_gyro_y <= 135) {
-          rightArm.rotation.z = -0.5;
-        } else if (r_gyro_y > 90 && r_gyro_y <= 112) {
-          rightArm.rotation.z = -0.25;
-        } else if (r_gyro_y == 90) {
-          rightArm.rotation.z = 0.0;
-        } else if (r_gyro_y > 68 && r_gyro_y < 90) {
-          rightArm.rotation.z = 0.25;
         } else if (r_gyro_y > 45 && r_gyro_y <= 68) {
-          rightArm.rotation.z = 0.5;
+          rightArm.rotation.z = -0.75;
         } else if (r_gyro_y > 22 && r_gyro_y <= 45) {
+          rightArm.rotation.z = -0.5;
+        } else if (r_gyro_y > 0 && r_gyro_y <= 22) {
+          rightArm.rotation.z = -0.25;
+        } else if (r_gyro_y == 0) {
+          rightArm.rotation.z = 0.0;
+        } else if (r_gyro_y > -22 && r_gyro_y < 0) {
+          rightArm.rotation.z = 0.25;
+        } else if (r_gyro_y > -45 && r_gyro_y <= -22) {
+          rightArm.rotation.z = 0.5;
+        } else if (r_gyro_y > -45 && r_gyro_y <= -68) {
           rightArm.rotation.z = 0.75;
-        } else if (r_gyro_y >= 0 && r_gyro_y <= 22) {
+        } else if (r_gyro_y >= -68 && r_gyro_y <= -90) {
           rightArm.rotation.z = 1.0;
         }
         // -------------------------------------------------------------------------------
 
-        // controls.update();
+        controls.update();
 
         renderer.render(scene, camera);
       }
@@ -199,7 +199,7 @@ function init() {
   const renderer = new THREE.WebGLRenderer({ canvas });
   renderer.setPixelRatio(window.devicePixelRatio);
 
-  // const controls = new OrbitControls(camera, renderer.domElement);
+  const controls = new OrbitControls(camera, renderer.domElement);
 }
 
 init();

@@ -228,26 +228,26 @@ function init() {
         //   }
         // }
 
-        // if (
-        //   left_flex > 0 &&
-        //   left_flex <= 30 &&
-        //   right_flex > 0 &&
-        //   right_flex <= 30
-        //   // middle_gyro_y > -30 &&
-        //   // middle_gyro_y < 30 &&
-        //   // middle_gyro_p > -30 &&
-        //   // middle_gyro_p < 30 &&
-        //   // right_gyro_y > -30 &&
-        //   // right_gyro_y < 30 &&
-        //   // left_gyro_y > -30 &&
-        //   // left_gyro_y < 30
-        // ) {
-        //   document.getElementById("correctMove").style.display = "block";
-        //   document.getElementById("wrongMove").style.display = "none";
-        // } else {
-        //   document.getElementById("correctMove").style.display = "none";
-        //   document.getElementById("wrongMove").style.display = "block";
-        // }
+        if (
+          left_flex > 0 &&
+          left_flex <= 40 &&
+          right_flex > 0 &&
+          right_flex <= 40
+          // middle_gyro_y > -30 &&
+          // middle_gyro_y < 30 &&
+          // middle_gyro_p > -30 &&
+          // middle_gyro_p < 30 &&
+          // right_gyro_y > -30 &&
+          // right_gyro_y < 30 &&
+          // left_gyro_y > -30 &&
+          // left_gyro_y < 30
+        ) {
+          document.getElementById("correctMove").style.display = "block";
+          document.getElementById("wrongMove").style.display = "none";
+        } else {
+          document.getElementById("correctMove").style.display = "none";
+          document.getElementById("wrongMove").style.display = "block";
+        }
 
         requestAnimationFrame(animate);
         renderer.render(scene, camera);
@@ -272,7 +272,7 @@ function init() {
       model2.traverse(function (child) {
         if (child.isMesh) {
           child.material.transparent = true;
-          child.material.opacity = 0.5;
+          child.material.opacity = 0.3;
         }
       });
 
@@ -340,26 +340,25 @@ function init() {
         isRaised = true; // Toggle the state
         checkAndPlayNextPart(isRaised);
         targetAngle = -0.95; // Set the target angle based on the state
-      } else if (right_gyro_p >= 26 && left_gyro_p >= 26) {
+      } else if (right_gyro_p >= 26 || left_gyro_p >= 26) {
         targetAngle = -0.71;
-      } else if (right_gyro_p >= 13 && left_gyro_p >= 13) {
+      } else if (right_gyro_p >= 13 || left_gyro_p >= 13) {
         targetAngle = -0.47;
-      } else if (right_gyro_p >= 0 && left_gyro_p >= 0) {
+      } else if (right_gyro_p >= 0 || left_gyro_p >= 0) {
         targetAngle = -0.23;
-      } else if (right_gyro_p >= -13 && left_gyro_p >= -13) {
+      } else if (right_gyro_p >= -13 || left_gyro_p >= -13) {
         targetAngle = 0.23;
-      } else if (right_gyro_p >= -26 && left_gyro_p >= -26) {
+      } else if (right_gyro_p >= -26 || left_gyro_p >= -26) {
         targetAngle = 0.47;
-      } else if (right_gyro_p >= -40 && left_gyro_p >= -40) {
+      } else if (right_gyro_p >= -40 || left_gyro_p >= -40) {
         targetAngle = 0.71;
-      } else if (right_gyro_p >= -90 && left_gyro_p >= -90) {
+      } else if (right_gyro_p < -40 && left_gyro_p < -40) {
         isRaised = false; // Toggle the state
         checkAndPlayNextPart(isRaised);
         targetAngle = 0.95; // Set the target angle based on the state
       }
     }
-    // console.log(targetAngle);
-  }, 50);
+  }, 10);
 
   // --------------------------------------------------
 }

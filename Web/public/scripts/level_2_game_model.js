@@ -201,7 +201,7 @@ document.addEventListener("DOMContentLoaded", function () {
       function animate() {
         const delta = clock.getDelta();
         if (spine) {
-          spine.rotation.z += (targetAngle - spine.rotation.z) * delta * 1.5;
+          spine.rotation.z += (targetAngle - spine.rotation.z) * delta * 1.6;
         }
 
         // -----------------------------------------------------------
@@ -303,33 +303,33 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   setInterval(() => {
-    if (
-      // right_gyro_y > 60 &&
-      // right_gyro_y < 120 &&
-      // left_gyro_y > 60 &&
-      // left_gyro_y < 120
-      right_flex < 40 &&
-      left_flex < 40
-    ) {
-      if (middle_gyro_y >= 40) {
-        isTilted = true;
-        checkAndPlayNextPart(isTilted);
-        targetAngle = -0.6;
-      } else if (middle_gyro_y >= 20) {
-        targetAngle = -0.4;
-      } else if (middle_gyro_y > 0) {
-        targetAngle = -0.2;
-      } else if (middle_gyro_y == 0) {
-        targetAngle = 0;
-      } else if (middle_gyro_y > -20) {
-        targetAngle = 0.2;
-      } else if (middle_gyro_y > -40) {
-        targetAngle = 0.4;
-      } else if (middle_gyro_y <= -40) {
-        isTilted = false;
-        checkAndPlayNextPart(isTilted);
-        targetAngle = 0.6;
-      }
+    // if (
+    //   // right_gyro_y > 60 &&
+    //   // right_gyro_y < 120 &&
+    //   // left_gyro_y > 60 &&
+    //   // left_gyro_y < 120
+    //   right_flex < 40 &&
+    //   left_flex < 40
+    // ) {
+    if (middle_gyro_y >= 40) {
+      isTilted = true;
+      checkAndPlayNextPart(isTilted);
+      targetAngle = -0.6;
+    } else if (middle_gyro_y >= 20) {
+      targetAngle = -0.4;
+    } else if (middle_gyro_y > 0) {
+      targetAngle = -0.2;
+    } else if (middle_gyro_y == 0) {
+      targetAngle = 0;
+    } else if (middle_gyro_y > -20) {
+      targetAngle = 0.2;
+    } else if (middle_gyro_y > -40) {
+      targetAngle = 0.4;
+    } else if (middle_gyro_y <= -40) {
+      isTilted = false;
+      checkAndPlayNextPart(isTilted);
+      targetAngle = 0.6;
     }
+    // }
   }, 50);
 });
