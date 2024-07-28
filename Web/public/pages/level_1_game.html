@@ -71,6 +71,14 @@
             </div>
         </div>
 
+        <div class="countdown">
+            <span>5</span>
+            <span>4</span>
+            <span>3</span>
+            <span>2</span>
+            <span>1</span>
+        </div>
+
 
     </div>
 
@@ -175,6 +183,11 @@
                 );
             }, 80000); // 80 seconds
         });
+
+        // after 5 seconds hide the countdown
+        setTimeout(() => {
+            document.querySelector(".countdown").style.display = "none";
+        }, 5000);
 
     </script>
 </body>

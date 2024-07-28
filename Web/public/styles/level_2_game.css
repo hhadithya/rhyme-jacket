@@ -194,3 +194,79 @@ html {
       0 0 30px #f95050, 0 0 35px #f95050, 0 0 40px #f95050, 0 0 40px #f95050;
   }
 }
+
+.countdown {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  background-color: rgba(19, 19, 19, 0.673);
+  overflow: hidden;
+}
+
+span {
+  color: rgb(214, 0, 0);
+  font-size: 8rem;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  line-height: 1;
+  filter: blur(0.1rem);
+  display: block;
+  transition: all 1.5s ease;
+  opacity: 0;
+  filter: blur(0.1rem);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+span:nth-child(1) {
+  animation: letteranim 11s infinite ease;
+  animation-delay: 0s;
+}
+
+span:nth-child(2) {
+  animation: letteranim 11s infinite ease;
+  animation-delay: 1s;
+}
+
+span:nth-child(3) {
+  animation: letteranim 11s infinite ease;
+  animation-delay: 2s;
+}
+
+span:nth-child(4) {
+  animation: letteranim 11s infinite ease;
+  animation-delay: 3s;
+}
+
+span:nth-child(5) {
+  animation: letteranim 11s infinite ease;
+  animation-delay: 4s;
+}
+
+@keyframes letteranim {
+  0% {
+    opacity: 0;
+    filter: blur(0.2rem);
+  }
+  5% {
+    opacity: 1;
+    filter: blur(0.1rem);
+  }
+  10% {
+    opacity: 1;
+    filter: blur(0.1rem);
+  }
+  20% {
+    opacity: 0;
+    filter: blur(0.2rem);
+  }
+  100% {
+    opacity: 0;
+    filter: blur(0.2rem);
+  }
+}

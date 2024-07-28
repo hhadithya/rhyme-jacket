@@ -201,10 +201,9 @@ document.addEventListener("DOMContentLoaded", function () {
         const t = clock.getElapsedTime();
         const angle = Math.sin(t) * 0.7;
 
-        // if (angle < 0.6 && angle > -0.6) {
-        //   spine_1.rotation.z = angle;
-        // }
-        spine_1.rotation.z = -0.6;
+        if (angle < 0.6 && angle > -0.6) {
+          spine_1.rotation.z = angle;
+        }
 
         renderer.render(scene, camera);
       }
