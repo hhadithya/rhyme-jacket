@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let audioBuffer, audioContext, audioSource;
   let partDuration;
   let currentPart = 0;
-  const music2Url = "../music/level_2_music.mp3"; // Replace with the actual path to your audio file
+  const music2Url = "../music/sunshine.mp3"; // Replace with the actual path to your audio file
 
   // sensor data
   let left_gyro_y = 0;
@@ -314,21 +314,21 @@ document.addEventListener("DOMContentLoaded", function () {
     if (middle_gyro_y >= 40) {
       isTilted = true;
       checkAndPlayNextPart(isTilted);
-      targetAngle = -0.6;
+      targetAngle = -0.7;
     } else if (middle_gyro_y >= 20) {
-      targetAngle = -0.4;
+      targetAngle = -0.46;
     } else if (middle_gyro_y > 0) {
-      targetAngle = -0.2;
+      targetAngle = -0.23;
     } else if (middle_gyro_y == 0) {
       targetAngle = 0;
     } else if (middle_gyro_y > -20) {
-      targetAngle = 0.2;
+      targetAngle = 0.23;
     } else if (middle_gyro_y > -40) {
-      targetAngle = 0.4;
+      targetAngle = 0.46;
     } else if (middle_gyro_y <= -40) {
       isTilted = false;
       checkAndPlayNextPart(isTilted);
-      targetAngle = 0.6;
+      targetAngle = 0.7;
     }
     // }
   }, 50);

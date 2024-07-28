@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let audioBuffer, audioContext, audioSource;
   let partDuration;
   let currentPart = 0;
-  const music2Url = "../music/level_2_music.mp3"; // Replace with the actual path to your audio file
+  const music2Url = "../music/sunshine.mp3"; // Replace with the actual path to your audio file
 
   async function loadAudio() {
     try {
@@ -119,5 +119,5 @@ document.addEventListener("DOMContentLoaded", function () {
   floor.position.y = -11;
   scene.add(floor);
 
-  setInterval(playNextPart, 2350);
+  setInterval(playNextPart, 2000);
 });
