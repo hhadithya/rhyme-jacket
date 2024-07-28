@@ -25,10 +25,18 @@ let middle_gyro_p = 0;
 let middle_gyro_r = 0;
 let right_flex = 0;
 let left_flex = 0;
+let batteryPercentageElement = document.getElementById("battery-percentage");
 
 connection.onmessage = function (event) {
   event.data.text().then((text) => {
     const data = JSON.parse(text);
+    console.log(data);
+
+    if (data.batteryPercentage != undefined) {
+      // round the battery percentage to 0 decimal places
+      batteryPercentageElement.textContent =
+        data.batteryPercentage.toFixed(0) + "%";
+    }
 
     if (data.flex1Angle !== undefined) {
       left_flex = data.flex1Angle;
@@ -68,6 +76,56 @@ connection.onmessage = function (event) {
     }
   });
 };
+
+// change battery image based on battery percentage
+setInterval(() => {
+  var batteryPercentage = parseFloat(batteryPercentageElement.textContent);
+  var batteryImg = document.getElementById("battery-img").children;
+
+  if (batteryPercentage <= 20) {
+    batteryImg[0].classList.add("hidden");
+    batteryImg[1].classList.remove("hidden");
+    batteryImg[2].classList.add("hidden");
+    batteryImg[3].classList.add("hidden");
+    batteryImg[4].classList.add("hidden");
+    batteryImg[5].classList.add("hidden");
+  } else if (batteryPercentage <= 40) {
+    batteryImg[0].classList.add("hidden");
+    batteryImg[1].classList.add("hidden");
+    batteryImg[2].classList.remove("hidden");
+    batteryImg[3].classList.add("hidden");
+    batteryImg[4].classList.add("hidden");
+    batteryImg[5].classList.add("hidden");
+  } else if (batteryPercentage <= 60) {
+    batteryImg[0].classList.add("hidden");
+    batteryImg[1].classList.add("hidden");
+    batteryImg[2].classList.add("hidden");
+    batteryImg[3].classList.remove("hidden");
+    batteryImg[4].classList.add("hidden");
+    batteryImg[5].classList.add("hidden");
+  } else if (batteryPercentage <= 80) {
+    batteryImg[0].classList.add("hidden");
+    batteryImg[1].classList.add("hidden");
+    batteryImg[2].classList.add("hidden");
+    batteryImg[3].classList.add("hidden");
+    batteryImg[4].classList.remove("hidden");
+    batteryImg[5].classList.add("hidden");
+  } else if (batteryPercentage <= 100) {
+    batteryImg[0].classList.add("hidden");
+    batteryImg[1].classList.add("hidden");
+    batteryImg[2].classList.add("hidden");
+    batteryImg[3].classList.add("hidden");
+    batteryImg[4].classList.add("hidden");
+    batteryImg[5].classList.remove("hidden");
+  } else {
+    batteryImg[0].classList.remove("hidden");
+    batteryImg[1].classList.add("hidden");
+    batteryImg[2].classList.add("hidden");
+    batteryImg[3].classList.add("hidden");
+    batteryImg[4].classList.add("hidden");
+    batteryImg[5].classList.add("hidden");
+  }
+}, 100);
 
 async function loadAudio() {
   if (!music1_url) return;

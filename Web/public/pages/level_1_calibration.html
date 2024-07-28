@@ -92,7 +92,7 @@
                 var data = JSON.parse(text);
                 console.log(data);
 
-                if (data.calibration_status === "calibration_done") {
+                if (data.calibration_status == "calibration_done") {
                     setTimeout(() => {
                         window.location.href = "/pages/level_1_game.html";
                     }, 5000);

@@ -88,9 +88,9 @@ document.addEventListener("DOMContentLoaded", function () {
         requestAnimationFrame(animate);
 
         const t = clock.getElapsedTime();
-        const angle = Math.sin(t) * 0.7;
+        const angle = Math.sin(1.4 * t) * 0.72;
 
-        if (angle < 0.6 && angle > -0.6) {
+        if (angle < 0.7 && angle > -0.7) {
           spine_1.rotation.z = angle;
         }
 
@@ -119,5 +119,5 @@ document.addEventListener("DOMContentLoaded", function () {
   floor.position.y = -11;
   scene.add(floor);
 
-  setInterval(playNextPart, 3350);
+  setInterval(playNextPart, 2350);
 });

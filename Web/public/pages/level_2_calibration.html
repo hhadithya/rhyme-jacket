@@ -49,8 +49,15 @@
         const audio = document.getElementById("background-music");
         var connection = new WebSocket("ws://" + location.hostname + ":8080/");
 
-        // play music when page is loaded
-        audio.play();
+        // send a message when the page is loaded
+        window.addEventListener("load", () => {
+            connection.send(
+                JSON.stringify({
+                    type: "redirect",
+                    message: "l2_calibration",
+                })
+            );
+        });
 
         const savedVolume = localStorage.getItem("volume");
         if (savedVolume) {
@@ -74,26 +81,24 @@
             audio.play();
         }
 
-        // send a message when the page is loaded
-        window.addEventListener("load", () => {
-            connection.send(
-                JSON.stringify({
-                    type: "redirect",
-                    message: "L2_calibration",
-                })
-            );
-        });
-
         // change msg-1 to msg-2 after 3 seconds and change back to msg-1 after 3 seconds. loop this
         setInterval(() => {
             document.getElementById('msg-1').classList.toggle('hidden');
             document.getElementById('msg-2').classList.toggle('hidden');
         }, 3000);
 
-        // after 7 seconds move to another page
-        setTimeout(() => {
-            window.location.href = "/pages/level_2_game.html";
-        }, 7000);
+        connection.onmessage = function (event) {
+            event.data.text().then((text) => {
+                var data = JSON.parse(text);
+                console.log(data);
+
+                if (data.calibration_status == "calibration_done") {
+                    setTimeout(() => {
+                        window.location.href = "/pages/level_2_game.html";
+                    }, 5000);
+                }
+            })
+        }
     </script>
 
 </body>

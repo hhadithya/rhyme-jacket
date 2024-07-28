@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <audio src="/music/lose.m4a"></audio>
+    <audio src="/music/lose.m4a" autoplay></audio>
     <div class="container">
         <div id="top-icons">
             <div id="top-icons-left">
@@ -53,7 +53,7 @@
             connection.send(
                 JSON.stringify({
                     type: "redirect",
-                    message: "L2_lose",
+                    message: "l2_lose",
                 })
             );
         });
