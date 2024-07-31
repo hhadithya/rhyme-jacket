@@ -31,6 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
   connection.onmessage = function (event) {
     event.data.text().then((text) => {
       const data = JSON.parse(text);
+      console.log(data);
 
       // Update the battery percentage element
       if (data.batteryPercentage !== undefined) {
@@ -140,7 +141,7 @@ document.addEventListener("DOMContentLoaded", function () {
         arrayBuffer,
         (buffer) => {
           audioBuffer = buffer;
-          partDuration = audioBuffer.duration / 20;
+          partDuration = audioBuffer.duration / 16;
         },
         (error) => {
           console.error("decodeAudioData error:", error);
@@ -167,7 +168,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     audioSource.start(0, startTime, endTime);
 
-    currentPart = (currentPart + 1) % 20;
+    currentPart = (currentPart + 1) % 16;
   }
 
   loadAudio();
@@ -311,17 +312,17 @@ document.addEventListener("DOMContentLoaded", function () {
     //   right_flex < 40 &&
     //   left_flex < 40
     // ) {
-    if (middle_gyro_y >= 40) {
+    if (middle_gyro_y > 40) {
       isTilted = true;
       checkAndPlayNextPart(isTilted);
       targetAngle = -0.7;
-    } else if (middle_gyro_y >= 20) {
+    } else if (middle_gyro_y > 22) {
       targetAngle = -0.46;
-    } else if (middle_gyro_y > 0) {
+    } else if (middle_gyro_y > 5) {
       targetAngle = -0.23;
-    } else if (middle_gyro_y == 0) {
+    } else if (middle_gyro_y >= -5 && middle_gyro_y <= 5) {
       targetAngle = 0;
-    } else if (middle_gyro_y > -20) {
+    } else if (middle_gyro_y > -22) {
       targetAngle = 0.23;
     } else if (middle_gyro_y > -40) {
       targetAngle = 0.46;
@@ -332,4 +333,27 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     // }
   }, 50);
+
+  setInterval(() => {
+    if (
+      left_flex > 0 &&
+      left_flex <= 50 &&
+      right_flex > 0 &&
+      right_flex <= 50
+      // middle_gyro_y > -30 &&
+      // middle_gyro_y < 30 &&
+      // middle_gyro_p > -30 &&
+      // middle_gyro_p < 30 &&
+      // right_gyro_y > -30 &&
+      // right_gyro_y < 30 &&
+      // left_gyro_y > -30 &&
+      // left_gyro_y < 30
+    ) {
+      document.getElementById("correctMove").style.display = "block";
+      document.getElementById("wrongMove").style.display = "none";
+    } else {
+      document.getElementById("correctMove").style.display = "none";
+      document.getElementById("wrongMove").style.display = "block";
+    }
+  }, 100);
 });

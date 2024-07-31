@@ -109,15 +109,14 @@
                 document.querySelectorAll("#top-icons-left img").forEach((img) => {
                     img.style.cursor = "url('/images/cursor.png'), auto";
                 });
-            }, 80000); // 80 seconds (1 minute)
+                connection.send(
+                    JSON.stringify({
+                        type: "redirect",
+                        message: "quit",
+                    })
+                );
+            }, 50000); // 80 seconds (1 minute)
         });
-
-        connection.onmessage = function (event) {
-            event.data.text().then((text) => {
-                var data = JSON.parse(text);
-                console.log(data);
-            });
-        };
 
         // after 5 seconds hide the countdown
         setTimeout(() => {
