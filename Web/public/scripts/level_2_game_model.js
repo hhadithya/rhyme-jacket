@@ -336,9 +336,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   setInterval(() => {
     if (
-      left_flex > 0 &&
+      left_flex >= 0 &&
       left_flex <= 50 &&
-      right_flex > 0 &&
+      right_flex >= 0 &&
       right_flex <= 50
       // middle_gyro_y > -30 &&
       // middle_gyro_y < 30 &&
