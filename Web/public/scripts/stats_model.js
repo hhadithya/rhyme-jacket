@@ -7,7 +7,14 @@ const canvas = document.getElementById("stat_model_canvas");
 var connection = new WebSocket("ws://" + location.hostname + ":8080/");
 
 let model, rightArm, leftArm, rightForeArm, leftForeArm;
-let flex1Angle, flex2Angle, l_gyro_p, r_gyro_p, l_gyro_y, r_gyro_y;
+let flex1Angle,
+  flex2Angle,
+  l_gyro_p,
+  r_gyro_p,
+  l_gyro_y,
+  r_gyro_y,
+  m_gyro_y,
+  spine;
 
 connection.onmessage = function (e) {
   e.data.text().then((text) => {
@@ -19,6 +26,7 @@ connection.onmessage = function (e) {
     l_gyro_y = data.yawLeft;
     r_gyro_p = data.pitchRight;
     r_gyro_y = data.yawRight;
+    m_gyro_y = data.yawCenter;
   });
 };
 
@@ -49,8 +57,11 @@ function init() {
       leftArm = model.getObjectByName("mixamorigLeftArm");
       rightForeArm = model.getObjectByName("mixamorigRightForeArm");
       leftForeArm = model.getObjectByName("mixamorigLeftForeArm");
+      spine = model.getObjectByName("mixamorigSpine");
 
-      rightArm.rotation.x = leftArm.rotation.x = 0.95;
+      rightArm.rotation.x = leftArm.rotation.x = 0;
+      // leftArm.rotation.z = -1;
+      // spine.rotation.z = -1;
 
       model.scale.set(12, 12, 12);
       model.position.y = 3;
@@ -68,34 +79,54 @@ function init() {
         requestAnimationFrame(animate);
 
         // rightForeArm
-        if (flex2Angle > 0 && flex2Angle <= 36) {
+        if (flex2Angle > 0 && flex2Angle <= 15) {
+          rightForeArm.rotation.z = -0.2;
+        } else if (flex2Angle > 15 && flex2Angle <= 30) {
           rightForeArm.rotation.z = -0.4;
-        } else if (flex2Angle > 36 && flex2Angle <= 72) {
+        } else if (flex2Angle > 30 && flex2Angle <= 45) {
+          rightForeArm.rotation.z = -0.6;
+        } else if (flex2Angle > 45 && flex2Angle <= 60) {
           rightForeArm.rotation.z = -0.8;
-        } else if (flex2Angle > 72 && flex2Angle <= 108) {
+        } else if (flex2Angle > 60 && flex2Angle <= 75) {
+          rightForeArm.rotation.z = -1.0;
+        } else if (flex2Angle > 75 && flex2Angle <= 90) {
           rightForeArm.rotation.z = -1.2;
-        } else if (flex2Angle > 108 && flex2Angle <= 144) {
+        } else if (flex2Angle > 90 && flex2Angle <= 105) {
+          rightForeArm.rotation.z = -1.4;
+        } else if (flex2Angle > 105 && flex2Angle <= 120) {
           rightForeArm.rotation.z = -1.6;
-        } else if (flex2Angle > 144 && flex2Angle <= 180) {
+        } else if (flex2Angle > 120 && flex2Angle <= 135) {
+          rightForeArm.rotation.z = -1.8;
+        } else if (flex2Angle > 135 && flex2Angle <= 150) {
           rightForeArm.rotation.z = -2.0;
         }
 
-        // leftForeArm
-        if (flex1Angle > 0 && flex1Angle <= 36) {
+        leftForeArm;
+        if (flex1Angle > 0 && flex1Angle <= 15) {
+          leftForeArm.rotation.z = 0.2;
+        } else if (flex1Angle > 15 && flex1Angle <= 30) {
           leftForeArm.rotation.z = 0.4;
-        } else if (flex1Angle > 36 && flex1Angle <= 72) {
+        } else if (flex1Angle > 30 && flex1Angle <= 45) {
+          leftForeArm.rotation.z = 0.6;
+        } else if (flex1Angle > 45 && flex1Angle <= 60) {
           leftForeArm.rotation.z = 0.8;
-        } else if (flex1Angle > 72 && flex1Angle <= 108) {
+        } else if (flex1Angle > 60 && flex1Angle <= 75) {
+          leftForeArm.rotation.z = 1.0;
+        } else if (flex1Angle > 75 && flex1Angle <= 90) {
           leftForeArm.rotation.z = 1.2;
-        } else if (flex1Angle > 108 && flex1Angle <= 144) {
+        } else if (flex1Angle > 90 && flex1Angle <= 105) {
+          leftForeArm.rotation.z = 1.4;
+        } else if (flex1Angle > 105 && flex1Angle <= 120) {
           leftForeArm.rotation.z = 1.6;
-        } else if (flex1Angle > 144 && flex1Angle <= 180) {
-          leftForeArm.rotation.z = 2;
+        } else if (flex1Angle > 120 && flex1Angle <= 135) {
+          leftForeArm.rotation.z = 1.8;
+        } else if (flex1Angle > 135 && flex1Angle <= 150) {
+          leftForeArm.rotation.z = 2.0;
         }
 
         // left arm ------------------------------------------------------------------------------------
         // pitch
-        if (l_gyro_p > -75 && l_gyro_p <= -60) {
+        if (l_gyro_p <= -60) {
           leftArm.rotation.x = 1.0;
         } else if (l_gyro_p > -60 && l_gyro_p <= -45) {
           leftArm.rotation.x = 0.8;
@@ -103,11 +134,11 @@ function init() {
           leftArm.rotation.x = 0.6;
         } else if (l_gyro_p > -30 && l_gyro_p <= -15) {
           leftArm.rotation.x = 0.4;
-        } else if (l_gyro_p > -15 && l_gyro_p < 0) {
+        } else if (l_gyro_p > -15 && l_gyro_p <= -5) {
           leftArm.rotation.x = 0.2;
-        } else if (l_gyro_p == 0) {
+        } else if (l_gyro_p > -5 && l_gyro_p <= 5) {
           leftArm.rotation.x = 0.0;
-        } else if (l_gyro_p > 0 && l_gyro_p <= 15) {
+        } else if (l_gyro_p > 5 && l_gyro_p <= 15) {
           leftArm.rotation.x = -0.2;
         } else if (l_gyro_p > 15 && l_gyro_p <= 30) {
           leftArm.rotation.x = -0.4;
@@ -115,34 +146,14 @@ function init() {
           leftArm.rotation.x = -0.6;
         } else if (l_gyro_p > 45 && l_gyro_p <= 60) {
           leftArm.rotation.x = -0.8;
-        } else if (l_gyro_p > 60 && l_gyro_p <= 75) {
+        } else if (l_gyro_p < 60) {
           leftArm.rotation.x = -1.0;
         }
-        // yaw
-        if (l_gyro_y > 157 && l_gyro_y <= 180) {
-          leftArm.rotation.z = 1.0;
-        } else if (l_gyro_y > 135 && l_gyro_y <= 157) {
-          leftArm.rotation.z = 0.75;
-        } else if (l_gyro_y > 112 && l_gyro_y <= 135) {
-          leftArm.rotation.z = 0.5;
-        } else if (l_gyro_y > 90 && l_gyro_y <= 112) {
-          leftArm.rotation.z = 0.25;
-        } else if (l_gyro_y == 90) {
-          leftArm.rotation.z = 0.0;
-        } else if (l_gyro_y > 68 && l_gyro_y < 90) {
-          leftArm.rotation.z = -0.25;
-        } else if (l_gyro_y > 45 && l_gyro_y <= 68) {
-          leftArm.rotation.z = -0.5;
-        } else if (l_gyro_y > 22 && l_gyro_y <= 45) {
-          leftArm.rotation.z = -0.75;
-        } else if (l_gyro_y >= 0 && l_gyro_y <= 22) {
-          leftArm.rotation.z = -1.0;
-        }
-        // ---------------------------------------------------------------------------
+        // // ---------------------------------------------------------------------------
 
         // right arm------------------------------------------------------------------
         // pitch
-        if (r_gyro_p > -75 && r_gyro_p <= -60) {
+        if (r_gyro_p <= -60) {
           rightArm.rotation.x = 1.0;
         } else if (r_gyro_p > -60 && r_gyro_p <= -45) {
           rightArm.rotation.x = 0.8;
@@ -150,9 +161,9 @@ function init() {
           rightArm.rotation.x = 0.6;
         } else if (r_gyro_p > -30 && r_gyro_p <= -15) {
           rightArm.rotation.x = 0.4;
-        } else if (r_gyro_p > -15 && r_gyro_p < 0) {
+        } else if (r_gyro_p > -15 && r_gyro_p < -5) {
           rightArm.rotation.x = 0.2;
-        } else if (r_gyro_p == 0) {
+        } else if (r_gyro_p > -5 && r_gyro_p <= 5) {
           rightArm.rotation.x = 0.0;
         } else if (r_gyro_p > 0 && r_gyro_p <= 15) {
           rightArm.rotation.x = -0.2;
@@ -162,32 +173,29 @@ function init() {
           rightArm.rotation.x = -0.6;
         } else if (r_gyro_p > 45 && r_gyro_p <= 60) {
           rightArm.rotation.x = -0.8;
-        } else if (r_gyro_p > 60 && r_gyro_p <= 75) {
+        } else if (r_gyro_p > 60) {
           rightArm.rotation.x = -1.0;
         }
-        // yaw
-        if (r_gyro_y > 68 && r_gyro_y <= 90) {
-          rightArm.rotation.z = -1.0;
-        } else if (r_gyro_y > 45 && r_gyro_y <= 68) {
-          rightArm.rotation.z = -0.75;
-        } else if (r_gyro_y > 22 && r_gyro_y <= 45) {
-          rightArm.rotation.z = -0.5;
-        } else if (r_gyro_y > 0 && r_gyro_y <= 22) {
-          rightArm.rotation.z = -0.25;
-        } else if (r_gyro_y == 0) {
-          rightArm.rotation.z = 0.0;
-        } else if (r_gyro_y > -22 && r_gyro_y < 0) {
-          rightArm.rotation.z = 0.25;
-        } else if (r_gyro_y > -45 && r_gyro_y <= -22) {
-          rightArm.rotation.z = 0.5;
-        } else if (r_gyro_y > -45 && r_gyro_y <= -68) {
-          rightArm.rotation.z = 0.75;
-        } else if (r_gyro_y >= -68 && r_gyro_y <= -90) {
-          rightArm.rotation.z = 1.0;
-        }
-        // -------------------------------------------------------------------------------
+        // // -------------------------------------------------------------------------------
 
-        controls.update();
+        // spine
+        if (m_gyro_y <= 58 && m_gyro_y > 40) {
+          spine.rotation.z = 0.7;
+        } else if (m_gyro_y <= 40 && m_gyro_y > 22.5) {
+          spine.rotation.z = 0.46;
+        } else if (m_gyro_y <= 22.5 && m_gyro_y > 10) {
+          spine.rotation.z = 0.23;
+        } else if (m_gyro_y <= 10 && m_gyro_y > -10) {
+          spine.rotation.z = 0;
+        } else if (m_gyro_y <= -10 && m_gyro_y > -22.5) {
+          spine.rotation.z = -0.23;
+        } else if (m_gyro_y <= -22.5 && m_gyro_y > -40) {
+          spine.rotation.z = -0.46;
+        } else if (m_gyro_y <= -40 && m_gyro_y > -58) {
+          spine.rotation.z = -0.7;
+        }
+
+        // controls.update();
 
         renderer.render(scene, camera);
       }
@@ -199,7 +207,7 @@ function init() {
   const renderer = new THREE.WebGLRenderer({ canvas });
   renderer.setPixelRatio(window.devicePixelRatio);
 
-  const controls = new OrbitControls(camera, renderer.domElement);
+  // const controls = new OrbitControls(camera, renderer.domElement);
 }
 
 init();
