@@ -39,7 +39,7 @@ void mpuSetup() {
     Serial.begin(115200);
     while (!Serial); 
 
-    // Serial.println(F("Initializing I2C devices..."));
+    Serial.println(F("Initializing I2C devices..."));
     mpu.initialize();
     pinMode(INTERRUPT_PIN, INPUT);
 
@@ -51,7 +51,7 @@ void mpuSetup() {
     // while (!Serial.available());                 
     // while (Serial.available() && Serial.read()); 
 
-    // Serial.println(F("Initializing DMP..."));
+    Serial.println(F("Initializing DMP..."));
     devStatus = mpu.dmpInitialize();
 
     mpu.setXGyroOffset(220);
@@ -64,12 +64,12 @@ void mpuSetup() {
         mpu.CalibrateGyro(6);
         mpu.PrintActiveOffsets();
 
-        // Serial.println(F("Enabling DMP..."));
+        Serial.println(F("Enabling DMP..."));
         mpu.setDMPEnabled(true);
 
-        // Serial.print(F("Enabling interrupt detection (Arduino external interrupt "));
-        // Serial.print(digitalPinToInterrupt(INTERRUPT_PIN));
-        // Serial.println(F(")..."));
+        Serial.print(F("Enabling interrupt detection (Arduino external interrupt "));
+        Serial.print(digitalPinToInterrupt(INTERRUPT_PIN));
+        Serial.println(F(")..."));
         attachInterrupt(digitalPinToInterrupt(INTERRUPT_PIN), dmpDataReady, RISING);
         mpuIntStatus = mpu.getIntStatus();
 

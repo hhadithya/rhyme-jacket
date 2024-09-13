@@ -1,6 +1,7 @@
 #include <OneWire.h>
+#include "LEDControl.h"
 
-const int oneWireBus = 4;
+const int oneWireBus = 27;
 OneWire oneWire(oneWireBus);
 
 float readTemperature() {
@@ -11,7 +12,6 @@ float readTemperature() {
     Serial.println("No more addresses.");
     Serial.println();
     oneWire.reset_search();
-    delay(250);
     return -1000; 
   }
 
@@ -54,11 +54,14 @@ float readTemperature() {
   return celsius;
 }
 
-float getAverageTemperature(int numReadings, int delayBetweenReadings) {
+float getAverageTemperature(int numReadings, int delayBetweenReadings, char* type) {
   float totalTemperatureC = 0;
 
   for (int i = 0; i < numReadings; i++) {
     float tempC = readTemperature();
+    if (type == "body_check"){
+      situationBodyChecking(500);
+    }
     if (tempC != -1000) { 
       totalTemperatureC += tempC;
     }
@@ -68,18 +71,16 @@ float getAverageTemperature(int numReadings, int delayBetweenReadings) {
   return totalTemperatureC / numReadings; 
 }
 
-float tempLoop(){
-  int numReadings = 20; 
-  int delayBetweenReadings = 20; 
+float tempLoop(char* type){
+  int numReadings = 10; 
+  int delayBetweenReadings = 5; 
 
-  float averageTemperatureC = getAverageTemperature(numReadings, delayBetweenReadings);
+  float averageTemperatureC = getAverageTemperature(numReadings, delayBetweenReadings, type);
   float averageTemperatureF = averageTemperatureC * 9.0 / 5.0 + 32.0;
 
   Serial.print("Average Temperature: ");
   Serial.print(averageTemperatureC);
   Serial.print("ºC  ");
-  // Serial.print(averageTemperatureF);
-  // Serial.println("ºF"); 
 
   return averageTemperatureC;
 }

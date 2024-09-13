@@ -6,10 +6,8 @@
 #include "VoltageSensor.h"
 #include "Multiplexer.h"
 #include "MPUManager.h"
-#include "HeartRateSensor.h"
+#include "Max30102Manager.h"
 #include "LEDControl.h"
-#include "TemperatureSensor.h"
-// #include "BluetoothMouse.h"
 
 const char* ssid = "Dialog 4G 149";
 const char* password = "Me1_P@5s";
@@ -26,10 +24,7 @@ Multiplexer mux(TCA9548A_ADDRESS);
 MPUManager mpuCenter;
 MPUManager mpuRight;
 MPUManager mpuLeft;
-HeartRateSensor heartRateSensor(3, mux);
-// BluetoothMouse btMouse;
-
-bool shouldSendData = true;
+Max30102Manager max30102;
 
 void webSocketEvent(WStype_t type, uint8_t * payload, size_t length) {
     switch(type) {
@@ -59,20 +54,13 @@ void webSocketEvent(WStype_t type, uint8_t * payload, size_t length) {
               const char* message = doc["message"];
               
               if (strcmp(message, "body-checking") == 0) {
-                  // Serial.println("Yes");
+                  Serial.println("Yes");
                   bodyCheckLEDSetup();
-                  // float avgTemp = tempLoop();
-                  for (int i = 0; i < 1; i++)
+                  for (int i = 0; i < 3; i++)
                     fadeInAndOut(1500);
-                  // String data = "{\"BPM\": " + String(0) + ", \"Temp\": " + String(avgTemp) + "}";
-                  // webSocket.sendTXT(data);
-                  // delay(5000);
-
-                  
               } else if(strcmp(message, "false") == 0){
                   connectionEstablish();
-              }
-              else{
+              }else{
                 Serial.println(message);
               }
 
@@ -136,7 +124,7 @@ void setup() {
 
     Serial.println("Connected to WiFi");
 
-    webSocket.begin("192.168.8.112", 8080, "/");
+    webSocket.begin("192.168.8.122", 8080, "/");
     webSocket.onEvent(webSocketEvent);
 
     
@@ -151,10 +139,8 @@ void setup() {
     mux.selectChannel(2);
     mpuLeft.initializeMPU(); 
 
-    if (!heartRateSensor.begin()) {
-        Serial.println("Failed to initialize heart rate sensor.");
-        while (1);
-    }
+    mux.selectChannel(3);
+    max30102.initializeSensor();
 
     calibrateFlex();
 
@@ -164,19 +150,7 @@ void setup() {
 }
 
 void loop() {
-    heartRateSensor.update();
     webSocket.loop();
-    
-    if (shouldSendData) {
-      static unsigned long lastSendTime = 0;
-      if (millis() - lastSendTime >= 1000) {
-          lastSendTime = millis();
-          int filteredBPM = (int)heartRateSensor.getFilteredBPM(); // Convert BPM to integer
-          String message = "{\"bpm\":" + String(filteredBPM) + "}";
-          webSocket.sendTXT(message);
-      }
-    }
-
     int batteryPercentage = (int) loopVoltageSensor();
 
     int flex1Angle = getFlexAngle(FLEX_SENSOR_1_PIN, flex1Initial);
@@ -213,7 +187,8 @@ void loop() {
         anglesLeft[2] = angles[2];
     }
 
-    int bpm = 0;
+    mux.selectChannel(3);
+    int bpm = max30102.getBPM();
 
     String data = "{\"flex1Angle\": " + String(flex1Angle) +
                   ", \"flex2Angle\": " + String(flex2Angle) + 
@@ -230,8 +205,5 @@ void loop() {
                   ", \"BPM\": " + String(bpm) + "}";
 
     webSocket.sendTXT(data);
-
-    // btMouse.update();
-
     delay(400);
 }

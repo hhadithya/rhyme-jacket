@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Piano Tiles Game</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; }
+    .tile { width: 100px; height: 100px; display: inline-block; margin: 10px; background-color: lightgray; }
+  </style>
+  <script>
+    var webSocket = new WebSocket('ws://192.168.8.143:81/');
+    webSocket.onmessage = function(event) {
+      if (event.data == "Note1") {
+        document.getElementById("tile1").style.backgroundColor = "red";
+      } else if (event.data == "Note2") {
+        document.getElementById("tile2").style.backgroundColor = "blue";
+      }
+    };
+  </script>
+</head>
+<body>
+  <h1>Piano Tiles Game</h1>
+  <div class="tile" id="tile1">Note 1</div>
+  <div class="tile" id="tile2">Note 2</div>
+</body>
+</html>

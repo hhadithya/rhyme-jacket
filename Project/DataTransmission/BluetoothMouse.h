@@ -1,6 +1,7 @@
 #ifndef BLUETOOTHMOUSE_H
 #define BLUETOOTHMOUSE_H
 
+#include <Wire.h>
 #include <BleMouse.h>
 
 class BluetoothMouse {

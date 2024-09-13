@@ -5,10 +5,10 @@ Max30102Manager::Max30102Manager()
 
 void Max30102Manager::initializeSensor() {
     Serial.begin(115200);
-    // Serial.println("Initializing...");
+    Serial.println("Initializing...");
 
     if (!particleSensor.begin(Wire, I2C_SPEED_FAST)) {
-        // Serial.println("MAX30105 was not found. Please check wiring/power.");
+        Serial.println("MAX30105 was not found. Please check wiring/power.");
         while (1);
     }
   

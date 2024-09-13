@@ -18,8 +18,8 @@ private:
     Multiplexer& multiplexer;
     uint8_t tcaChannel;
 
-    const byte RATE_SIZE = 10; // Increase this for more averaging. 10 is good.
-    byte rates[10]; // Array of heart rates
+    const byte RATE_SIZE = 5;
+    byte rates[5];
     byte rateSpot = 0;
     long lastBeat = 0; // Time at which the last beat occurred
 
@@ -31,4 +31,4 @@ private:
     float filteredBPM = 0;
 };
 
-#endif // HEART_RATE_SENSOR_H
+#endif

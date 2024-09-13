@@ -24,7 +24,7 @@ void Max30102Setup()
 
   // Initialize sensor
   if (!particleSensor.begin(Wire, I2C_SPEED_FAST))   {
-    // Serial.println("MAX30105 was not found. Please check wiring/power.");
+    Serial.println("MAX30105 was not found. Please check wiring/power.");
     while (1);
   }
   
@@ -64,19 +64,19 @@ int Max30102Loop()
   {
     lastPrintTime = millis();
 
-    // Serial.print("IR=");
-    // Serial.print(irValue);
-    // Serial.print(", BPM=");
-    // Serial.print(beatsPerMinute);
-    // Serial.print(", Avg BPM=");
-    // Serial.print(beatAvg);
-    // Serial.print(", Filtered BPM=");
-    // Serial.print(filteredBPM);
+    Serial.print("IR=");
+    Serial.print(irValue);
+    Serial.print(", BPM=");
+    Serial.print(beatsPerMinute);
+    Serial.print(", Avg BPM=");
+    Serial.print(beatAvg);
+    Serial.print(", Filtered BPM=");
+    Serial.print(filteredBPM);
 
-    // if (irValue < 50000)
-    //   Serial.print(" No finger?");
+    if (irValue < 50000)
+      Serial.print(" No finger?");
 
-    // Serial.println();
+    Serial.println();
     // delay(10);
   }
   return filteredBPM;

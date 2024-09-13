@@ -22,6 +22,7 @@ bool HeartRateSensor::begin() {
     particleSensor.setup(); // Configure sensor with default settings
     particleSensor.setPulseAmplitudeRed(0x0A); // Turn Red LED to low to indicate sensor is running
     particleSensor.setPulseAmplitudeGreen(0); // Turn off Green LED
+    
     return true;
 }
 
@@ -30,7 +31,7 @@ void HeartRateSensor::update() {
     long irValue = particleSensor.getIR();
 
     if (checkForBeat(irValue) == true) {
-        // We sensed a beat!
+        
         long delta = millis() - lastBeat;
         lastBeat = millis();
 
@@ -38,7 +39,7 @@ void HeartRateSensor::update() {
 
         if (beatsPerMinute < 255 && beatsPerMinute > 20) {
             rates[rateSpot++] = (byte)beatsPerMinute; // Store this reading in the array
-            rateSpot %= RATE_SIZE; // Wrap variable
+            rateSpot %= RATE_SIZE; 
 
             // Take average of readings
             beatAvg = 0;
@@ -55,14 +56,11 @@ void HeartRateSensor::update() {
     static unsigned long lastPrintTime = 0;
     if (millis() - lastPrintTime >= 1000) {
         lastPrintTime = millis();
-
-        Serial.print(", Filtered BPM=");
-        Serial.print(filteredBPM);
+        // Serial.print("Filtered BPM=");
+        // Serial.print(filteredBPM);
 
         if (irValue < 50000)
             Serial.print(" No finger?");
-
-        Serial.println();
     }
 }
 

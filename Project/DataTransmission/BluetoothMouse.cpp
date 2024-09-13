@@ -1,6 +1,5 @@
 #include "BluetoothMouse.h"
-#include "Wire.h"
-#include <Arduino.h>  // Include this header for Serial communication
+// #include <Arduino.h>  // Include this header for Serial communication
 
 BluetoothMouse::BluetoothMouse() {
 }
@@ -32,10 +31,10 @@ void BluetoothMouse::update() {
     gyroY = gyroY / Sensitivity * -1;
 
     if(bleMouse.isConnected()) {
-        Serial.print(gyroX);
-        Serial.print("   ");
-        Serial.print(gyroY);
-        Serial.print("\r\n");
+        // Serial.print(gyroX);
+        // Serial.print("   ");
+        // Serial.print(gyroY);
+        // Serial.print("\r\n");
         bleMouse.move(gyroY, -gyroX);
     }
     delay(delayi);

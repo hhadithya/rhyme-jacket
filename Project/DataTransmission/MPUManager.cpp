@@ -17,7 +17,7 @@ void MPUManager::initializeMPU() {
     Serial.print(F("Testing device connections..."));
     Serial.println(mpu.testConnection() ? F("MPU6050 connection successful") : F("MPU6050 connection failed"));
 
-    // Serial.println(F("Initializing DMP..."));
+    Serial.println(F("Initializing DMP..."));
     devStatus = mpu.dmpInitialize();
 
     mpu.setXGyroOffset(220);
